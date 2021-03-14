@@ -2,6 +2,8 @@ import jwt from 'jsonwebtoken'
 
 const passport = require('passport')
 
+const { JWT_SECRET } = require('../config/default.config')
+
 const authGoogle = passport.authenticate('google', {
   scope: ['email', 'profile']
 })
