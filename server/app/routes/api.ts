@@ -5,7 +5,7 @@ import {
   putController,
   deleteController
 } from '../controllers/api'
-import authCheck from '../middlewares/authCheck'
+import authCheck from '../middleware/authCheck'
 
 const apiRouter = express.Router()
 
