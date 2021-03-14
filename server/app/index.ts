@@ -7,8 +7,6 @@ const app = express()
 
 const port = PORT || 8000
 
-console.log(process.env)
-
 connectDB()
 
 app.listen(port, () => {

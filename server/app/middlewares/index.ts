@@ -20,7 +20,6 @@ Middleware.use(
 )
 
 Middleware.use(cookieParser())
-
 Middleware.use(passport.initialize())
 Middleware.use(passport.session())
 

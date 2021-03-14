@@ -1,3 +1,5 @@
+import jwt from 'jsonwebtoken'
+
 const passport = require('passport')
 
 const authGoogle = passport.authenticate('google', {
@@ -18,7 +20,11 @@ const authRedirectTwitter = passport.authenticate('twitter', {
 
 const authStatus = (req, res) => {
   if (req.user) {
+    const token = jwt.sign({ user: req.user }, JWT_SECRET, {
+      expiresIn: 3600
+    })
     res.status(200).send({
+      token,
       success: true,
       message: 'User has successfully authenticated',
       user: req.user,
