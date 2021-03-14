@@ -10,7 +10,7 @@
   "scripts": {
     "start:prod": "NODE_ENV=production APP_ENV=prod node dist/index",
     "start:test": "NODE_ENV=staging APP_ENV=test nodemon dist/index",
-    "start:dev": "NODE_ENV=development APP_ENV=dev nodemon dist/index",
+    "start:dev": "yarn build && NODE_ENV=development APP_ENV=dev nodemon dist/index",
     "build": "tsc",
     "lint": "eslint '*/**/*.ts'",
     "lint:fix": "eslint '*/**/*.ts' --fix",
@@ -56,7 +56,7 @@
     "express": "^4.17.1",
     "husky": "^5.1.3",
     "lint-staged": "^10.5.4",
-    "mongoose": "^5.12.0",
+    "mongoose": "^5.11.15",
     "passport": "^0.4.1",
     "passport-google-oauth2": "^0.2.0",
     "passport-twitter": "^1.0.4"
