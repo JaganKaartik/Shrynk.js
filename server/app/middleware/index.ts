@@ -8,9 +8,12 @@ const cookieParser = require('cookie-parser')
 const passport = require('passport')
 const cors = require('cors')
 const rateLimit = require('express-rate-limit')
+const connectRedis = require('../config/redis')
 const passportSetup = require('../config/passport-setup')
 
 const { CLIENT_ORIGIN } = require('../config/default.config')
+
+Middleware.use(connectRedis)
 
 Middleware.use(
   cookieSession({
