@@ -3,11 +3,12 @@ import { authRouter, apiRouter, mainRouter } from '../routes'
 
 const Middleware = express()
 const bodyParser = require('body-parser')
-const cookieSession = require('cookie-session')
+// const cookieSession = require('cookie-session')
 const cookieParser = require('cookie-parser')
 const passport = require('passport')
 const cors = require('cors')
-const rateLimit = require('express-rate-limit')
+
+const apiLimiter = require('./rateLimit')
 const connectRedis = require('../config/redis')
 const passportSetup = require('../config/passport-setup')
 
@@ -15,20 +16,13 @@ const { CLIENT_ORIGIN } = require('../config/default.config')
 
 Middleware.use(connectRedis)
 
-Middleware.use(
-  cookieSession({
-    name: 'session',
-    keys: [process.env.COOKIE_KEY],
-    maxAge: 24 * 60 * 60 * 100
-  })
-)
-
-const apiLimiter = rateLimit({
-  windowMs: 1 * 60 * 1000,
-  max: 25,
-  message:
-    'Too many accounts created from this IP, please try again after a minute'
-})
+// Middleware.use(
+//   cookieSession({
+//     name: 'session',
+//     keys: [process.env.COOKIE_KEY],
+//     maxAge: 24 * 60 * 60 * 100
+//   })
+// )
 
 Middleware.use('/api/v1/', apiLimiter)
 
