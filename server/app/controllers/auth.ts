@@ -22,11 +22,12 @@ const authRedirectTwitter = passport.authenticate('twitter', {
 
 const authStatus = (req, res) => {
   if (req.user) {
-    const token = jwt.sign({ user: req.user }, JWT_SECRET, {
-      expiresIn: 3600
-    })
+    const sess = req.session
+    // const token = jwt.sign({ user: req.user }, JWT_SECRET, {
+    // expiresIn: 3600
+    // })
     res.status(200).send({
-      token,
+      // token,
       success: true,
       message: 'User has successfully authenticated',
       user: req.user,
@@ -41,8 +42,15 @@ const authStatus = (req, res) => {
 }
 
 const logout = (req, res) => {
-  req.logout()
-  res.redirect('/auth/status')
+  // req.logout()
+  req.session.destroy((err) => {
+    if (err) {
+      return console.log(err)
+    }
+    res.redirect('/auth/status')
+    // res.redirect('/')
+  })
+  // res.redirect('/auth/status')
 }
 
 export {

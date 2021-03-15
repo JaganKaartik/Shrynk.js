@@ -5,13 +5,13 @@ import {
   putController,
   deleteController
 } from '../controllers/api'
-import authCheck from '../middleware/authCheck'
+import SessionCheck from '../middleware/SessionCheck'
 
 const apiRouter = express.Router()
 
-apiRouter.get('/get', authCheck, getController)
-apiRouter.post('/post', authCheck, getController)
-apiRouter.delete('/delete', authCheck, getController)
-apiRouter.put('/put', authCheck, getController)
+apiRouter.get('/get', SessionCheck, getController)
+apiRouter.post('/post', SessionCheck, getController)
+apiRouter.delete('/delete', SessionCheck, getController)
+apiRouter.put('/put', SessionCheck, getController)
 
 export = apiRouter
