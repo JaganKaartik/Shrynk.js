@@ -20,6 +20,7 @@
   "plugins": ["prettier", "@typescript-eslint"],
   "rules": {
     "semi": 0,
+    "import/no-unresolved": [2, { "caseSensitive": false }],
     "no-unused-vars": "off",
     "prettier/prettier": "error",
     "comma-dangle": "off",

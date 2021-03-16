@@ -1,8 +1,7 @@
 const passport = require('passport')
 const TwitterStrategy = require('passport-twitter')
 const GoogleStrategy = require('passport-google-oauth2')
-const User = require('../models/user')
-
+const User = require('../models/User')
 const {
   TWITTER_CONSUMER_KEY,
   TWITTER_CONSUMER_SECRET,
@@ -19,7 +18,7 @@ passport.deserializeUser((id, done) => {
     .then((user) => {
       done(null, user)
     })
-    .catch((e) => {
+    .catch(() => {
       done(new Error('Failed to deserialize an user'))
     })
 })
@@ -40,7 +39,10 @@ passport.use(
             userId: profile._json.id_str,
             provider: profile.provider,
             name: profile._json.name,
-            profileImageUrl: profile._json.profile_image_url
+            profileImageUrl: profile._json.profile_image_url,
+            otherInfo: profile._json.screen_name,
+            location: profile._json.location,
+            profileBannerUrl: profile._json.profile_banner_url
           }).save()
           done(null, newUser)
         } else {
@@ -61,20 +63,25 @@ passport.use(
     },
     async (request, accessToken, refreshToken, profile, done) => {
       User.findOne({
-        userId: profile._json.id_str
-      }).then((currentUser) => {
-        if (!currentUser) {
-          const newUser = new User({
-            userId: profile._json.id_str,
-            provider: profile.provider,
-            name: profile._json.name,
-            profileImageUrl: profile._json.profile_image_url
-          }).save()
-          done(null, newUser)
-        } else {
-          done(null, currentUser)
-        }
+        userId: profile._json.sub
       })
+        .then((currentUser) => {
+          if (!currentUser) {
+            const newUser = new User({
+              userId: profile._json.sub,
+              provider: profile.provider,
+              name: profile._json.name,
+              profileImageUrl: profile._json.picture,
+              otherInfo: profile._json.email
+            }).save()
+            done(null, newUser)
+          } else {
+            done(null, currentUser)
+          }
+        })
+        .catch((err) => {
+          console.error(err)
+        })
     }
   )
 )
