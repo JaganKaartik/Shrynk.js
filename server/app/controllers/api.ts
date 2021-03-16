@@ -1,8 +1,28 @@
+import { generatedNanoID, urlCheck } from '../services/URLServices'
+
+const { nanoid } = require('nanoid')
 const URLS = require('../models/Url')
 
+const { CLIENT_ORIGIN } = require('../config/default.config')
+
 const shortenURL = (req, res) => {
-  /* Sample Placeholder Controller */
-  res.send(req.params.code)
+  let id = generatedNanoID()
+  id = urlCheck(id)
+  URLS.create({
+    urlCode: id,
+    longURL: req.body.longURL,
+    shortURL: `${CLIENT_ORIGIN}/${id}`
+  })
+    .then((resp: JSON) => {
+      if (resp) {
+        res.send({ success: true })
+      } else {
+        res.send({ success: false })
+      }
+    })
+    .catch((err) => {
+      res.send(err)
+    })
 }
 
 const redirectToURL = (req, res) => {
