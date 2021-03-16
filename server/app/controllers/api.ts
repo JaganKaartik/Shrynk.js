@@ -1,8 +1,6 @@
-import { generatedNanoID, urlCheck } from '../services/URLServices'
-
 const { nanoid } = require('nanoid')
 const URLS = require('../models/Url')
-
+const { generatedNanoID, urlCheck } = require('../services/URLServices')
 const { CLIENT_ORIGIN } = require('../config/default.config')
 
 const shortenURL = (req, res) => {
