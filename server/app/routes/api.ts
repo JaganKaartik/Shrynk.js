@@ -4,7 +4,7 @@ import SessionCheck from '../middleware/SessionCheck'
 
 const apiRouter = express.Router()
 
-apiRouter.get('/item/:code', SessionCheck, redirectToURL)
+apiRouter.get('/:code', SessionCheck, redirectToURL)
 apiRouter.post('/item/', SessionCheck, shortenURL)
 
 export = apiRouter

@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const { Schema } = mongoose
 
-const urlShortenSchema = new Schema({
+const urlSchema = new Schema({
   urlCode: String,
   longURL: String,
   shortURL: String,
@@ -13,4 +13,4 @@ const urlShortenSchema = new Schema({
   }
 })
 
-export = mongoose.model('urlshorten', urlShortenSchema)
+export = mongoose.model('urltable', urlSchema)

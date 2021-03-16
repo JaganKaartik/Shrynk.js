@@ -1,11 +1,14 @@
 const { nanoid } = require('nanoid')
 const URLS = require('../models/Url')
 
-const generateNanoId = () => nanoid(10)
+export const generateId = () => {
+  const id = nanoid(10)
+  return id
+}
 
-const urlCheck = (id) => {
+export const urlCheck = (id) => {
   URLS.findOne({ urlCode: id }).then((res) => {
-    const resp = !res ? id : generateNanoId()
+    const resp = !res ? id : generateId()
     return resp
   })
 }

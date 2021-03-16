@@ -1,7 +1,7 @@
 const passport = require('passport')
 const TwitterStrategy = require('passport-twitter')
 const GoogleStrategy = require('passport-google-oauth2')
-const User = require('../models/user')
+const User = require('../models/User')
 const {
   TWITTER_CONSUMER_KEY,
   TWITTER_CONSUMER_SECRET,

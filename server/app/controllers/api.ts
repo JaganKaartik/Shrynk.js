@@ -1,12 +1,12 @@
 const URLS = require('../models/Url')
-const { generatedNanoID, urlCheck } = require('../services/URLServices')
+const { generateId, urlCheck } = require('../services/URLServices')
 const { CLIENT_ORIGIN } = require('../config/default.config')
 
 const shortenURL = (req, res) => {
-  let id = generatedNanoID()
-  id = urlCheck(id)
+  const id = generateId()
+  const checkedId = urlCheck(id)
   URLS.create({
-    urlCode: id,
+    urlCode: checkedId,
     longURL: req.body.longURL,
     shortURL: `${CLIENT_ORIGIN}/${id}`
   })
@@ -26,7 +26,8 @@ const redirectToURL = (req, res) => {
   res.send(req.params.code)
   URLS.findOne({ urlCode: req.params.code })
     .then((data: JSON) => {
-      res.redirect(data.longURL)
+      console.log(data)
+      // res.redirect(data.longURL)
     })
     .catch((err) => {
       res.send(err)
