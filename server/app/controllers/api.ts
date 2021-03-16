@@ -1,10 +1,14 @@
+import { IResult } from '../interface'
+
 const URLS = require('../models/URL')
 const { generateId, urlCheck } = require('../services/URLServices')
 const { CLIENT_ORIGIN } = require('../config/default.config')
 
-const shortenURL = (req, res) => {
+export * from '../interface'
+
+const shortenURL = async (req, res) => {
   const id = generateId()
-  const checkedId = urlCheck(id)
+  const checkedId = await urlCheck(id)
   URLS.create({
     urlCode: checkedId,
     longURL: req.body.longURL,
@@ -24,9 +28,8 @@ const shortenURL = (req, res) => {
 
 const redirectToURL = (req, res) => {
   URLS.findOne({ urlCode: req.params.code })
-    .then((data: JSON) => {
-      console.log(data)
-      // res.redirect(data.longURL)
+    .then((data: IResult) => {
+      res.redirect(data.longURL)
     })
     .catch((err) => {
       res.send(err)
