@@ -1,21 +1,19 @@
-const getController = (req, res) => {
+const URLS = require('../models/Url')
+
+const shortenURL = (req, res) => {
   /* Sample Placeholder Controller */
-  res.send('Controller expects GET Req')
+  res.send(req.params.code)
 }
 
-const postController = (req, res) => {
-  /* Sample Placeholder Controller */
-  res.send('Controller expects POST Req')
+const redirectToURL = (req, res) => {
+  res.send(req.params.code)
+  URLS.findOne({ urlCode: req.params.code })
+    .then((data: JSON) => {
+      res.redirect(data.longURL)
+    })
+    .catch((err) => {
+      res.send(err)
+    })
 }
 
-const deleteController = (req, res) => {
-  /* Sample Placeholder Controller */
-  res.send('Controller expects DELETE Req')
-}
-
-const putController = (req, res) => {
-  /* Sample Placeholder Controller */
-  res.send('Controller expects PUT Req')
-}
-
-export { getController, postController, deleteController, putController }
+export { shortenURL, redirectToURL }
