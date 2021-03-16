@@ -1,4 +1,4 @@
-const URLS = require('../models/Url')
+const URLS = require('../models/URL')
 const { generateId, urlCheck } = require('../services/URLServices')
 const { CLIENT_ORIGIN } = require('../config/default.config')
 
@@ -23,7 +23,6 @@ const shortenURL = (req, res) => {
 }
 
 const redirectToURL = (req, res) => {
-  res.send(req.params.code)
   URLS.findOne({ urlCode: req.params.code })
     .then((data: JSON) => {
       console.log(data)
