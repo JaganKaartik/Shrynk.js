@@ -37,7 +37,7 @@ const logout = (req, res) => {
   req.logout()
   req.session.destroy((err) => {
     if (err) {
-      return console.log(err)
+      res.send(err)
     }
     res.redirect('/auth/status')
   })
