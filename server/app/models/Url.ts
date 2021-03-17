@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 const { Schema } = mongoose
 
 const urlSchema = new Schema({
+  userId: String,
   urlCode: String,
   longURL: String,
   shortURL: String,

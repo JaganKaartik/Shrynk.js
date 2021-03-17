@@ -1,5 +1,5 @@
 import express from 'express'
-import { getAllURLS, getURL } from '../controllers/dashboard'
+import getAllURLS from '../controllers/dashboard'
 import SessionCheck from '../middleware/SessionCheck'
 
 const dashRouter = express.Router()

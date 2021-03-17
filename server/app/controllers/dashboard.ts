@@ -1,1 +1,3 @@
-export const getAllURLS = () => {}
+const getAllURLS = async (id) => {}
+
+export = getAllURLS
