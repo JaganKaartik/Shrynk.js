@@ -1,4 +1,5 @@
 import apiRouter from './api'
 import authRouter from './auth'
+import dashRouter from './dashboard'
 
-export { apiRouter, authRouter }
+export { apiRouter, authRouter, dashRouter }
