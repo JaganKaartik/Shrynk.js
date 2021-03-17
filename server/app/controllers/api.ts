@@ -1,15 +1,18 @@
 import { IResult } from '../interface'
+import { QuotaUpdateMinus } from '../services/quota'
 
 const Joi = require('joi')
 const URLS = require('../models/URL')
 const { generateID, validID, urlCheck } = require('../services/URLServices')
+const { QuotaCheck } = require('../services/quota')
 const { CLIENT_ORIGIN } = require('../config/default.config')
 
 const shortenURL = async (req, res) => {
   const id = generateID()
   const checkedId = await validID(id)
+  const QuotaLimit = await QuotaCheck(req.user.userId)
   const urlCheckResp = await urlCheck(req.body.longURL)
-  if (urlCheckResp) {
+  if (urlCheckResp && QuotaLimit) {
     await URLS.create({
       userId: req.user.userId,
       urlCode: checkedId,
@@ -18,6 +21,7 @@ const shortenURL = async (req, res) => {
     })
       .then((resp: JSON) => {
         if (resp) {
+          QuotaUpdateMinus(req.user.userId)
           res.send({ success: true })
         } else {
           res.send({ success: false })
