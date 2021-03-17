@@ -1,12 +1,9 @@
-import e from 'express'
 import { IResult } from '../interface'
 
 const Joi = require('joi')
 const URLS = require('../models/URL')
 const { generateID, validID, urlCheck } = require('../services/URLServices')
 const { CLIENT_ORIGIN } = require('../config/default.config')
-
-export * from '../interface'
 
 const shortenURL = async (req, res) => {
   const id = generateID()
