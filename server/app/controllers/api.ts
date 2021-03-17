@@ -11,6 +11,7 @@ const shortenURL = async (req, res) => {
   const urlCheckResp = await urlCheck(req.body.longURL)
   if (urlCheckResp) {
     await URLS.create({
+      userId: req.user.userId,
       urlCode: checkedId,
       longURL: req.body.longURL,
       shortURL: `${CLIENT_ORIGIN}/${id}`
