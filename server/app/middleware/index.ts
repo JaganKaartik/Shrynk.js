@@ -24,7 +24,7 @@ Middleware.use(connectRedis)
 //   })
 // )
 
-Middleware.use('/api/v1/', apiLimiter)
+Middleware.use('/', apiLimiter)
 
 Middleware.use(cookieParser())
 Middleware.use(passport.initialize())
