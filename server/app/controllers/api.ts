@@ -36,7 +36,7 @@ const shortenURL = async (req, res) => {
     })
   } else {
     res.status(422).json({
-      message: 'Input URL not Valid'
+      message: 'Input URL not Valid.'
     })
   }
 }
