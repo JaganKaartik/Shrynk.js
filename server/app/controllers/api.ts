@@ -10,8 +10,13 @@ const { CLIENT_ORIGIN } = require('../config/default.config')
 const shortenURL = async (req, res) => {
   const id = generateID()
   const checkedId = await validID(id)
-  const QuotaLimit = await QuotaCheck(req.user.userId)
-  const urlCheckResp = await urlCheck(req.body.longURL)
+  const QuotaLimit = (await QuotaCheck(req.user.userId))
+    ? true
+    : res.status(422).json({ message: 'Quota Limit Exceeded.' })
+  const urlCheckResp = (await urlCheck(req.body.longURL))
+    ? true
+    : res.status(422).json({ message: 'URL Not Valid.' })
+
   if (urlCheckResp && QuotaLimit) {
     await URLS.create({
       userId: req.user.userId,
@@ -30,10 +35,6 @@ const shortenURL = async (req, res) => {
       .catch((err) => {
         res.send(err)
       })
-  } else {
-    res.status(422).json({
-      message: 'Input URL not Valid'
-    })
   }
 }
 
