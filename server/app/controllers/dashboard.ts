@@ -1,7 +1,7 @@
 const URLS = require('../models/URL')
 
 const getAllURLS = async (req, res) => {
-  URLS.findAll({ userId: req.user.userId })
+  URLS.find({ userId: req.user.userId })
     .then((data: JSON) => {
       res.send(data)
     })
