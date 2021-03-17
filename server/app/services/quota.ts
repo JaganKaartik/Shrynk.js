@@ -3,7 +3,7 @@ const STATS = require('../models/onboarding')
 /* Function that returns URL quota balance */
 export const QuotaBalance = async (id) => {
   const QuotaBal = await STATS.findOne({ userId: id })
-    .then((res) => res.quota)
+    .then((res) => res.currentQuota)
     .catch((err) => err)
   return QuotaBal
 }
@@ -11,7 +11,7 @@ export const QuotaBalance = async (id) => {
 /* Function that checks whether URL quota balance is greater than 0 */
 export const QuotaCheck = async (id) => {
   const QuotaStatus = await STATS.findOne({ userId: id })
-    .then((res) => res.quota > 0)
+    .then((res) => res.currentQuota > 0)
     .catch((err) => err)
   return QuotaStatus
 }
@@ -21,7 +21,7 @@ export const QuotaUpdateAdd = async (id) => {
   const newQuota = (await QuotaBalance(id)) + 1
   const result = await STATS.findOneAndUpdate({
     userId: id,
-    quota: newQuota,
+    currentQuota: newQuota,
     new: true
   })
     .then((resp) => !!resp)
@@ -30,11 +30,11 @@ export const QuotaUpdateAdd = async (id) => {
 }
 
 /* Function that subtracts 1 from URL quota balance */
-export const QuotaUpdateMinus = async (id) => {
+export const QuotaUpdateSub = async (id) => {
   const newQuota = (await QuotaBalance(id)) - 1
   const result = await STATS.findOneAndUpdate({
     userId: id,
-    quota: newQuota,
+    currentQuota: newQuota,
     new: true
   })
     .then((resp) => !!resp)

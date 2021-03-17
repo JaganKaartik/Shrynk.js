@@ -1,5 +1,5 @@
 import { IResult } from '../interface'
-import { QuotaUpdateMinus } from '../services/quota'
+import { QuotaUpdateSub } from '../services/quota'
 
 const Joi = require('joi')
 const URLS = require('../models/URL')
@@ -21,7 +21,7 @@ const shortenURL = async (req, res) => {
     })
       .then((resp: JSON) => {
         if (resp) {
-          QuotaUpdateMinus(req.user.userId)
+          QuotaUpdateSub(req.user.userId)
           res.send({ success: true })
         } else {
           res.send({ success: false })

@@ -1,4 +1,5 @@
 import { IResult } from '../interface'
+import { QuotaUpdateAdd } from '../services/quota'
 
 const URLS = require('../models/URL')
 
@@ -16,6 +17,7 @@ const deleteURL = async (req, res) => {
   URLS.findOneAndRemove({ urlCode: req.params.code })
     .then((data: JSON) => {
       if (data) {
+        QuotaUpdateAdd(req.user.userId)
         res.send({ success: true })
       } else {
         res.send({ success: false })

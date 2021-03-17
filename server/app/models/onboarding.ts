@@ -5,7 +5,8 @@ const { Schema } = mongoose
 const userQuotaSchema = new Schema({
   userId: String,
   accountType: String,
-  quota: Number
+  fixedQuota: Number,
+  currentQuota: Number
 })
 
 export = mongoose.model('onboarding', userQuotaSchema)
