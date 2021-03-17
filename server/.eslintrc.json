@@ -36,7 +36,7 @@
       }
     ],
     "noImplicitAny": 0,
-    "operator-linebreak": ["error", "after"],
+    "operator-linebreak": ["error", "before"],
     "no-underscore-dangle": "off",
     "object-curly-newline": "off"
   }
