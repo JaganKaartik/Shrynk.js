@@ -27,25 +27,31 @@ const shortenURL = async (req, res) => {
       })
   } else {
     res.status(422).json({
-      message: 'URL Not Valid'
+      message: 'Input URL not Valid'
     })
   }
 }
 
 const redirectToURL = (req, res) => {
-  const schema = Joi.string().alphanum().length(10).required()
-  const result = Joi.validate(req.params.code, schema)
-  if (result.error == null) {
+  const schema = Joi.string()
+    .pattern(new RegExp('^[A-Za-z0-9_-]{10}$'))
+    .length(10)
+    .required()
+  const result = schema.validate(req.params.code)
+  console.log(result.error)
+  if (typeof result.error === 'undefined') {
     URLS.findOne({ urlCode: req.params.code })
       .then((data: IResult) => {
         res.redirect(data.longURL)
       })
       .catch((err) => {
-        res.send(err)
+        res.status(404).json({
+          message: 'Record does not Exist'
+        })
       })
   } else {
     res.status(422).json({
-      message: 'Invalid Params'
+      message: 'Invalid Parameters'
     })
   }
 }
