@@ -10,7 +10,7 @@ const shortenURL = async (req, res) => {
   const checkedId = await validID(id)
   const urlCheckResp = await urlCheck(req.body.longURL)
   if (urlCheckResp) {
-    URLS.create({
+    await URLS.create({
       urlCode: checkedId,
       longURL: req.body.longURL,
       shortURL: `${CLIENT_ORIGIN}/${id}`
@@ -32,15 +32,14 @@ const shortenURL = async (req, res) => {
   }
 }
 
-const redirectToURL = (req, res) => {
+const redirectToURL = async (req, res) => {
   const schema = Joi.string()
     .pattern(new RegExp('^[A-Za-z0-9_-]{10}$'))
     .length(10)
     .required()
   const result = schema.validate(req.params.code)
-  console.log(result.error)
   if (typeof result.error === 'undefined') {
-    URLS.findOne({ urlCode: req.params.code })
+    await URLS.findOne({ urlCode: req.params.code })
       .then((data: IResult) => {
         res.redirect(data.longURL)
       })
