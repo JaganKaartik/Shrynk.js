@@ -2,6 +2,9 @@ import { IResult } from '../interface'
 import { QuotaUpdateAdd } from '../services/quota'
 
 const URLS = require('../models/Url')
+const User = require('../models/User')
+const Account = require('../models/Account')
+const disableOnboarding = require('../services/onboarding')
 
 const getAllURLS = async (req, res) => {
   URLS.find({ userId: req.user.userId })
@@ -30,4 +33,34 @@ const deleteURL = async (req, res) => {
     })
 }
 
-export { getAllURLS, deleteURL }
+const userOnboarding = async (req, res) => {
+  // Check Onboarding Status
+  const onboardingStatus = await User.findOne({ userId: req.user.userId })
+    .then((resp) => resp.onboaring)
+    .catch((err) => err)
+  if (onboardingStatus) {
+    // Update Oboarding Status
+    disableOnboarding(req.user.userId)
+    // Add Quota
+    await Account.create({
+      userId: req.user.userId,
+      accountType: req.body.accountType,
+      fixedQuota: req.body.fixedQuota,
+      currentQuota: req.body.fixedQuotas
+    })
+      .then((resp) => {
+        if (resp) {
+          res.send({ success: true })
+        } else {
+          res.send({ success: false })
+        }
+      })
+      .catch((err) => err)
+  } else {
+    res.status(422).json({
+      message: 'User already Onboarded. Unable to process Request'
+    })
+  }
+}
+
+export { getAllURLS, deleteURL, userOnboarding }
