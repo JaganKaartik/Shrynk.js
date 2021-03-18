@@ -1,16 +1,25 @@
 import React, { Component } from "react";
-import loginGif from "../../assets/images/home.gif";
+import homeGif from "../../assets/images/home.gif";
 import { Row, Col } from "antd";
 import "./home.css";
-import axios from "axios";
 
 export default class Home extends Component {
+  state = {
+    value: "",
+  };
+
   handleChange(event) {
+    console.log(event.target.value);
+    this.setState({ value: event.target.value });
+  }
+
+  handleSubmit() {
     const SERVER_URI = process.env.REACT_APP_SERVER_URI;
     const CLIENT_URI = process.env.REACT_APP_CLIENT_URI;
-    const shortUrl = String(event.target.value);
-    const urlCode = shortUrl.replace(CLIENT_URI, "/");
-    axios.get(SERVER_URI + "/" + urlCode);
+    const shortUrl = this.state.value;
+    const urlCode = shortUrl.replace(CLIENT_URI, "");
+    const redirectlink = SERVER_URI + urlCode;
+    window.open(redirectlink, "_self");
   }
 
   render() {
@@ -31,7 +40,7 @@ export default class Home extends Component {
               <h1 className={"title text-2xl mt-10"}>Shrynk.js</h1>
               <img
                 className="responsive"
-                src={loginGif}
+                src={homeGif}
                 alt="loading..."
                 style={{ maxWidth: "450px", margin: "50px auto 0" }}
               />
@@ -41,8 +50,8 @@ export default class Home extends Component {
           <Row span={40}>
             <div>
               <div className="grid grid-flow-col grid-rows-4 grid-cols-4 gap-4 feature-cards">
-                <div class="row-start-1 col-start-1 col-span-4 transform hover:-translate-y-1 hover:scale-105 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
-                  <form>
+                <div class="transition duration-200 row-start-1 col-start-1 col-span-4 transform hover:-translate-y-1 hover:scale-105 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+                  <form onSubmit={this.handleSubmit.bind(this)}>
                     <div class="md:flex">
                       <div class="md:flex-shrink-0"></div>
                       <div class="p-8">
@@ -61,7 +70,7 @@ export default class Home extends Component {
                           <input
                             type="text"
                             value={this.state.value}
-                            onChange={this.handleChange}
+                            onChange={this.handleChange.bind(this)}
                             class="w-full h-8 border border-opacity-100  focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent ..."
                           />
                         </label>
