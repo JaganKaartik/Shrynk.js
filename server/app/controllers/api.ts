@@ -2,7 +2,7 @@ import { IResult } from '../interface'
 import { QuotaUpdateSub } from '../services/quota'
 
 const Joi = require('joi')
-const URLS = require('../models/URL')
+const URLS = require('../models/Url')
 const { generateID, validID, urlCheck } = require('../services/URLServices')
 const { QuotaCheck } = require('../services/quota')
 const { CLIENT_ORIGIN } = require('../config/default.config')

@@ -1,7 +1,7 @@
 import { IResult } from '../interface'
 import { QuotaUpdateAdd } from '../services/quota'
 
-const URLS = require('../models/URL')
+const URLS = require('../models/Url')
 
 const getAllURLS = async (req, res) => {
   URLS.find({ userId: req.user.userId })
