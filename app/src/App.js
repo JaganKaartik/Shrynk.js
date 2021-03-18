@@ -1,10 +1,12 @@
 import React from "react";
-// import "./styles/App.css";
-import logo from "./assets/images/bg2.gif";
+import Home from "./components/Home/Home";
+// import { Switch, Route } from "react-router-dom";
+import Footer from "./components/Commons/Footer";
 
 const App = () => (
-  <div className="App">
-    <img src={logo} alt="loading..." />
+  <div class="flex flex-col h-screen">
+    <Home />
+    <Footer />
   </div>
 );
 
