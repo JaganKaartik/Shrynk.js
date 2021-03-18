@@ -9,8 +9,8 @@ const disableOnboarding = require('../services/onboarding')
 const getAllURLS = async (req, res) => {
   // Get all URLs
   await URLS.find({ userId: req.user.userId })
-    .then((data: IResult) => {
-      if (data) {
+    .then((data) => {
+      if (data.length !== 0) {
         res.send({ success: true })
       } else {
         res.send({ success: false })
