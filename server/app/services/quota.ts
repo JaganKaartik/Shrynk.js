@@ -1,4 +1,4 @@
-const STATS = require('../models/onboarding')
+const STATS = require('../models/Account')
 
 /* Function that returns URL quota balance */
 export const QuotaBalance = async (id) => {

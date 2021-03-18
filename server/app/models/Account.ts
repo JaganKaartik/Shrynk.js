@@ -9,4 +9,4 @@ const userQuotaSchema = new Schema({
   currentQuota: Number
 })
 
-export = mongoose.model('onboarding', userQuotaSchema)
+export = mongoose.model('account', userQuotaSchema)
