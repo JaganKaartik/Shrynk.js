@@ -1,6 +1,6 @@
 import React from "react";
-import "./styles/App.css";
-import logo from "./images/bg2.gif";
+// import "./styles/App.css";
+import logo from "./assets/images/bg2.gif";
 
 const App = () => (
   <div className="App">
