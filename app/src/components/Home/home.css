@@ -1,0 +1,9 @@
+.title {
+  font-family: "Merriweather", serif;
+  font-size: 60px;
+}
+
+.responsive {
+  width: auto;
+  height: auto;
+}
