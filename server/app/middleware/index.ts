@@ -4,26 +4,14 @@ import { app as connectRedis } from '../config/redis'
 
 const Middleware = express()
 const bodyParser = require('body-parser')
-// const cookieSession = require('cookie-session')
 const cookieParser = require('cookie-parser')
 const passport = require('passport')
 const cors = require('cors')
-
 const apiLimiter = require('./rateLimit')
-
 const passportSetup = require('../config/passport-setup')
-
 const { CLIENT_ORIGIN } = require('../config/default.config')
 
 Middleware.use(connectRedis)
-
-// Middleware.use(
-//   cookieSession({
-//     name: 'session',
-//     keys: [process.env.COOKIE_KEY],
-//     maxAge: 24 * 60 * 60 * 100
-//   })
-// )
 
 Middleware.use('/', apiLimiter)
 

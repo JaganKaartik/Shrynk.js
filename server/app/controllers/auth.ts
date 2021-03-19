@@ -21,9 +21,18 @@ const authRedirectGoogle = (res, req) => {
     failureRedirect: '/',
     session: false
   })
-  const token = req.session
-  req.cookie('x-auth-cookie', token)
-  res.redirect(clientUrl)
+  const token = jwt.sign(
+    {
+      data: req.user
+    },
+    JWT_SECRET,
+    { expiresIn: '1h' }
+  )
+  res.json({
+    success: true,
+    message: 'Authentication successful!',
+    token
+  })
 }
 
 const authTwitter = passport.authenticate('twitter')
@@ -35,32 +44,16 @@ const authRedirectTwitter = (req, res) => {
   })
   const token = jwt.sign(
     {
-      data: req.body
+      data: req.user
     },
-    'secret',
+    JWT_SECRET,
     { expiresIn: '1h' }
   )
-  console.log(token)
-  res.cookie('jwt', token)
-  res.redirect(clientUrl)
-}
-
-const authStatus = (req, res) => {
-  if (req.user) {
-    console.log(`Session is ${req.session}`)
-    const sess = req.session
-    res.status(200).send({
-      success: true,
-      message: 'User has successfully authenticated',
-      user: req.user,
-      cookies: req.cookies
-    })
-  } else {
-    res.status(401).send({
-      success: false,
-      message: 'user failed to authenticate.'
-    })
-  }
+  res.json({
+    success: true,
+    message: 'Authentication successful!',
+    token
+  })
 }
 
 const logout = (req, res) => {
@@ -78,6 +71,5 @@ export {
   authRedirectGoogle,
   authTwitter,
   authRedirectTwitter,
-  authStatus,
   logout
 }
