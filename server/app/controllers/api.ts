@@ -64,4 +64,9 @@ const redirectToURL = async (req, res) => {
   }
 }
 
-export { shortenURL, redirectToURL }
+/* Test Route */
+const BaseController = (req, res) => {
+  res.send('Welcome to Root of Server Side of Shrynk.js')
+}
+
+export { shortenURL, redirectToURL, BaseController }
