@@ -27,8 +27,10 @@ export default function Home() {
   const history = useHistory();
 
   const onSubmit = (data) => {
+    const CLIENT_URI = process.env.REACT_APP_CLIENT_DOM;
     const shortUrl = data.url;
-    history.push(shortUrl);
+    const urlCode = shortUrl.replace(CLIENT_URI, "");
+    history.push(urlCode);
   };
 
   return (
