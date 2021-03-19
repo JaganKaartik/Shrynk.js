@@ -1,5 +1,6 @@
 import express from 'express'
 import { authRouter, apiRouter, dashRouter } from '../routes'
+import { app as connectRedis } from '../config/redis'
 
 const Middleware = express()
 const bodyParser = require('body-parser')
@@ -9,7 +10,7 @@ const passport = require('passport')
 const cors = require('cors')
 
 const apiLimiter = require('./rateLimit')
-const connectRedis = require('../config/redis')
+
 const passportSetup = require('../config/passport-setup')
 
 const { CLIENT_ORIGIN } = require('../config/default.config')

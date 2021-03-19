@@ -1,13 +1,29 @@
+import { SESSION_SECRET } from '../config/default.config'
+import { redisClient } from '../config/redis'
+
 const passport = require('passport')
+
+const {
+  NODE_ENV,
+  CLIENT_URL_PROD,
+  CLIENT_URL_DEV
+} = require('../config/default.config')
+
+const clientUrl = NODE_ENV === 'production' ? CLIENT_URL_PROD : CLIENT_URL_DEV
 
 const authGoogle = passport.authenticate('google', {
   scope: ['email', 'profile']
 })
 
-const authRedirectGoogle = passport.authenticate('google', {
-  successRedirect: '/auth/status',
-  failureRedirect: '/auth/status'
-})
+const authRedirectGoogle = (res, req) => {
+  passport.authenticate('google', {
+    failureRedirect: '/',
+    session: false
+  })
+  const token = req.session
+  req.cookie('x-auth-cookie', token)
+  res.redirect(clientUrl)
+}
 
 const authTwitter = passport.authenticate('twitter')
 
@@ -18,6 +34,7 @@ const authRedirectTwitter = passport.authenticate('twitter', {
 
 const authStatus = (req, res) => {
   if (req.user) {
+    console.log(`Session is ${req.session}`)
     const sess = req.session
     res.status(200).send({
       success: true,
