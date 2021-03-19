@@ -1,7 +1,8 @@
-import { SESSION_SECRET } from '../config/default.config'
+import { JWT_SECRET, SESSION_SECRET } from '../config/default.config'
 import { redisClient } from '../config/redis'
 
 const passport = require('passport')
+const jwt = require('jsonwebtoken')
 
 const {
   NODE_ENV,
@@ -27,10 +28,22 @@ const authRedirectGoogle = (res, req) => {
 
 const authTwitter = passport.authenticate('twitter')
 
-const authRedirectTwitter = passport.authenticate('twitter', {
-  successRedirect: '/auth/status',
-  failureRedirect: '/auth/status'
-})
+const authRedirectTwitter = (req, res) => {
+  passport.authenticate('twitter', {
+    failureRedirect: '/',
+    session: false
+  })
+  const token = jwt.sign(
+    {
+      data: req.body
+    },
+    'secret',
+    { expiresIn: '1h' }
+  )
+  console.log(token)
+  res.cookie('jwt', token)
+  res.redirect(clientUrl)
+}
 
 const authStatus = (req, res) => {
   if (req.user) {
