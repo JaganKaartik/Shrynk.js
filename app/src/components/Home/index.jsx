@@ -1,5 +1,5 @@
 import React from "react";
-import homeGif from "../../assets/images/home.gif";
+import homeGif from "../../assets/images/homeRelaxed.gif";
 import "./home.css";
 import pic from "../../assets/images/man1.jpg";
 import { useHistory } from "react-router-dom";
@@ -25,12 +25,12 @@ export default function Home() {
       ></div>
 
       <div className={"flex flex-col justify-center items-center"}>
-        <h1 className={"title text-2xl mt-10"}>Shrynk.js</h1>
+        <h1 className={"title text-indigo-500 text-2xl mt-10"}>Shrynk.js</h1>
         <img
           className="responsive"
           src={homeGif}
           alt="loading..."
-          style={{ maxWidth: "450px", margin: "50px auto 0" }}
+          style={{ maxWidth: "500px", margin: "50px auto 0" }}
         />
       </div>
 
@@ -131,7 +131,7 @@ export default function Home() {
           <div class="flex justify-center">
             <div class="md:flex-shrink-0 grid grid-cols-2 gap-4">
               <button
-                class="rounded-xl w-full shadow-2xl inline-flex items-center h-12 px-5 text-indigo-100 transition duration-200 ease-in-out bg-blue-500 hover:bg-blue-400 transform hover:-translate-y-1 hover:scale-110 .."
+                class="rounded-xl w-full shadow-2xl inline-flex items-center h-12 px-5 text-indigo-100 transition duration-200 ease-in-out bg-indigo-500 hover:bg-blue-400 transform hover:-translate-y-1 hover:scale-110 .."
                 // onClick={() => routeChange("/login")}
               >
                 <span>Login with Twitter</span>
@@ -144,7 +144,7 @@ export default function Home() {
               </button>
 
               <button
-                class="rounded-xl w-full shadow-2xl inline-flex items-center h-12 px-5 text-indigo-100 transition duration-200 ease-in-out bg-blue-500 hover:bg-red-400 transform hover:-translate-y-1 hover:scale-110 .."
+                class="rounded-xl w-full shadow-2xl inline-flex items-center h-12 px-5 text-indigo-100 transition duration-200 ease-in-out bg-indigo-500 hover:bg-red-400 transform hover:-translate-y-1 hover:scale-110 .."
                 // onClick={() => routeChange("/login")}
               >
                 <span>Login with Google</span>
