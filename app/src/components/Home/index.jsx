@@ -2,20 +2,25 @@ import React from "react";
 import homeGif from "../../assets/images/homeRelaxed.gif";
 import "./home.css";
 import pic from "../../assets/images/man1.jpg";
-import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { launchPopup } from "../../utils";
+import { API_URL_DEV, API_URL_PROD } from "../../config";
 
 export default function Home() {
   const { register, handleSubmit } = useForm();
-
-  const history = useHistory();
 
   const onSubmit = (data) => {
     const CLIENT_URI = process.env.REACT_APP_CLIENT_DOM;
     const shortUrl = data.url;
     const urlCode = shortUrl.replace(CLIENT_URI, "");
-    history.push(urlCode);
+    window.open(urlCode, "_self");
   };
+
+  function openPopup(provider) {
+    const API_URL =
+      process.env.NODE_ENV === "production" ? API_URL_PROD : API_URL_DEV;
+    launchPopup(`${API_URL}auth/${provider}`, 300, 300);
+  }
 
   return (
     <div className="flex-grow bg-gray-100">
@@ -132,7 +137,7 @@ export default function Home() {
             <div class="md:flex-shrink-0 grid grid-cols-2 gap-4">
               <button
                 class="rounded-xl w-full shadow-2xl inline-flex items-center h-12 px-5 text-indigo-100 transition duration-200 ease-in-out bg-indigo-500 hover:bg-blue-400 transform hover:-translate-y-1 hover:scale-110 .."
-                // onClick={() => routeChange("/login")}
+                onClick={() => openPopup("twitter")}
               >
                 <span>Login with Twitter</span>
                 <svg
@@ -145,7 +150,7 @@ export default function Home() {
 
               <button
                 class="rounded-xl w-full shadow-2xl inline-flex items-center h-12 px-5 text-indigo-100 transition duration-200 ease-in-out bg-indigo-500 hover:bg-red-400 transform hover:-translate-y-1 hover:scale-110 .."
-                // onClick={() => routeChange("/login")}
+                onClick={() => openPopup("google")}
               >
                 <span>Login with Google</span>
                 <svg
