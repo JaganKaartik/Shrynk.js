@@ -123,7 +123,7 @@ export default function Home() {
                   </li>
                   <li>
                     <p class="font-sans md:font-serif block mt-1 text-lg leading-tight font-medium text-black">
-                      Dashboard to CRUD URls.
+                      Dashboard to CRUD URLs.
                     </p>
                   </li>
                 </ul>
