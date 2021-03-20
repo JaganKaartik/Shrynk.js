@@ -7,3 +7,5 @@
 <div align="center">
   <sub>Built with ❤︎ </sub>
 </div>
+
+![](media/Shrynk.png)
