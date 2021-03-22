@@ -12,6 +12,10 @@ const {
 
 const clientUrl = NODE_ENV === 'production' ? CLIENT_URL_PROD : CLIENT_URL_DEV
 
+// const login = (req, res) => {
+//   passport.authenticate
+// }
+
 const authGoogle = passport.authenticate('google', {
   scope: ['email', 'profile']
 })
@@ -49,11 +53,7 @@ const authRedirectTwitter = (req, res) => {
     JWT_SECRET,
     { expiresIn: '1h' }
   )
-  res.json({
-    success: true,
-    message: 'Authentication successful!',
-    token
-  })
+  res.redirect(`${clientUrl}token=${token}`)
 }
 
 const logout = (req, res) => {
@@ -67,6 +67,7 @@ const logout = (req, res) => {
 }
 
 export {
+  login,
   authGoogle,
   authRedirectGoogle,
   authTwitter,

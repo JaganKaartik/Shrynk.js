@@ -1,5 +1,6 @@
 import express from 'express'
 import {
+  login,
   authGoogle,
   authRedirectGoogle,
   authTwitter,
@@ -9,6 +10,7 @@ import {
 
 const authRouter = express.Router()
 
+authRouter.post('/login', login)
 authRouter.get('/google', authGoogle)
 authRouter.get('/google/redirect', authRedirectGoogle)
 authRouter.get('/twitter', authTwitter)
