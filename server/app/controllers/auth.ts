@@ -12,19 +12,11 @@ const {
 
 const clientUrl = NODE_ENV === 'production' ? CLIENT_URL_PROD : CLIENT_URL_DEV
 
-// const login = (req, res) => {
-//   passport.authenticate
-// }
-
 const authGoogle = passport.authenticate('google', {
   scope: ['email', 'profile']
 })
 
 const authRedirectGoogle = (res, req) => {
-  passport.authenticate('google', {
-    failureRedirect: '/',
-    session: false
-  })
   const token = jwt.sign(
     {
       data: req.user
@@ -32,20 +24,12 @@ const authRedirectGoogle = (res, req) => {
     JWT_SECRET,
     { expiresIn: '1h' }
   )
-  res.json({
-    success: true,
-    message: 'Authentication successful!',
-    token
-  })
+  res.redirect(`${clientUrl}?token=${token}&userid=${req.user.userId}`)
 }
 
 const authTwitter = passport.authenticate('twitter')
 
 const authRedirectTwitter = (req, res) => {
-  passport.authenticate('twitter', {
-    failureRedirect: '/',
-    session: false
-  })
   const token = jwt.sign(
     {
       data: req.user
@@ -53,7 +37,7 @@ const authRedirectTwitter = (req, res) => {
     JWT_SECRET,
     { expiresIn: '1h' }
   )
-  res.redirect(`${clientUrl}token=${token}`)
+  res.redirect(`${clientUrl}?token=${token}&userid=${req.user.userId}`)
 }
 
 const logout = (req, res) => {
@@ -67,7 +51,6 @@ const logout = (req, res) => {
 }
 
 export {
-  login,
   authGoogle,
   authRedirectGoogle,
   authTwitter,
