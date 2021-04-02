@@ -19,12 +19,14 @@ const authGoogle = passport.authenticate('google', {
 const authRedirectGoogle = (res, req) => {
   const token = jwt.sign(
     {
-      data: req.user
+      data: req.user.userId
     },
     JWT_SECRET,
-    { expiresIn: '1h' }
+    { expiresIn: '24h' }
   )
-  res.redirect(`${clientUrl}?token=${token}&userid=${req.user.userId}`)
+  res.redirect(
+    `${clientUrl}?token=${token}&userid=${req.user.userId}&onboarding=${req.user.onboarding}`
+  )
 }
 
 const authTwitter = passport.authenticate('twitter')
@@ -32,12 +34,14 @@ const authTwitter = passport.authenticate('twitter')
 const authRedirectTwitter = (req, res) => {
   const token = jwt.sign(
     {
-      data: req.user
+      data: req.user.userId
     },
     JWT_SECRET,
-    { expiresIn: '1h' }
+    { expiresIn: '24h' }
   )
-  res.redirect(`${clientUrl}?token=${token}&userid=${req.user.userId}`)
+  res.redirect(
+    `${clientUrl}?token=${token}&userid=${req.user.userId}&onboarding=${req.user.onboarding}`
+  )
 }
 
 const logout = (req, res) => {
