@@ -44,9 +44,9 @@ export const getToken = () => {
   }
 };
 
-export const removeToken = () => {
+export const logout = () => {
   try {
-    localStorage.removeItem("authToken");
+    localStorage.removeItem("shrynk-auth-token");
   } catch (err) {
     console.log(err);
   }
