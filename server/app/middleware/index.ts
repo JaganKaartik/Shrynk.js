@@ -9,23 +9,23 @@ const passport = require('passport')
 const cors = require('cors')
 const apiLimiter = require('./rateLimit')
 const passportSetup = require('../config/passport-setup')
-const { CLIENT_ORIGIN } = require('../config/default.config')
+const {
+  NODE_ENV,
+  CLIENT_URL_PROD,
+  CLIENT_URL_DEV
+} = require('../config/default.config')
+
+const clientUrl = NODE_ENV === 'production' ? CLIENT_URL_PROD : CLIENT_URL_DEV
 
 Middleware.use(connectRedis)
+
+Middleware.use(cors({ credentials: true, origin: clientUrl }))
 
 Middleware.use('/', apiLimiter)
 
 Middleware.use(cookieParser())
 Middleware.use(passport.initialize())
 Middleware.use(passport.session())
-
-Middleware.use(
-  cors({
-    orgin: CLIENT_ORIGIN,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true
-  })
-)
 
 Middleware.use(bodyParser.urlencoded({ extended: false }))
 Middleware.use(bodyParser.json())
