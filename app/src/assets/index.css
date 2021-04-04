@@ -2,7 +2,8 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 @import "~antd/dist/antd.css";
-@import "./main.css";
+@import "./css/main.css";
+@import "./css/table.css";
 
 body {
   margin: 0;
