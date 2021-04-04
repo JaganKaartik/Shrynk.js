@@ -39,7 +39,7 @@ export default function Home() {
   });
 
   return (
-    <div className="flex-grow bg-gray-100">
+    <div className="flex-grow home-container">
       <div
         className={"flex justify-end items-center py-4 border-gray-200"}
         style={{ borderBottomWidth: "thin" }}

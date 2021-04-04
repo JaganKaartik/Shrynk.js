@@ -4,6 +4,7 @@
 @import "~antd/dist/antd.css";
 @import "./css/main.css";
 @import "./css/table.css";
+@import "./css/toggle.css";
 
 body {
   margin: 0;
