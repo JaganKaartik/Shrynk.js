@@ -12,8 +12,9 @@ export default function App() {
     <div>
       <UserProvider>
         <BrowserRouter>
-          <div class="main-wrapper">
-            <Switch>
+          {/* <div class="body-wrapper"> */}
+          <Switch>
+            <div class="body-wrapper">
               <Route path="/" exact component={Home} />
               <Route exact path="/dashboard">
                 {/* <AuthComponent> */}
@@ -25,9 +26,9 @@ export default function App() {
                   <Onboarding />
                 </AuthComponent>
               </Route>
-            </Switch>
-            <Footer />
-          </div>
+              <Footer />
+            </div>
+          </Switch>
         </BrowserRouter>
       </UserProvider>
     </div>

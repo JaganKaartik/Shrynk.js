@@ -30,12 +30,6 @@
   --menu-svg-color: #fafafa;
 }
 
-.footer {
-  font-family: "Roboto Slab", serif;
-  font-weight: 300;
-  margin-top: auto;
-}
-
 .title {
   font-family: "Merriweather", serif;
   font-size: 60px;
@@ -51,8 +45,19 @@
   width: 100%;
 }
 
-.main-wrapper {
+.body-wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
+  margin-top: auto;
 }

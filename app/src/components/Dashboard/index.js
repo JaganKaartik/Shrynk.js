@@ -9,7 +9,7 @@ export default function Dashboard() {
   console.log(jwt);
 
   return (
-    <div>
+    <div className="home-container">
       <table class="table-fixed container">
         <Header />
         <Body />
