@@ -1,14 +1,14 @@
-export const setToken = (authToken) => {
+export const getAuthToken = () => {
   try {
-    localStorage.setItem("authToken", authToken);
+    return localStorage.getItem("shrynk-jwt");
   } catch (err) {
     console.log(err);
   }
 };
 
-export const getToken = () => {
+export const getUserId = () => {
   try {
-    return localStorage.getItem("authToken");
+    return localStorage.getItem("shrynk-usr-id");
   } catch (err) {
     console.log(err);
   }
@@ -16,8 +16,18 @@ export const getToken = () => {
 
 export const logout = () => {
   try {
-    localStorage.removeItem("shrynk-auth-token");
+    window.localStorage.removeItem("shrynk-jwt");
+    window.localStorage.removeItem("shrynk-usr-id");
   } catch (err) {
     console.log(err);
+  }
+};
+
+export const login = (authToken, userId) => {
+  try {
+    window.localStorage.setItem("shrynk-jwt", authToken);
+    window.localStorage.setItem("shrynk-usr-id", userId);
+  } catch (err) {
+    // Log the error
   }
 };
