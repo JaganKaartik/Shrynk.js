@@ -17,43 +17,31 @@ const authGoogle = passport.authenticate('google', {
 })
 
 const authRedirectGoogle = (res, req) => {
-  passport.authenticate('google', {
-    failureRedirect: '/',
-    session: false
-  })
   const token = jwt.sign(
     {
-      data: req.user
+      data: req.user.userId
     },
     JWT_SECRET,
-    { expiresIn: '1h' }
+    { expiresIn: '24h' }
   )
-  res.json({
-    success: true,
-    message: 'Authentication successful!',
-    token
-  })
+  res.redirect(
+    `${clientUrl}?token=${token}&userid=${req.user.userId}&onboarding=${req.user.onboarding}`
+  )
 }
 
 const authTwitter = passport.authenticate('twitter')
 
 const authRedirectTwitter = (req, res) => {
-  passport.authenticate('twitter', {
-    failureRedirect: '/',
-    session: false
-  })
   const token = jwt.sign(
     {
-      data: req.user
+      data: req.user.userId
     },
     JWT_SECRET,
-    { expiresIn: '1h' }
+    { expiresIn: '24h' }
   )
-  res.json({
-    success: true,
-    message: 'Authentication successful!',
-    token
-  })
+  res.redirect(
+    `${clientUrl}?token=${token}&userid=${req.user.userId}&onboarding=${req.user.onboarding}`
+  )
 }
 
 const logout = (req, res) => {

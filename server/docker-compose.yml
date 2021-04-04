@@ -9,16 +9,9 @@ services:
       - mongo
     networks:
       - node-app
-
-  mongo:
-    container_name: mongo
-    iamge: mongo-alphine
-    ports:
-      - '27017:27017'
+  nginx:
+    image: nginx:latest
     volumes:
-      - mongo-data:/data/db
-    networks:
-      - node-app
 
 volumes:
   mongo-data:
