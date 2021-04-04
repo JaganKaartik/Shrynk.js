@@ -6,6 +6,7 @@ import Onboarding from "./components/Onboarding";
 import Dashboard from "./components/Dashboard";
 import AuthComponent from "./components/Auth/AuthComponent";
 import { UserProvider } from "./context/UserContext";
+import Navbar from "./components/Navbar";
 
 export default function App() {
   useEffect(() => {
@@ -30,6 +31,7 @@ export default function App() {
           {/* <div class="body-wrapper"> */}
           <Switch>
             <div class="body-wrapper">
+              <Navbar />
               <Route path="/" exact component={Home} />
               <Route exact path="/dashboard">
                 {/* <AuthComponent> */}
