@@ -17,7 +17,7 @@ const {
 
 const clientUrl = NODE_ENV === 'production' ? CLIENT_URL_PROD : CLIENT_URL_DEV
 
-Middleware.use(connectRedis)
+// Middleware.use(connectRedis)
 
 Middleware.use(cors({ credentials: true, origin: clientUrl }))
 

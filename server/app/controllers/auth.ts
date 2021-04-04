@@ -16,7 +16,7 @@ const authGoogle = passport.authenticate('google', {
   scope: ['email', 'profile']
 })
 
-const authRedirectGoogle = (res, req) => {
+const authRedirectGoogle = (req, res) => {
   const token = jwt.sign(
     {
       data: req.user.userId
