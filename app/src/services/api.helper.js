@@ -1,55 +1,23 @@
-// import { API_URL } from "./config";
+import axios from 'axios';
+import { API_URL } from '../config';
 
-// export default {
-//   wakeUp: (socketId) => {
-//     return fetch(`${API_URL}/wake-up?socketId=${socketId}`, {
-//       credentials: "include",
-//     }).then((res) => res.ok);
-//   },
-
-//   refresh: () => {
-//     const authToken = localStorage.getItem("authToken");
-
-//     return fetch(`${API_URL}/refresh`, {
-//       headers: {
-//         Authorization: `Bearer ${authToken}`,
-//       },
-//       credentials: "include",
-//     }).then((res) => res.json());
-//   },
-
-//   unlink: (provider) => {
-//     const authToken = localStorage.getItem("authToken");
-
-//     return fetch(`${API_URL}/unlink/${provider}`, {
-//       method: "delete",
-//       headers: {
-//         Authorization: `Bearer ${authToken}`,
-//       },
-//       credentials: "include",
-//     });
-//   },
-
-//   logout: () => {
-//     const authToken = localStorage.getItem("authToken");
-
-//     return fetch(`${API_URL}/logout`, {
-//       headers: {
-//         Authorization: `Bearer ${authToken}`,
-//       },
-//       credentials: "include",
-//     }).then((res) => res.ok);
-//   },
-
-//   deleteAccount: () => {
-//     const authToken = localStorage.getItem("authToken");
-
-//     return fetch(`${API_URL}/delete-account`, {
-//       method: "delete",
-//       headers: {
-//         Authorization: `Bearer ${authToken}`,
-//       },
-//       credentials: "include",
-//     }).then((res) => res.ok);
-//   },
-// };
+export const onboardingUser = async (accountType, fixedQuota) => {
+  const authToken = localStorage.getItem('shrynk-jwt');
+  const userId = localStorage.getItem('shrynk-usr-id');
+  return await axios
+    .request(API_URL + '/dash/onboarding', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+      data: {
+        userId,
+        accountType,
+        fixedQuota,
+      },
+      mode: 'cors',
+      credentials: 'include',
+    })
+    .then((resp) => resp.data)
+    .catch((err) => err);
+};

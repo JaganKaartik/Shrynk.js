@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
-import Body from "./Body";
-import Header from "./Header";
+import React, { useContext } from 'react';
+import { UserContext } from '../../context/UserContext';
+import Body from './Body';
+import Header from './Header';
 
 export default function Dashboard() {
   const { jwt } = useContext(UserContext);
@@ -9,7 +9,7 @@ export default function Dashboard() {
   console.log(jwt);
 
   return (
-    <div className="home-container">
+    <div>
       <table class="table-fixed container">
         <Header />
         <Body />

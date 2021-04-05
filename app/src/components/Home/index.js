@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useContext } from "react";
-import homeGif from "../../assets/images/homeRelaxed.gif";
-import { API_URL } from "../../config";
-import { login } from "../../services/token";
-import { UserContext } from "../../context/UserContext";
-import { useHistory } from "react-router-dom";
+import React, { useEffect, useState, useContext } from 'react';
+import homeGif from '../../assets/images/homeRelaxed.gif';
+import { API_URL } from '../../config';
+import { login } from '../../services/token';
+import { UserContext } from '../../context/UserContext';
+import { useHistory } from 'react-router-dom';
 
 export default function Home() {
   const [authRedirect, setAuthRedirect] = useState(false);
@@ -14,7 +14,7 @@ export default function Home() {
 
   function onClickHandler(provider) {
     console.log(provider);
-    window.open(`${API_URL}auth/${provider}`, "_self");
+    window.open(`${API_URL}auth/${provider}`, '_self');
     setAuthRedirect(!authRedirect);
   }
 
@@ -24,29 +24,29 @@ export default function Home() {
 
   useEffect(() => {
     let params = new URL(document.location).searchParams;
-    let authToken = params.get("token");
-    let userId = params.get("userid");
-    let onboardingStatus = params.get("onboarding");
+    let authToken = params.get('token');
+    let userId = params.get('userid');
+    let onboardingStatus = params.get('onboarding');
     if (authToken && userId) {
       login(authToken, userId);
       setJWTContext(authToken);
       if (onboardingStatus) {
-        history.push("/onboarding");
+        history.push('/onboarding');
       } else {
-        history.push("/dashboard");
+        history.push('/dashboard');
       }
     }
   });
 
   return (
-    <div className="flex-grow home-container">
+    <div className="flex-grow">
       <div
-        className={"flex justify-end items-center py-4 border-gray-200"}
-        style={{ borderBottomWidth: "thin" }}
+        className={'flex justify-end items-center py-4 border-gray-200'}
+        style={{ borderBottomWidth: 'thin' }}
       ></div>
 
-      <div className={"flex flex-col justify-center items-center"}>
-        <h1 className={"title text-indigo-500 text-6xl mt-10"}>Shrynk.js</h1>
+      <div className={'flex flex-col justify-center items-center'}>
+        <h1 className={'title text-indigo-500 text-6xl mt-10'}>Shrynk.js</h1>
         {/* <p className={"text-indigo-500 text-3xl mt-10"}>
           *Note: App is still under development. This is a sample preview.
         </p> */}
@@ -54,7 +54,7 @@ export default function Home() {
           className="responsive"
           src={homeGif}
           alt="loading..."
-          style={{ maxWidth: "500px", margin: "50px auto 0" }}
+          style={{ maxWidth: '500px', margin: '50px auto 0' }}
         />
       </div>
 
@@ -71,7 +71,7 @@ export default function Home() {
             </p>
             <p class="mt-2 text-gray-500">
               This is a simple URL Shortening SPA. Originally created as a hobby
-              project, this is the second iteration of{" "}
+              project, this is the second iteration of{' '}
               <a class="text-black" href="https://shrynk.herokuapp.com">
                 Shrynk
               </a>
@@ -120,7 +120,7 @@ export default function Home() {
         <div class="md:flex-shrink-0 grid grid-cols-2 gap-4">
           <button
             class="rounded-xl w-full shadow-2xl inline-flex items-center h-12 px-5 text-indigo-100 transition duration-200 ease-in-out bg-indigo-500 hover:bg-red-400 transform hover:-translate-y-1 hover:scale-110 .."
-            onClick={() => onClickHandler("google")}
+            onClick={() => onClickHandler('google')}
           >
             <span>Login with Google</span>
             <svg
@@ -132,7 +132,7 @@ export default function Home() {
           </button>
           <button
             class="rounded-xl w-full shadow-2xl inline-flex items-center h-12 px-5 text-indigo-100 transition duration-200 ease-in-out bg-indigo-500 hover:bg-red-400 transform hover:-translate-y-1 hover:scale-110 .."
-            onClick={() => onClickHandler("twitter")}
+            onClick={() => onClickHandler('twitter')}
           >
             <span>Login with Twitter</span>
             <svg

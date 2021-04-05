@@ -1,6 +1,14 @@
-import React from "react";
+import React from 'react';
+import { onboardingUser } from '../../services/api.helper';
+import { useHistory } from 'react-router-dom';
 
 export default function Onboarding() {
+  const history = useHistory();
+
+  const onClickHandler = (type, quota) => {
+    onboardingUser(type, quota).then(() => history.push('/dashboard'));
+  };
+
   return (
     <div>
       <div class="min-w-screen min-h-screen bg-gray-100 px-5 py-5">
@@ -27,7 +35,10 @@ export default function Onboarding() {
                 </ul>
               </div>
               <div class="w-full">
-                <button class="font-bold bg-blue-600 hover:bg-blue-800 text-white rounded-md px-10 py-2 transition-colors w-full">
+                <button
+                  class="font-bold bg-blue-600 hover:bg-blue-800 text-white rounded-md px-10 py-2 transition-colors w-full"
+                  onClick={() => onClickHandler('basic', 5)}
+                >
                   Select Now
                 </button>
               </div>
@@ -45,7 +56,10 @@ export default function Onboarding() {
                 </ul>
               </div>
               <div class="w-full">
-                <button class="font-bold bg-blue-600 hover:bg-blue-800 text-white rounded-md px-10 py-2 transition-colors w-full">
+                <button
+                  class="font-bold bg-blue-600 hover:bg-blue-800 text-white rounded-md px-10 py-2 transition-colors w-full"
+                  onClick={() => onClickHandler('premium', 10)}
+                >
                   Select Now
                 </button>
               </div>
@@ -63,7 +77,7 @@ export default function Onboarding() {
                 </ul>
               </div>
               <div class="w-full">
-                <button class="font-bold bg-blue-600 hover:bg-blue-800 text-white rounded-md px-10 py-2 transition-colors w-full">
+                <button class="disabled font-bold bg-blue-600 hover:bg-blue-800 text-white rounded-md px-10 py-2 transition-colors w-full">
                   Enquire Now
                 </button>
               </div>
@@ -78,7 +92,7 @@ export default function Onboarding() {
                 </p>
               </div>
               <div class="w-full">
-                <button class="font-bold bg-blue-600 hover:bg-blue-800 text-white rounded-md px-10 py-2 transition-colors w-full">
+                <button class="disabled font-bold bg-blue-600 hover:bg-blue-800 text-white rounded-md px-10 py-2 transition-colors w-full">
                   Enquire Now
                 </button>
               </div>

@@ -43,16 +43,16 @@ const deleteURL = async (req, res) => {
 
 const userOnboarding = async (req, res) => {
   // Check Onboarding Status
-  const onboardingStatus = await User.findOne({ userId: req.user.userId })
+  const onboardingStatus = await User.findOne({ userId: req.body.userId })
     .then((resp) => resp.onboarding)
     .catch((err) => err)
   // If Onboarding status is true
   if (onboardingStatus) {
     // Update Oboarding Status
-    disableOnboarding(req.user.userId)
+    disableOnboarding(req.body.userId)
     // Add Quota
     await Account.create({
-      userId: req.user.userId,
+      userId: req.body.userId,
       accountType: req.body.accountType,
       fixedQuota: req.body.fixedQuota,
       currentQuota: req.body.fixedQuota

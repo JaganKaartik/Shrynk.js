@@ -1,37 +1,4 @@
-:root {
-  --bg-color: rgba(243, 244, 246, 1);
-  --nav-color: #334e68;
-  --home-container-card: #fafafa;
-  --footer-color: #fafafa;
-  --footer-bg: #334e68;
-  --stripped-odd: rgba(242, 242, 242, 0.5);
-  --stripped-even: rgba(238, 235, 235, 0.842);
-  --highlight-color: rgba(242, 242, 242, 0.5);
-  --list-text-color: #0f1318;
-  --nav-text-color: #fafafa;
-  --wrapper-bg: rgba(51, 78, 104, 0.75);
-  --login-form-color: #58a0e2;
-  --table-text-color: #4b7297;
-  --menu-svg-color: rgba(17, 24, 39, 1);
-}
-
-[data-theme="dark"] {
-  --bg-color: #0f1318;
-  --nav-color: #0f1318;
-  --home-container-card: #0b1c2c;
-  --footer-color: #4b7297;
-  --footer-bg: #0f1318;
-  --stripped-odd: #102a43;
-  --stripped-even: #243b53;
-  --highlight-color: #102a43;
-  --list-text-color: #e0e9f3;
-  --nav-text-color: #4b7297;
-  --wrapper-bg: rgba(15, 19, 24, 0.75);
-  --login-form-color: #3e84ca;
-  --table-text-color: #4b7297;
-  --menu-svg-color: #fafafa;
-}
-
+/* 
 .title {
   font-family: "Merriweather", serif;
   font-size: 60px;
@@ -66,4 +33,32 @@
 
 .home-container {
   background-color: var(--bg-color);
+} */
+
+.navbar {
+  height: 50px;
+  background-color: rgb(54, 130, 133);
+  /* background-color: rgb(54, 130, 133); */
+}
+
+.footer {
+  height: 50px;
+}
+
+.content-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.main-content {
+  flex: auto;
+}
+
+.container-body {
+  padding: 10px 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-flow: column nowrap;
 }
