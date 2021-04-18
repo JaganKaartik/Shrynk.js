@@ -21,3 +21,22 @@ export const onboardingUser = async (accountType, fixedQuota) => {
     .then((resp) => resp.data)
     .catch((err) => err);
 };
+
+export const getAllURLS = async () => {
+  const authToken = localStorage.getItem('shrynk-jwt');
+  const userId = localStorage.getItem('shrynk-usr-id');
+  return await axios
+    .request(API_URL + 'dash/all', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+      data: {
+        userId,
+      },
+      credentials: 'include',
+      mode: 'cors',
+    })
+    .then((resp) => resp)
+    .catch((err) => err);
+};

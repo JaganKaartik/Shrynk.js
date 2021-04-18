@@ -8,10 +8,10 @@ const disableOnboarding = require('../services/onboarding')
 
 const getAllURLS = async (req, res) => {
   // Get all URLs
-  await URLS.find({ userId: req.user.userId })
+  await URLS.find({ userId: req.body.userId })
     .then((data) => {
       if (data.length !== 0) {
-        res.send({ success: true })
+        res.send({ data, success: true })
       } else {
         res.send({ success: false })
       }
@@ -28,7 +28,7 @@ const deleteURL = async (req, res) => {
   await URLS.findOneAndRemove({ urlCode: req.params.code })
     .then((data: JSON) => {
       if (data) {
-        QuotaUpdateAdd(req.user.userId)
+        QuotaUpdateAdd(req.body.userId)
         res.send({ success: true })
       } else {
         res.send({ success: false })

@@ -3,14 +3,16 @@ import React from 'react';
 export default function Header() {
   return (
     <div>
-      <thead>
+      <thead className="shadow-2xl">
         <tr>
-          <th className="w-1/2 ...">Title</th>
-          <th className="w-1/4 ...">Author</th>
-          <th className="w-1/4 ...">Views</th>
+          <th className="">Sl.No</th>
+          <th className="">Long URL</th>
+          <th className="">Short URL</th>
+          <th className="">Activation</th>
+          <th className="">Expiry</th>
+          <th>Operations</th>
         </tr>
       </thead>
-      ;
     </div>
   );
 }

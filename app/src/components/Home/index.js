@@ -45,11 +45,6 @@ export default function Home() {
 
   return (
     <div className="flex-grow">
-      <div
-        className={'flex justify-end items-center py-4 border-gray-200'}
-        style={{ borderBottomWidth: 'thin' }}
-      ></div>
-
       <div className={'flex flex-col justify-center items-center'}>
         <h1 className={'title text-blue-500 text-6xl mt-10'}>Shrynk.js</h1>
         {/* <p classNameName={"text-indigo-500 text-3xl mt-10"}>
@@ -126,7 +121,7 @@ export default function Home() {
       <div className="flex justify-center">
         <div className="md:flex-shrink-0 grid grid-cols-1 gap-4">
           <button
-            className="rounded-xl w-full shadow-2xl inline-flex items-center h-12 px-5 text-indigo-100 transition duration-200 ease-in-out bg-indigo-500 hover:bg-red-400 transform hover:-translate-y-1 hover:scale-110 .."
+            className="rounded-xl w-full shadow-2xl inline-flex items-center h-12 px-5 text-indigo-100 transition duration-200 ease-in-out bg-green-800 hover:bg-red-400 transform hover:-translate-y-1 hover:scale-110 .."
             onClick={() => onClickHandler('google')}
           >
             <span>Login with Google</span>

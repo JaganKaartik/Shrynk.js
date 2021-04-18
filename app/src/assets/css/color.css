@@ -3,7 +3,7 @@
   --nav-color: #172a3b;
   --home-container-card: #fafafa;
   --footer-color: #fafafa;
-  --footer-bg: #334e68;
+  --footer-bg: #172a3b;
   --stripped-odd: rgba(242, 242, 242, 0.5);
   --stripped-even: rgba(238, 235, 235, 0.842);
   --highlight-color: rgba(242, 242, 242, 0.5);
@@ -16,7 +16,7 @@
 }
 
 [data-theme='dark'] {
-  --bg-color: #06121b;
+  --bg-color: #010a11ee;
   --nav-color: #0f1318;
   --home-container-card: #0b1c2c;
   --footer-color: #4b7297;

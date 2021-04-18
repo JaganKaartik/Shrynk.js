@@ -4,13 +4,13 @@ import Body from './Body';
 import Header from './Header';
 
 export default function Dashboard() {
-  const { jwt } = useContext(UserContext);
+  // const { jwt } = useContext(UserContext);
 
-  console.log(jwt);
+  // console.log(jwt);
 
   return (
-    <div>
-      <table className="table-fixed container">
+    <div className="container">
+      <table className="responsive-table striped highlight">
         <Header />
         <Body />
       </table>

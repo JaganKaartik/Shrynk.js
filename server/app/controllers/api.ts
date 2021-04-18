@@ -10,18 +10,18 @@ const { CLIENT_ORIGIN } = require('../config/default.config')
 const shortenURL = async (req, res) => {
   const id = generateID()
   const checkedId = await validID(id)
-  const QuotaLimit = await QuotaCheck(req.user.userId)
+  const QuotaLimit = await QuotaCheck(req.body.userId)
   const urlCheckResp = await urlCheck(req.body.longURL)
   if (urlCheckResp && QuotaLimit) {
     await URLS.create({
-      userId: req.user.userId,
+      userId: req.body.userId,
       urlCode: checkedId,
       longURL: req.body.longURL,
       shortURL: `${CLIENT_ORIGIN}/${id}`
     })
       .then((resp: JSON) => {
         if (resp) {
-          QuotaUpdateSub(req.user.userId)
+          QuotaUpdateSub(req.body.userId)
           res.send({ success: true })
         } else {
           res.send({ success: false })

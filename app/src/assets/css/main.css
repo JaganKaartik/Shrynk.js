@@ -2,16 +2,19 @@
   height: 70px;
   color: var(--footer-color);
   background-color: var(--footer-bg);
+  flex: 0;
 }
 
 .content-wrapper {
   height: 100vh;
   display: flex;
   flex-flow: column nowrap;
+  flex: 1;
 }
 
 .main-content {
   flex: auto;
+  align-items: stretch;
 }
 
 .container-body {
@@ -21,4 +24,13 @@
   display: flex;
   background-color: var(--bg-color);
   flex-flow: column nowrap;
+}
+
+.title {
+  font-family: 'Roboto Slab', serif;
+}
+
+.container {
+  margin: 0%;
+  width: 100%;
 }
