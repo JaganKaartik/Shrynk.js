@@ -6,6 +6,7 @@
 @import './css/main.css';
 @import './css/table.css';
 @import './css/toggle.css';
+@import './css/nav.css';
 
 body {
   margin: 0;

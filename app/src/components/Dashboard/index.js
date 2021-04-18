@@ -10,7 +10,7 @@ export default function Dashboard() {
 
   return (
     <div>
-      <table class="table-fixed container">
+      <table className="table-fixed container">
         <Header />
         <Body />
       </table>
