@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
 import homeGif from '../../assets/images/homeRelaxed.gif';
 import { API_URL } from '../../config';
-import { login } from '../../services/token';
-import { UserContext } from '../../context/UserContext';
+import { login, getAuthToken } from '../../services/token';
 import { useHistory } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
 
 export default function Home() {
   const [authRedirect, setAuthRedirect] = useState(false);
@@ -23,6 +23,10 @@ export default function Home() {
   }
 
   useEffect(() => {
+    let tokenPresent = getAuthToken();
+    // if (tokenPresent) {
+    //   history.push('/dashboard');
+    // }
     let params = new URL(document.location).searchParams;
     let authToken = params.get('token');
     let userId = params.get('userid');

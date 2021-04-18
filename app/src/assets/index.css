@@ -1,7 +1,6 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-@import '~antd/dist/antd.css';
 @import './css/color.css';
 @import './css/main.css';
 @import './css/table.css';

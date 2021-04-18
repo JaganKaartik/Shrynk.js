@@ -28,17 +28,17 @@ const displayNav = () => {
   return (
     <ul className="nav-text lg:flex items-center justify-between text-base pt-4 lg:pt-0">
       <li>
-        <div className="lg:p-1.5 py-0.5 px-0 block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2">
+        <div className="text-white lg:p-1.5 py-0.5 px-0 block border-b-2 border-transparent hover:border-green-400 lg:mb-0 mb-2">
           <NavLink to="/dashboard">Dashboard</NavLink>
         </div>
       </li>
       <li>
-        <div className="lg:p-1.5 py-0.5 px-0 block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2">
+        <div className="text-white lg:p-1.5 py-0.5 px-0 block border-b-2 border-transparent hover:border-green-400 lg:mb-0 mb-2">
           <NavLink to="/profile">Profile</NavLink>
         </div>
       </li>
       <li>
-        <div className="lg:p-1.5 py-0.5 px-0 block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2">
+        <div className="text-white lg:p-1.5 py-0.5 px-0 block border-b-2 border-transparent hover:border-green-400 lg:mb-0 mb-2">
           <NavLink to="/" onClick={() => logoutHandler()}>
             Logout
           </NavLink>

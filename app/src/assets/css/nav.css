@@ -6,3 +6,7 @@
   background-color: var(--nav-color);
   /* background-color: rgb(54, 130, 133); */
 }
+
+.nav-text {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
