@@ -1,5 +1,4 @@
 import { JWT_SECRET, SESSION_SECRET } from '../config/default.config'
-import { redisClient } from '../config/redis'
 
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
