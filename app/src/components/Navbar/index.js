@@ -32,11 +32,11 @@ const displayNav = () => {
           <NavLink to="/dashboard">Dashboard</NavLink>
         </div>
       </li>
-      <li>
+      {/* <li>
         <div className="text-white lg:p-1.5 py-0.5 px-0 block border-b-2 border-transparent hover:border-green-400 lg:mb-0 mb-2">
           <NavLink to="/profile">Profile</NavLink>
         </div>
-      </li>
+      </li> */}
       <li>
         <div className="text-white lg:p-1.5 py-0.5 px-0 block border-b-2 border-transparent hover:border-green-400 lg:mb-0 mb-2">
           <NavLink to="/" onClick={() => logoutHandler()}>

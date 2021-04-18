@@ -1,5 +1,5 @@
 :root {
-  --bg-color: rgba(243, 244, 246, 1);
+  --bg-color: rgb(217, 221, 228);
   --nav-color: #172a3b;
   --home-container-card: #fafafa;
   --footer-color: #fafafa;
@@ -16,7 +16,7 @@
 }
 
 [data-theme='dark'] {
-  --bg-color: #0f1318;
+  --bg-color: #06121b;
   --nav-color: #0f1318;
   --home-container-card: #0b1c2c;
   --footer-color: #4b7297;

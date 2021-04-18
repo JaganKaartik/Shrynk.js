@@ -51,7 +51,7 @@ export default function Home() {
       ></div>
 
       <div className={'flex flex-col justify-center items-center'}>
-        <h1 className={'title text-indigo-500 text-6xl mt-10'}>Shrynk.js</h1>
+        <h1 className={'title text-blue-500 text-6xl mt-10'}>Shrynk.js</h1>
         {/* <p classNameName={"text-indigo-500 text-3xl mt-10"}>
           *Note: App is still under development. This is a sample preview.
         </p> */}
