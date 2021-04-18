@@ -1,5 +1,6 @@
 import React from 'react';
 import { UserProvider } from '../context/UserContext';
+import { DataProvider } from '../context/DataContext';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from '../components/Home';
 import Onboarding from '../components/Onboarding';
@@ -17,7 +18,9 @@ export default function Router() {
             <Route path="/" exact component={Home} />
             <Route exact path="/dashboard">
               <AuthComponent>
-                <Dashboard />
+                <DataProvider>
+                  <Dashboard />
+                </DataProvider>
               </AuthComponent>
             </Route>
             <Route exact path="/onboarding">
