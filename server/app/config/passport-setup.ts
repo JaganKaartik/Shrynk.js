@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid'
+
 const passport = require('passport')
 const TwitterStrategy = require('passport-twitter')
 const GoogleStrategy = require('passport-google-oauth2')
@@ -35,8 +37,9 @@ passport.use(
         userId: profile._json.id_str
       }).then((currentUser) => {
         if (!currentUser) {
+          const uid = uuidv4()
           const newUser = new User({
-            userId: profile._json.id_str,
+            userId: uid,
             provider: profile.provider,
             name: profile._json.name,
             profileImageUrl: profile._json.profile_image_url,
@@ -69,8 +72,9 @@ passport.use(
       })
         .then((currentUser) => {
           if (!currentUser) {
+            const uid = uuidv4()
             const newUser = new User({
-              userId: profile._json.sub,
+              userId: uid,
               provider: profile.provider,
               name: profile._json.name,
               profileImageUrl: profile._json.picture,

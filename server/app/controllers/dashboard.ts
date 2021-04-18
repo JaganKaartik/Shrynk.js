@@ -8,8 +8,9 @@ const disableOnboarding = require('../services/onboarding')
 
 const getAllURLS = async (req, res) => {
   // Get all URLs
-  await URLS.find({ userId: req.body.userId })
+  await URLS.find({ userId: req.params.userid })
     .then((data) => {
+      console.log(data)
       if (data.length !== 0) {
         res.send({ data, success: true })
       } else {
