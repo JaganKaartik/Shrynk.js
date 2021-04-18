@@ -34,7 +34,7 @@ passport.use(
     },
     async (token, tokenSecret, profile, done) => {
       User.findOne({
-        userId: profile._json.id_str
+        otherInfo: profile._json.email
       }).then((currentUser) => {
         if (!currentUser) {
           const uid = uuidv4()
@@ -68,7 +68,7 @@ passport.use(
     },
     async (request, accessToken, refreshToken, profile, done) => {
       User.findOne({
-        userId: profile._json.sub
+        otherInfo: profile._json.email
       })
         .then((currentUser) => {
           if (!currentUser) {
