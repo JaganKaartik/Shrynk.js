@@ -61,3 +61,22 @@ export const addURL = async (longUrl) => {
     })
     .catch((err) => err);
 };
+
+export const deleteURL = async (code) => {
+  const authToken = localStorage.getItem('shrynk-jwt');
+  const userId = localStorage.getItem('shrynk-usr-id');
+  return await axios
+    .request(API_URL + `dash/${code}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+      data: {
+        userId,
+      },
+      mode: 'cors',
+      credentials: 'include',
+    })
+    .then((resp) => resp.data)
+    .catch((err) => err);
+};

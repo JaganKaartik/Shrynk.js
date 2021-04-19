@@ -1,11 +1,12 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useReducer, useState, useContext, useEffect } from 'react';
 import { DataContext } from '../../context/DataContext';
-import { getAllURLS } from '../../services/api.helper';
+import { getAllURLS, deleteURL } from '../../services/api.helper';
 import CustomLoader from './Loader';
 
 export default function Body() {
   const { data, setData } = useContext(DataContext);
   const [loading, setLoading] = useState(true);
+  const [_, forceUpdate] = useReducer((x) => x + 1, 0);
 
   useEffect(() => {
     async function fetchURLS() {
@@ -15,6 +16,11 @@ export default function Body() {
     }
     fetchURLS();
   }, []);
+
+  const handleDelete = (value) => {
+    deleteURL(value);
+    forceUpdate();
+  };
 
   function addTableRow(result, index) {
     return (
@@ -31,8 +37,11 @@ export default function Body() {
         <td className="shadow-lg">{result.activation}</td>
         <td className="shadow-lg">{result.expiry}</td>
         <td className="shadow-lg">
-          <div class="shawdow-lg inline-flex">
-            <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
+          <div className="shawdow-lg inline-flex">
+            <button
+              onClick={() => handleDelete(result.urlCode)}
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+            >
               Delete
             </button>
           </div>

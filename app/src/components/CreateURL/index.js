@@ -17,6 +17,10 @@ export default function CreateURL() {
               placeholder="Enter a url to shrynk!"
               aria-label="Full name"
             />
+            <input
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+              type="submit"
+            />
           </div>
         </form>
       </div>
