@@ -23,7 +23,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    let tokenPresent = getAuthToken();
+    // let tokenPresent = getAuthToken();
     // if (tokenPresent) {
     //   history.push('/dashboard');
     // }

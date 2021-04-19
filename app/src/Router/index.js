@@ -18,9 +18,9 @@ export default function Router() {
             <Route path="/" exact component={Home} />
             <Route exact path="/dashboard">
               {/* <AuthComponent> */}
-                <DataProvider>
-                  <Dashboard />
-                </DataProvider>
+              <DataProvider>
+                <Dashboard />
+              </DataProvider>
               {/* </AuthComponent> */}
             </Route>
             <Route exact path="/onboarding">
