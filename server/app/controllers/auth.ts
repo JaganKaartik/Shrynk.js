@@ -1,5 +1,4 @@
 import { JWT_SECRET, SESSION_SECRET } from '../config/default.config'
-import { redisClient } from '../config/redis'
 
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
@@ -16,7 +15,7 @@ const authGoogle = passport.authenticate('google', {
   scope: ['email', 'profile']
 })
 
-const authRedirectGoogle = (res, req) => {
+const authRedirectGoogle = (req, res) => {
   const token = jwt.sign(
     {
       data: req.user.userId

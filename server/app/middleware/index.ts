@@ -1,6 +1,5 @@
 import express from 'express'
 import { authRouter, apiRouter, dashRouter } from '../routes'
-import { app as connectRedis } from '../config/redis'
 
 const Middleware = express()
 const bodyParser = require('body-parser')
@@ -16,8 +15,6 @@ const {
 } = require('../config/default.config')
 
 const clientUrl = NODE_ENV === 'production' ? CLIENT_URL_PROD : CLIENT_URL_DEV
-
-Middleware.use(connectRedis)
 
 Middleware.use(cors({ credentials: true, origin: clientUrl }))
 

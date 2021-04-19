@@ -1,4 +1,4 @@
-import { ConnectionOptions, connect, connection } from 'mongoose'
+import { ConnectionOptions, connect } from 'mongoose'
 
 const { MONGO_URL } = require('./default.config')
 
@@ -18,6 +18,4 @@ const connectDB = async () => {
   }
 }
 
-const db = connection
-
-export { db, connectDB }
+export = connectDB

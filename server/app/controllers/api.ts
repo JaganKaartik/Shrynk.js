@@ -10,18 +10,21 @@ const { CLIENT_ORIGIN } = require('../config/default.config')
 const shortenURL = async (req, res) => {
   const id = generateID()
   const checkedId = await validID(id)
-  const QuotaLimit = await QuotaCheck(req.user.userId)
+  const QuotaLimit = await QuotaCheck(req.body.userId)
   const urlCheckResp = await urlCheck(req.body.longURL)
-  if (urlCheckResp && QuotaLimit) {
+  const urlExists = await URLS.find({
+    longURL: req.body.longURL
+  }).then((resp) => resp.length === 0)
+  if (urlCheckResp && QuotaLimit && urlExists) {
     await URLS.create({
-      userId: req.user.userId,
+      userId: req.body.userId,
       urlCode: checkedId,
       longURL: req.body.longURL,
       shortURL: `${CLIENT_ORIGIN}/${id}`
     })
       .then((resp: JSON) => {
         if (resp) {
-          QuotaUpdateSub(req.user.userId)
+          QuotaUpdateSub(req.body.userId)
           res.send({ success: true })
         } else {
           res.send({ success: false })
@@ -30,6 +33,10 @@ const shortenURL = async (req, res) => {
       .catch((err) => {
         res.send(err)
       })
+  } else if (!urlExists) {
+    res.status(422).json({
+      message: 'Error! URL Already Shrynked.'
+    })
   } else if (!QuotaLimit) {
     res.status(422).json({
       message: 'Quota Limit Exceeded.'
