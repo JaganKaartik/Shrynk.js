@@ -1,12 +1,18 @@
-import React, { useContext } from 'react';
-import { UserContext } from '../../context/UserContext';
+import React, { useEffect, useContext } from 'react';
+import { DataContext } from '../../context/DataContext';
 import Body from './Body';
 import Header from './Header';
+import { getAllURLS } from '../../services/api.helper';
+import './dashboard.css';
 
 export default function Dashboard() {
-  // const { jwt } = useContext(UserContext);
+  const { data, setData } = useContext(DataContext);
 
-  // console.log(jwt);
+  useEffect(() => {
+    const result = getAllURLS();
+    console.log(result);
+    result.then((resp) => setData(resp.data));
+  }, []);
 
   return (
     <div className="container">

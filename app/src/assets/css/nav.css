@@ -10,3 +10,11 @@
 .nav-text {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.menu-svg {
+  color: aliceblue;
+}
+
+#menu-toggle:checked + #menu {
+  display: block;
+}

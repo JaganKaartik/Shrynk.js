@@ -26,17 +26,16 @@ export const getAllURLS = async () => {
   const authToken = localStorage.getItem('shrynk-jwt');
   const userId = localStorage.getItem('shrynk-usr-id');
   return await axios
-    .request(API_URL + 'dash/all', {
+    .request(API_URL + `dash/all/${userId}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${authToken}`,
       },
-      data: {
-        userId,
-      },
       credentials: 'include',
       mode: 'cors',
     })
-    .then((resp) => resp)
+    .then((resp) => {
+      return resp.data;
+    })
     .catch((err) => err);
 };

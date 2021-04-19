@@ -62,3 +62,7 @@ blockquote {
 .table-content {
   color: var(--table-text-color);
 }
+
+td > div {
+  white-space: nowrap;
+}
