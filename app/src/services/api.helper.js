@@ -40,9 +40,10 @@ export const getAllURLS = async () => {
     .catch((err) => err);
 };
 
-export const addURL = async (longUrl) => {
+export const addURL = async (longURL) => {
   const authToken = localStorage.getItem('shrynk-jwt');
   const userId = localStorage.getItem('shrynk-usr-id');
+  console.log(longURL, userId);
   return await axios
     .request(API_URL + `addurl`, {
       method: 'POST',
@@ -51,15 +52,19 @@ export const addURL = async (longUrl) => {
       },
       data: {
         userId,
-        longUrl,
+        longURL,
       },
-      credentials: 'include',
       mode: 'cors',
+      credentials: 'include',
     })
     .then((resp) => {
+      console.log(resp.data);
       return resp.data;
     })
-    .catch((err) => err);
+    .catch((err) => {
+      console.log(err);
+      return err;
+    });
 };
 
 export const deleteURL = async (code) => {

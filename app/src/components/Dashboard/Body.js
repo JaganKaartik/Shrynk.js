@@ -55,7 +55,6 @@ export default function Body() {
     return (
       <tbody>
         {data.map((result, index) => {
-          console.log(data);
           return addTableRow(result, index + 1);
         })}
       </tbody>
