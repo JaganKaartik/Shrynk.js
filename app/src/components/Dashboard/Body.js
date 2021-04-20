@@ -1,22 +1,19 @@
 import React, { useReducer, useState, useContext, useEffect } from 'react';
 import { DataContext } from '../../context/DataContext';
-import { getAllURLS, deleteURL } from '../../services/api.helper';
+import { deleteURL } from '../../services/api.helper';
 import CustomLoader from './Loader';
 import { toast } from 'react-toast';
 
 export default function Body() {
-  const { data, setData } = useContext(DataContext);
-  const [loading, setLoading] = useState(true);
+  const { data } = useContext(DataContext);
+  const [dataPresent, setdataPresent] = useState(false);
   const [_, forceUpdate] = useReducer((x) => x + 1, 0);
 
-  useEffect(() => {
-    async function fetchURLS() {
-      const result = await getAllURLS();
-      setData(result.data);
-      setLoading(false);
-    }
-    fetchURLS();
-  }, []);
+  // useEffect(() => {
+  //   if (data) {
+
+  //   }
+  // }, [data]);
 
   const handleDelete = (value) => {
     deleteURL(value);
@@ -54,15 +51,15 @@ export default function Body() {
       </tr>
     );
   }
-  if (loading) {
-    return <CustomLoader />;
-  } else
-    return (
-      <tbody>
-        {data.map((result, index) => {
-          console.log(data);
-          return addTableRow(result, index + 1);
-        })}
-      </tbody>
-    );
+  // if (loading) {
+  //   return <CustomLoader />;
+  // } else
+  return (
+    <tbody>
+      {data.map((result, index) => {
+        console.log(data);
+        return addTableRow(result, index + 1);
+      })}
+    </tbody>
+  );
 }
