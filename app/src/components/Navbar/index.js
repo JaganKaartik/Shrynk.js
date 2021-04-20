@@ -3,7 +3,7 @@ import { UserContext } from '../../context/UserContext';
 import { NavLink } from 'react-router-dom';
 import Toggler from '../Commons/Toggler';
 import Logo from '../../assets/images/logo.svg';
-import { logout } from '../../services/token';
+import { logout } from '../../helpers/token.helper';
 
 const displayNav = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks

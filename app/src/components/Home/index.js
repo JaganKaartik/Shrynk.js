@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import homeGif from '../../assets/images/homeRelaxed.gif';
 import { API_URL } from '../../config';
-import { login } from '../../services/token';
+import { login } from '../../helpers/token.helper';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 

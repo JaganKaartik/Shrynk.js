@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { addURL } from '../../services/api.helper';
+import { addURL } from '../../helpers/api.helper';
 import { toast } from 'react-toast';
 
 export default function CreateURL() {

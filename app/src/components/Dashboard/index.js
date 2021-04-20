@@ -4,7 +4,7 @@ import Header from './Header';
 import CreateURL from '../CreateURL';
 import { ToastContainer } from 'react-toast';
 import { DataContext } from '../../context/DataContext';
-import { getAllURLS } from '../../services/api.helper';
+import { getAllURLS } from '../../helpers/api.helper';
 import CustomLoader from './Loader';
 import DefaultDash from './DefaultDash';
 

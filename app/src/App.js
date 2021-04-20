@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import Routes from './Router';
 import Footer from './components/Commons/Footer';
-import { getAuthToken } from './services/token';
+import { getAuthToken } from './helpers/token.helper';
 import { UserContext } from './context/UserContext';
 
 export default function App() {

@@ -23,7 +23,7 @@
   overflow-y: auto;
   display: flex;
   background-color: var(--bg-color);
-  /* flex-flow: column nowrap; */
+  flex-flow: column nowrap;
   flex: 1;
 }
 
