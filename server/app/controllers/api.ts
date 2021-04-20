@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 import { IResult } from '../interface'
 import { QuotaUpdateSub } from '../services/quota'
 
@@ -5,7 +6,10 @@ const Joi = require('joi')
 const URLS = require('../models/Url')
 const { generateID, validID, urlCheck } = require('../services/URLServices')
 const { QuotaCheck } = require('../services/quota')
-const { CLIENT_ORIGIN } = require('../config/default.config')
+const { CLIENT_URL_DEV, CLIENT_URL_PROD } = require('../config/default.config')
+
+const CLIENT_ORIGIN =
+  process.env.NODE_ENV === 'production' ? CLIENT_URL_PROD : CLIENT_URL_DEV
 
 const shortenURL = async (req, res) => {
   const id = generateID()
@@ -25,24 +29,24 @@ const shortenURL = async (req, res) => {
       .then((resp: JSON) => {
         if (resp) {
           QuotaUpdateSub(req.body.userId)
-          res.send({ success: true })
+          res.send({ message: 'success' })
         } else {
-          res.send({ success: false })
+          res.send({ message: 'failed' })
         }
       })
       .catch((err) => {
         res.send(err)
       })
   } else if (!urlExists) {
-    res.status(422).json({
+    res.status(422).send({
       message: 'Error! URL Already Shrynked.'
     })
   } else if (!QuotaLimit) {
-    res.status(422).json({
+    res.status(422).send({
       message: 'Quota Limit Exceeded.'
     })
   } else {
-    res.status(422).json({
+    res.status(422).send({
       message: 'Input URL not Valid.'
     })
   }

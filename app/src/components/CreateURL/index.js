@@ -1,10 +1,17 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { addURL } from '../../services/api.helper';
+import { toast } from 'react-toast';
 
 export default function CreateURL() {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => addURL(data.longURL);
+  const success = () => toast.success('Message sent successfully!');
+  const failed = (message) => toast.error(message);
+  const onSubmit = (data) => {
+    addURL(data.longURL).then((resp) =>
+      resp.message === 'success' ? success() : failed(resp.message)
+    );
+  };
 
   return (
     <div className="rounded-t-xl overflow-hidden bg-gradient-to-r from-green-400 to-blue-800 px-6 py-8">

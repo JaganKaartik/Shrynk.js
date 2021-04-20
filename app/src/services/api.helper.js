@@ -34,10 +34,8 @@ export const getAllURLS = async () => {
       credentials: 'include',
       mode: 'cors',
     })
-    .then((resp) => {
-      return resp.data;
-    })
-    .catch((err) => err);
+    .then((resp) => resp.data)
+    .catch((err) => err.response.data);
 };
 
 export const addURL = async (longURL) => {
@@ -57,13 +55,11 @@ export const addURL = async (longURL) => {
       mode: 'cors',
       credentials: 'include',
     })
-    .then((resp) => {
-      console.log(resp.data);
-      return resp.data;
+    .then((response) => {
+      return response.data;
     })
     .catch((err) => {
-      console.log(err);
-      return err;
+      return err.response.data;
     });
 };
 
@@ -83,5 +79,5 @@ export const deleteURL = async (code) => {
       credentials: 'include',
     })
     .then((resp) => resp.data)
-    .catch((err) => err);
+    .catch((err) => err.response.data);
 };

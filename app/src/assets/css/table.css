@@ -63,6 +63,6 @@ blockquote {
   color: var(--table-text-color);
 }
 
-td > div {
+/* td > div {
   white-space: nowrap;
-}
+} */

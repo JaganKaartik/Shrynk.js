@@ -2,6 +2,7 @@ import React, { useReducer, useState, useContext, useEffect } from 'react';
 import { DataContext } from '../../context/DataContext';
 import { getAllURLS, deleteURL } from '../../services/api.helper';
 import CustomLoader from './Loader';
+import { toast } from 'react-toast';
 
 export default function Body() {
   const { data, setData } = useContext(DataContext);
@@ -20,6 +21,10 @@ export default function Body() {
   const handleDelete = (value) => {
     deleteURL(value);
     forceUpdate();
+    toast('Successfully Deleted Record.', {
+      backgroundColor: '#FFA500',
+      color: '#ffffff',
+    });
   };
 
   function addTableRow(result, index) {
@@ -55,6 +60,7 @@ export default function Body() {
     return (
       <tbody>
         {data.map((result, index) => {
+          console.log(data);
           return addTableRow(result, index + 1);
         })}
       </tbody>

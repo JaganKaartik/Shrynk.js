@@ -1,14 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
 import homeGif from '../../assets/images/homeRelaxed.gif';
 import { API_URL } from '../../config';
-import { login, getAuthToken } from '../../services/token';
+import { login } from '../../services/token';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 
 export default function Home() {
   const [authRedirect, setAuthRedirect] = useState(false);
-  // eslint-disable-next-line no-unused-vars
-  const { jwt, setJwt } = useContext(UserContext);
+  const { setJwt } = useContext(UserContext);
 
   const history = useHistory();
 
@@ -23,10 +22,6 @@ export default function Home() {
   }
 
   useEffect(() => {
-    // let tokenPresent = getAuthToken();
-    // if (tokenPresent) {
-    //   history.push('/dashboard');
-    // }
     let params = new URL(document.location).searchParams;
     let authToken = params.get('token');
     let userId = params.get('userid');
@@ -47,9 +42,6 @@ export default function Home() {
     <div className="flex-grow">
       <div className={'flex flex-col justify-center items-center'}>
         <h1 className={'title text-blue-500 text-6xl mt-10'}>Shrynk.js</h1>
-        {/* <p classNameName={"text-indigo-500 text-3xl mt-10"}>
-          *Note: App is still under development. This is a sample preview.
-        </p> */}
         <img
           className="responsive"
           src={homeGif}

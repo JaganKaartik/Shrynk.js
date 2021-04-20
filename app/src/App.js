@@ -5,7 +5,8 @@ import { getAuthToken } from './services/token';
 import { UserContext } from './context/UserContext';
 
 export default function App() {
-  const { jwt, setJwt } = useContext(UserContext);
+  const { setJwt } = useContext(UserContext);
+
   function handleTheme() {
     const currentTheme = localStorage.getItem('theme')
       ? localStorage.getItem('theme')
