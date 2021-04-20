@@ -15,11 +15,11 @@ export default function Router() {
         <div className="container-body">
           <Route path="/" exact component={Home} />
           <Route exact path="/dashboard">
-            {/* <AuthComponent> */}
-            <DataProvider>
-              <Dashboard />
-            </DataProvider>
-            {/* </AuthComponent> */}
+            <AuthComponent>
+              <DataProvider>
+                <Dashboard />
+              </DataProvider>
+            </AuthComponent>
           </Route>
           <Route exact path="/onboarding">
             <AuthComponent>
