@@ -1,12 +1,12 @@
 {
-  "name": "typescript-express-docker-boilerplate",
+  "name": "shrynk-server",
   "version": "1.0.0",
-  "description": "A typescript boilerplate for dockerized express app",
+  "description": "server for shrynk app",
   "main": "index.js",
-  "repository": "https://github.com/MyCloudle/Typescript-Express-Docker-Boilerplate",
+  "repository": "https://github.com/JaganKaartik/Shrynk.js",
   "author": "JaganKaartik <kaartikjagan@gmail.com>",
   "license": "MIT",
-  "private": false,
+  "private": true,
   "scripts": {
     "start:prod": "NODE_ENV=production APP_ENV=prod node dist/index",
     "start:test": "NODE_ENV=staging APP_ENV=test nodemon dist/index",
