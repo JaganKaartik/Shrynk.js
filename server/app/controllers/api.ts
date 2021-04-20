@@ -64,12 +64,12 @@ const redirectToURL = async (req, res) => {
         res.redirect(data.longURL)
       })
       .catch((err) => {
-        res.status(404).json({
+        res.status(404).send({
           message: 'Record does not Exist'
         })
       })
   } else {
-    res.status(422).json({
+    res.status(422).send({
       message: 'Invalid Parameters'
     })
   }
