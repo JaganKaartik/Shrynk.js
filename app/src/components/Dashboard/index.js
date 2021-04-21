@@ -17,32 +17,32 @@ export default function Dashboard() {
     async function fetchURLS() {
       const result = await getAllURLS();
       if (result.success) {
+        console.log(result.succes);
         setData(result.data);
         setdataPresent(true);
-        setLoading(true);
       }
+      console.log(result.data);
+      setLoading(true);
     }
     fetchURLS();
-  }, []);
+  }, [setData]);
+
+  function showTable() {
+    return dataPresent ? (
+      <table className="responsive-table striped highlight">
+        <Header />
+        <Body />
+      </table>
+    ) : (
+      <DefaultDash />
+    );
+  }
 
   return (
     <div className="container">
       <ToastContainer position="top-center" delay={2000} />
       <CreateURL />
-      {dataPresent ? (
-        loaded ? (
-          <table className="responsive-table striped highlight">
-            <Header />
-            <Body />
-          </table>
-        ) : (
-          <CustomLoader />
-        )
-      ) : (
-        <div>
-          <DefaultDash />
-        </div>
-      )}
+      {loaded ? showTable() : <CustomLoader />}
     </div>
   );
 }

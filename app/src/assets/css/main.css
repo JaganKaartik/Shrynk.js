@@ -35,3 +35,8 @@
   margin: 0%;
   width: 100%;
 }
+
+.dash-container {
+  flex: 1;
+  display: flex;
+}
