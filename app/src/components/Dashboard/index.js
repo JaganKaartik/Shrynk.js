@@ -17,11 +17,9 @@ export default function Dashboard() {
     async function fetchURLS() {
       const result = await getAllURLS();
       if (result.success) {
-        console.log(result.succes);
         setData(result.data);
         setdataPresent(true);
       }
-      console.log(result.data);
       setLoading(true);
     }
     fetchURLS();
@@ -29,7 +27,7 @@ export default function Dashboard() {
 
   function showTable() {
     return dataPresent ? (
-      <table className="responsive-table striped highlight">
+      <table className="w-full">
         <Header />
         <Body />
       </table>
@@ -39,10 +37,16 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="container">
+    <div className="w-full">
       <ToastContainer position="top-center" delay={2000} />
       <CreateURL />
-      {loaded ? showTable() : <CustomLoader />}
+      {loaded ? (
+        showTable()
+      ) : (
+        <div className="flex justify-center">
+          <CustomLoader />
+        </div>
+      )}
     </div>
   );
 }

@@ -1,9 +1,11 @@
 /* eslint-disable operator-linebreak */
+import e from 'express'
 import { IResult } from '../interface'
 import { QuotaUpdateSub } from '../services/quota'
 
 const Joi = require('joi')
 const URLS = require('../models/Url')
+const User = require('../models/user')
 const { generateID, validID, urlCheck } = require('../services/URLServices')
 const { QuotaCheck } = require('../services/quota')
 const { CLIENT_URL_DEV, CLIENT_URL_PROD } = require('../config/default.config')
@@ -75,9 +77,26 @@ const redirectToURL = async (req, res) => {
   }
 }
 
+const userProfile = async (req, res) => {
+  if (req.params.userId) {
+    await User.findOne({ userId: req.params.userId }).then((resp) => {
+      if (resp.length !== 0) {
+        res.send(resp.name)
+      } else {
+        res.status(422).send({
+          message: 'User not found'
+        })
+      }
+    })
+  } else {
+    res.status(422).send({
+      message: 'Invalid Parameters'
+    })
+  }
+}
 /* Test Route */
 const BaseController = (req, res) => {
   res.send('Welcome to Root of Server Side of Shrynk.js')
 }
 
-export { shortenURL, redirectToURL, BaseController }
+export { shortenURL, redirectToURL, BaseController, userProfile }

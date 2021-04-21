@@ -43,15 +43,15 @@ export default function Home() {
       <div className={'flex flex-col justify-center items-center'}>
         <h1 className={'title text-blue-500 text-6xl mt-10'}>Shrynk.js</h1>
         <img
-          className="responsive"
+          className="h-auto w-full object-cover md:flex-shrink-0 shadow-2xl"
           src={homeGif}
           alt="loading..."
           style={{ maxWidth: '500px', margin: '50px auto 0' }}
         />
       </div>
       <br />
-      <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
-        <div className="md:flex">
+      <div className="max-w-md mx-auto bg-white rounded-xl shadow-2xl overflow-hidden md:max-w-2xl">
+        <div className="sm:flex">
           <div className="p-8">
             <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
               Why use Shrynk ?
@@ -73,7 +73,7 @@ export default function Home() {
         </div>
       </div>
       <br />
-      <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+      <div className="max-w-md mx-auto bg-white rounded-xl shadow-2xl overflow-hidden md:max-w-2xl">
         <div className="md:flex">
           <div className="p-8">
             <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">

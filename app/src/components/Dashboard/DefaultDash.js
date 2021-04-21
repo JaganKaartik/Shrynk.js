@@ -3,7 +3,7 @@ import React from 'react';
 export default function DefaultDash() {
   return (
     <div className="flex-grow flex-col rounded-t-xl overflow-hidden bg-gradient-to-r from-indigo-50 to-indigo-100 px-6 py-8">
-      <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+      <div class="mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
         <div class="md:flex">
           <div class="p-8">
             <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
@@ -22,7 +22,3 @@ export default function DefaultDash() {
     </div>
   );
 }
-
-// {
-//   /* <div className="overflow-hidden rounded-b-xl bg-indigo-400"></div> */
-// }
