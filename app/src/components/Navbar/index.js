@@ -7,7 +7,9 @@ import { logout } from '../../helpers/token.helper';
 
 const displayNav = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { jwt, setJwt } = useContext(UserContext);
+  const { auth, profile } = useContext(UserContext);
+  const { jwt, setJwt } = auth;
+  const { user } = profile;
 
   const logoutHandler = () => {
     setJwt('');
@@ -44,11 +46,11 @@ const displayNav = () => {
           </NavLink>
         </div>
       </li>
-      {/* <li>
-          <div className="lg:p-1.5 py-0.5 px-0 block border-b-2 border-transparent lg:mb-0 mb-2">
-            <ProfileImage />
-          </div>
-        </li> */}
+      <li>
+        <div className="lg:p-1.5 py-0.5 px-0 block border-b-2 border-transparent lg:mb-0 mb-2">
+          <h1>Hi,{user}</h1>
+        </div>
+      </li>
       <li>
         <div className="lg:p-1.5 py-0.5 px-0 block border-b-2 border-transparent lg:mb-0 mb-2">
           <Toggler />

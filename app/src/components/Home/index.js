@@ -2,17 +2,19 @@ import React, { useEffect, useState, useContext } from 'react';
 import homeGif from '../../assets/images/homeRelaxed.gif';
 import { API_URL } from '../../config';
 import { login } from '../../helpers/token.helper';
+import { getUserInfo } from '../../helpers/api.helper';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 
 export default function Home() {
   const [authRedirect, setAuthRedirect] = useState(false);
-  const { setJwt } = useContext(UserContext);
+  const { auth, profile } = useContext(UserContext);
+  const { setJwt } = auth;
+  const { setUser } = profile;
 
   const history = useHistory();
 
   function onClickHandler(provider) {
-    console.log(provider);
     window.open(`${API_URL}auth/${provider}`, '_self');
     setAuthRedirect(!authRedirect);
   }
@@ -29,7 +31,8 @@ export default function Home() {
     if (authToken && userId) {
       login(authToken, userId);
       setJWTContext(authToken);
-      console.log(onboardingStatus);
+      const name = getUserInfo().then((resp) => resp);
+      setUser(name);
       if (onboardingStatus === 'true') {
         history.push('/onboarding');
       } else {

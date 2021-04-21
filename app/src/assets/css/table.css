@@ -33,10 +33,6 @@
 }
 /* Styles for normal mode (all are optional, presentational styles) */
 @media (min-width: 1030px) {
-  table {
-    border-collapse: separate;
-    border-spacing: 0 1em;
-  }
   th {
     white-space: nowrap;
     font-weight: 600;

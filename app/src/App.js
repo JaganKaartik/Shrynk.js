@@ -5,7 +5,8 @@ import { getAuthToken } from './helpers/token.helper';
 import { UserContext } from './context/UserContext';
 
 export default function App() {
-  const { setJwt } = useContext(UserContext);
+  const { auth } = useContext(UserContext);
+  const { setJwt } = auth;
 
   function handleTheme() {
     const currentTheme = localStorage.getItem('theme')
