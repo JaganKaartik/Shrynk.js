@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 const passport = require('passport')
 const TwitterStrategy = require('passport-twitter')
 const GoogleStrategy = require('passport-google-oauth2')
-const User = require('../models/User')
+const User = require('../models/user')
 const {
   TWITTER_CONSUMER_KEY,
   TWITTER_CONSUMER_SECRET,

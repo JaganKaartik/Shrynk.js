@@ -1,7 +1,6 @@
 import express from 'express'
 import SessionCheck from '../middleware/SessionCheck'
-
-const { getAnalyticsData } = require('../controllers/analytics.ts')
+import getAnalyticsData from '../controllers/analytics'
 
 const analyticsRouter = express.Router()
 

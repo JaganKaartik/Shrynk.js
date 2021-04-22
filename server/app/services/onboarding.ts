@@ -1,4 +1,4 @@
-const User = require('../models/User')
+const User = require('../models/user')
 
 /* Function that sets onboaring value to false in User Model */
 const disableOnboarding = async (id) => {
