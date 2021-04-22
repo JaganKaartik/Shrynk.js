@@ -1,5 +1,4 @@
 /* eslint-disable operator-linebreak */
-import e from 'express'
 import { IResult } from '../interface'
 import { QuotaUpdateSub } from '../services/quota'
 
@@ -60,10 +59,17 @@ const redirectToURL = async (req, res) => {
     .length(10)
     .required()
   const result = schema.validate(req.params.code)
+  const currentDate = new Date()
   if (typeof result.error === 'undefined') {
     await URLS.findOne({ urlCode: req.params.code })
       .then((data: IResult) => {
-        res.redirect(data.longURL)
+        if (data.expiry >= currentDate) {
+          res.redirect(data.longURL)
+        } else {
+          res.satus(422).send({
+            message: 'URL has expired'
+          })
+        }
       })
       .catch((err) => {
         res.status(404).send({
@@ -78,9 +84,10 @@ const redirectToURL = async (req, res) => {
 }
 
 const userProfile = async (req, res) => {
-  if (req.params.userId) {
-    await User.findOne({ userId: req.params.userId }).then((resp) => {
+  if (req.params.userid) {
+    await User.findOne({ userId: req.params.userid }).then((resp) => {
       if (resp.length !== 0) {
+        console.log(resp)
         res.send(resp.name)
       } else {
         res.status(422).send({

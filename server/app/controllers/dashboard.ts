@@ -1,7 +1,7 @@
 import { QuotaUpdateAdd } from '../services/quota'
 
 const URLS = require('../models/Url')
-const User = require('../models/User')
+const User = require('../models/user')
 const Account = require('../models/Account')
 const disableOnboarding = require('../services/onboarding')
 
