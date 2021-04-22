@@ -19,8 +19,11 @@ export default function Dashboard() {
     console.log('STATE IS UPDATED');
     async function fetchURLS() {
       const result = await getAllURLS();
+      console.log(result);
+      console.log('Fetch Triggered');
       if (result.success) {
         console.log(result.data.length);
+        console.log('Data Present');
         setData(result.data);
         setdataPresent(true);
       }
