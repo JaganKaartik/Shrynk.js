@@ -3,6 +3,7 @@ import { QuotaUpdateAdd } from '../services/quota'
 const URLS = require('../models/Url')
 const User = require('../models/user')
 const Account = require('../models/Account')
+const Analytics = require('../models/Analytics')
 const disableOnboarding = require('../services/onboarding')
 
 const getAllURLS = async (req, res) => {
@@ -25,21 +26,27 @@ const getAllURLS = async (req, res) => {
 
 const deleteURL = async (req, res) => {
   // Delete URL and Increment Quota
-  await URLS.findOneAndRemove({ urlCode: req.params.code })
+  const deletionResp = await URLS.findOneAndRemove({ urlCode: req.params.code })
     .then((data: JSON) => {
       if (data) {
         // Increment Quota of user
         QuotaUpdateAdd(req.body.userId)
-        res.send({ success: true })
-      } else {
-        res.send({ success: false })
+        return true
       }
+      return false
     })
     .catch((err) => {
       res.status(404).send({
         message: 'Record does not Exist'
       })
     })
+  if (deletionResp) {
+    // Remove associated Analytics Information
+    await Analytics.findAndRemove({ urlCode: req.params.code })
+    res.send({ success: true })
+  } else {
+    res.send({ success: false })
+  }
 }
 
 const userOnboarding = async (req, res) => {
