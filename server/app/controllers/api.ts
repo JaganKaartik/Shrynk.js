@@ -3,8 +3,10 @@ import { IResult } from '../interface'
 import { QuotaUpdateSub } from '../services/quota'
 
 const Joi = require('joi')
+const moment = require('moment')
 const URLS = require('../models/Url')
 const User = require('../models/user')
+const Analytics = require('../models/Analytics')
 const { generateID, validID, urlCheck } = require('../services/URLServices')
 const { QuotaCheck } = require('../services/quota')
 const { CLIENT_URL_DEV, CLIENT_URL_PROD } = require('../config/default.config')
@@ -21,7 +23,7 @@ const shortenURL = async (req, res) => {
     longURL: req.body.longURL
   }).then((resp) => resp.length === 0)
   if (urlCheckResp && QuotaLimit && urlExists) {
-    await URLS.create({
+    const urlCreated = await URLS.create({
       userId: req.body.userId,
       urlCode: checkedId,
       longURL: req.body.longURL,
@@ -30,14 +32,22 @@ const shortenURL = async (req, res) => {
       .then((resp: JSON) => {
         if (resp) {
           QuotaUpdateSub(req.body.userId)
-          res.send({ message: 'success' })
-        } else {
-          res.send({ message: 'failed' })
+          return true
         }
+        return false
       })
       .catch((err) => {
         res.send(err)
       })
+    if (urlCreated) {
+      await Analytics.create({
+        userId: req.body.userId,
+        urls: [{ urlCode: checkedId }]
+      })
+      res.send({ message: 'success' })
+    } else {
+      res.send({ message: 'failed' })
+    }
   } else if (!urlExists) {
     res.status(422).send({
       message: 'Error! URL Already Shrynked.'
