@@ -1,22 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
 import { NavLink } from 'react-router-dom';
 import Toggler from '../Commons/Toggler';
 import Logo from '../../assets/images/logo.svg';
-import { logout } from '../../helpers/token.helper';
+import { getAuthToken, logout } from '../../helpers/token.helper';
 
 const displayNav = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { auth, profile } = useContext(UserContext);
-  const { jwt, setJwt } = auth;
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { authState, setAuthState } = auth;
   const { user } = profile;
 
   const logoutHandler = () => {
-    setJwt('');
+    // setJwt('');
+    setAuthState(!authState);
     logout();
   };
 
-  if (jwt === '' || !jwt) {
+  const token = getAuthToken();
+
+  if (!token) {
     return (
       <ul className="nav-text lg:flex items-center justify-between text-base  pt-4 lg:pt-0">
         <li>
@@ -48,7 +52,7 @@ const displayNav = () => {
       </li>
       <li>
         <div className="lg:p-1.5 py-0.5 px-0 block border-b-2 border-transparent lg:mb-0 mb-2">
-          <h1>Hi,{user}</h1>
+          <h1>Hi,{user.name}</h1>
         </div>
       </li>
       <li>

@@ -3,11 +3,12 @@ import React, { createContext, useState } from 'react';
 const UserContext = createContext([[], () => {}]);
 
 const UserProvider = (props) => {
-  const [jwt, setJwt] = useState('');
+  // const [jwt, setJwt] = useState('');
+  const [authState, setAuthState] = useState(false);
   const [user, setUser] = useState('');
   return (
     <UserContext.Provider
-      value={{ auth: { jwt, setJwt }, profile: { user, setUser } }}
+      value={{ auth: { authState, setAuthState }, profile: { user, setUser } }}
     >
       {props.children}
     </UserContext.Provider>

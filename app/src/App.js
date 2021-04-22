@@ -6,7 +6,7 @@ import { UserContext } from './context/UserContext';
 
 export default function App() {
   const { auth } = useContext(UserContext);
-  const { setJwt } = auth;
+  const { authState, setAuthState } = auth;
 
   function handleTheme() {
     const currentTheme = localStorage.getItem('theme')
@@ -27,7 +27,7 @@ export default function App() {
     handleTheme();
     const token = getAuthToken();
     if (token) {
-      setJwt(token);
+      setAuthState(!authState);
     }
   });
 

@@ -7,21 +7,21 @@ import { useHistory } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 
 export default function Home() {
-  const [authRedirect, setAuthRedirect] = useState(false);
+  // const [authRedirect, setAuthRedirect] = useState(false);
   const { auth, profile } = useContext(UserContext);
-  const { setJwt } = auth;
+  const { authState, setAuthState } = auth;
   const { setUser } = profile;
 
   const history = useHistory();
 
   function onClickHandler(provider) {
     window.open(`${API_URL}auth/${provider}`, '_self');
-    setAuthRedirect(!authRedirect);
+    // setAuthRedirect(!authRedirect);
   }
 
-  function setJWTContext(value) {
-    setJwt(value);
-  }
+  // function setJWTContext(value) {
+  //   setAuthState(value);
+  // }
 
   useEffect(() => {
     let params = new URL(document.location).searchParams;
@@ -30,7 +30,7 @@ export default function Home() {
     let onboardingStatus = params.get('onboarding');
     if (authToken && userId) {
       login(authToken, userId);
-      setJWTContext(authToken);
+      setAuthState(!authState);
       const name = getUserInfo().then((resp) => resp);
       setUser(name);
       if (onboardingStatus === 'true') {
