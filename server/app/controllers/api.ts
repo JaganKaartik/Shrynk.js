@@ -20,7 +20,7 @@ const shortenURL = async (req, res) => {
   const checkedId = await validID(id)
   const QuotaLimit = await QuotaCheck(req.body.userId)
   const urlCheckResp = await urlCheck(req.body.longURL)
-  const urlExists = await URLS.findOne({
+  const urlExists = await URLS.find({
     longURL: req.body.longURL,
     userId: req.body.userId
   }).then((resp) => resp.length === 0)
