@@ -29,7 +29,7 @@ export default function App() {
     if (token) {
       setAuthState(!authState);
     }
-  });
+  }, []);
 
   return (
     <div className="flex flex-col h-screen">

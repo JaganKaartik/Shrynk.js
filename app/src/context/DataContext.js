@@ -4,8 +4,14 @@ const DataContext = createContext([[], () => {}]);
 
 const DataProvider = (props) => {
   const [data, setData] = useState('');
+  const [update, didUpdate] = useState(false);
   return (
-    <DataContext.Provider value={{ data, setData }}>
+    <DataContext.Provider
+      value={{
+        dataFetched: { data, setData },
+        dataUpdated: { update, didUpdate },
+      }}
+    >
       {props.children}
     </DataContext.Provider>
   );

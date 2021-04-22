@@ -86,7 +86,7 @@ export const getUserInfo = async () => {
   const authToken = localStorage.getItem('shrynk-jwt');
   const userId = localStorage.getItem('shrynk-usr-id');
   return await axios
-    .request(API_URL + `/user/${userId}`, {
+    .request(API_URL + `user/${userId}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${authToken}`,
@@ -94,6 +94,6 @@ export const getUserInfo = async () => {
       mode: 'cors',
       credentials: 'include',
     })
-    .then((resp) => resp.data[0])
+    .then((resp) => resp.data)
     .catch((err) => err.response.data);
 };

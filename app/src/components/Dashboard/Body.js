@@ -4,16 +4,18 @@ import { deleteURL } from '../../helpers/api.helper';
 import { toast } from 'react-toast';
 
 export default function Body() {
-  const { data } = useContext(DataContext);
-  const [_, forceUpdate] = useReducer((x) => x + 1, 0);
+  const { dataFetched, dataUpdated } = useContext(DataContext);
+  const { data } = dataFetched;
+  const { update, didUpdate } = dataUpdated;
+  // const [_, forceUpdate] = useReducer((x) => x + 1, 0);
 
   const handleDelete = (value) => {
     deleteURL(value);
-    forceUpdate();
     toast('Successfully Deleted Record.', {
       backgroundColor: '#FFA500',
       color: '#ffffff',
     });
+    didUpdate(!update);
   };
 
   function addTableRow(result, index) {

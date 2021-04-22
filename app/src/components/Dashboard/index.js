@@ -9,7 +9,8 @@ import CustomLoader from './Loader';
 import DefaultDash from './DefaultDash';
 
 export default function Dashboard() {
-  const { setData } = useContext(DataContext);
+  const { dataFetched } = useContext(DataContext);
+  const { setData } = dataFetched;
   const [loaded, setLoading] = useState(false);
   const [dataPresent, setdataPresent] = useState(false);
 

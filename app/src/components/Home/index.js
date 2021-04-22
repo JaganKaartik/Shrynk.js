@@ -19,9 +19,10 @@ export default function Home() {
     // setAuthRedirect(!authRedirect);
   }
 
-  // function setJWTContext(value) {
-  //   setAuthState(value);
-  // }
+  const userInfo = async () => {
+    let userObj = await getUserInfo();
+    setUser(userObj);
+  };
 
   useEffect(() => {
     let params = new URL(document.location).searchParams;
@@ -31,15 +32,14 @@ export default function Home() {
     if (authToken && userId) {
       login(authToken, userId);
       setAuthState(!authState);
-      const name = getUserInfo().then((resp) => resp);
-      setUser(name);
+      userInfo();
       if (onboardingStatus === 'true') {
         history.push('/onboarding');
       } else {
         history.push('/dashboard');
       }
     }
-  });
+  }, []);
 
   return (
     <div className="flex-grow">
