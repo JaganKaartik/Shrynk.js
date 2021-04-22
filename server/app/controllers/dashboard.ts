@@ -42,7 +42,7 @@ const deleteURL = async (req, res) => {
     })
   if (deletionResp) {
     // Remove associated Analytics Information
-    await Analytics.findAndRemove({ urlCode: req.params.code })
+    await Analytics.deleteMany({ urlCode: req.params.code })
     res.send({ success: true })
   } else {
     res.send({ success: false })

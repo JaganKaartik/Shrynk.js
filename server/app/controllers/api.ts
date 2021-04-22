@@ -91,7 +91,7 @@ const redirectToURL = async (req, res) => {
           message: 'Record does not Exist'
         })
       })
-    if (RedirectStatus.info) {
+    if (RedirectStatus.info === true) {
       const Today = moment().format('MM/DD/YYYY')
 
       const userId = await URLS.findOne({
