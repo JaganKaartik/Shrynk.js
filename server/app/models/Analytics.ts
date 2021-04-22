@@ -4,17 +4,9 @@ const { Schema } = mongoose
 
 const analyticSchema = new Schema({
   userId: String,
-  urls: [
-    {
-      urlCode: String,
-      historicalData: [
-        {
-          day: String,
-          vists: Number
-        }
-      ]
-    }
-  ]
+  urlCode: String,
+  date: String,
+  visits: { type: Number, default: 0 }
 })
 
 export = mongoose.model('analytics', analyticSchema)

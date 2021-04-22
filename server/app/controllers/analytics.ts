@@ -2,7 +2,7 @@ const Analytics = require('../models/Analytics')
 
 const getAnalyticsData = async (req, res) => {
   if (req.params.userid) {
-    const result = await Analytics.findOne({ userId: req.params.userid })
+    const result = await Analytics.find({ userId: req.params.userid })
     if (result.length !== 0) {
       res.send(result)
     } else {

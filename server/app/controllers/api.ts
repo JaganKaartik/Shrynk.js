@@ -1,3 +1,4 @@
+/* tslint:disable */
 /* eslint-disable operator-linebreak */
 import { IResult } from '../interface'
 import { QuotaUpdateSub } from '../services/quota'
@@ -42,7 +43,8 @@ const shortenURL = async (req, res) => {
     if (urlCreated) {
       await Analytics.create({
         userId: req.body.userId,
-        urls: [{ urlCode: checkedId }]
+        urlCode: checkedId,
+        date: moment().format('MM/DD/YYYY')
       })
       res.send({ message: 'success' })
     } else {
@@ -71,14 +73,16 @@ const redirectToURL = async (req, res) => {
   const result = schema.validate(req.params.code)
   const currentDate = new Date()
   if (typeof result.error === 'undefined') {
-    await URLS.findOne({ urlCode: req.params.code })
+    const RedirectStatus = await URLS.findOne({ urlCode: req.params.code })
       .then((data: IResult) => {
         if (data.expiry >= currentDate) {
-          res.redirect(data.longURL)
-        } else {
-          res.satus(422).send({
-            message: 'URL has expired'
-          })
+          return {
+            info: true,
+            data
+          }
+        }
+        return {
+          info: false
         }
       })
       .catch((err) => {
@@ -86,6 +90,29 @@ const redirectToURL = async (req, res) => {
           message: 'Record does not Exist'
         })
       })
+    if (RedirectStatus.info) {
+      const Today = moment().format('MM/DD/YYYY')
+
+      const userId = await URLS.findOne({
+        urlCode: req.params.code
+      }).then((resp) => resp.userId)
+
+      await Analytics.findOneAndUpdate(
+        {
+          userId,
+          urlCode: req.params.code,
+          date: Today
+        },
+        {
+          $inc: { visits: 1 }
+        }
+      )
+      res.redirect(RedirectStatus.data.longURL)
+    } else {
+      res.status(422).send({
+        message: 'URL has expired'
+      })
+    }
   } else {
     res.status(422).send({
       message: 'Invalid Parameters'
