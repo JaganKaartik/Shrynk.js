@@ -9,22 +9,25 @@ import CustomLoader from './Loader';
 import DefaultDash from './DefaultDash';
 
 export default function Dashboard() {
-  const { dataFetched } = useContext(DataContext);
+  const { dataFetched, dataUpdated } = useContext(DataContext);
   const { setData } = dataFetched;
+  const { update } = dataUpdated;
   const [loaded, setLoading] = useState(false);
   const [dataPresent, setdataPresent] = useState(false);
 
   useEffect(() => {
+    console.log('STATE IS UPDATED');
     async function fetchURLS() {
       const result = await getAllURLS();
       if (result.success) {
+        console.log(result.data.length);
         setData(result.data);
         setdataPresent(true);
       }
       setLoading(true);
     }
     fetchURLS();
-  }, [setData]);
+  }, [setData, update]);
 
   function showTable() {
     return dataPresent ? (

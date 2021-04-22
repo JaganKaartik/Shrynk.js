@@ -6,6 +6,7 @@ const UserProvider = (props) => {
   // const [jwt, setJwt] = useState('');
   const [authState, setAuthState] = useState(false);
   const [user, setUser] = useState('');
+
   return (
     <UserContext.Provider
       value={{ auth: { authState, setAuthState }, profile: { user, setUser } }}

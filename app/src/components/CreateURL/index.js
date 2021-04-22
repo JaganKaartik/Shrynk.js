@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { addURL } from '../../helpers/api.helper';
 import { toast } from 'react-toast';
+import { DataContext } from '../../context/DataContext';
 
 export default function CreateURL() {
+  const { dataUpdated } = useContext(DataContext);
+  const { update, didUpdate } = dataUpdated;
   const { register, handleSubmit } = useForm();
   const success = () => toast.success('Message sent successfully!');
   const failed = (message) => toast.error(message);
@@ -11,6 +14,7 @@ export default function CreateURL() {
     addURL(data.longURL).then((resp) =>
       resp.message === 'success' ? success() : failed(resp.message)
     );
+    didUpdate(!update);
   };
 
   return (

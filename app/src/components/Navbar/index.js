@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
 import { NavLink } from 'react-router-dom';
 import Toggler from '../Commons/Toggler';
@@ -13,7 +13,6 @@ const displayNav = () => {
   const { user } = profile;
 
   const logoutHandler = () => {
-    // setJwt('');
     setAuthState(!authState);
     logout();
   };

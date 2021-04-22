@@ -1,4 +1,4 @@
-import React, { useReducer, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { DataContext } from '../../context/DataContext';
 import { deleteURL } from '../../helpers/api.helper';
 import { toast } from 'react-toast';
@@ -11,11 +11,11 @@ export default function Body() {
 
   const handleDelete = (value) => {
     deleteURL(value);
+    didUpdate(!update);
     toast('Successfully Deleted Record.', {
       backgroundColor: '#FFA500',
       color: '#ffffff',
     });
-    didUpdate(!update);
   };
 
   function addTableRow(result, index) {
