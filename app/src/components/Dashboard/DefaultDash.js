@@ -18,7 +18,7 @@ export default function DefaultDash() {
             <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
               Welcome to Shrynk
             </div>
-            <p class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">
+            <p class="def-dash-card block mt-1 text-lg leading-tight font-medium text-black hover:underline">
               Start shrynking your long urls to view your dashboard.
             </p>
           </div>

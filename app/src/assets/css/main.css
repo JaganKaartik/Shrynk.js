@@ -40,3 +40,7 @@
   flex: 1;
   display: flex;
 }
+
+.def-dash-card {
+  font-family: 'Open Sans', sans-serif;
+}

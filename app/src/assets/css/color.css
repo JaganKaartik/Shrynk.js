@@ -1,5 +1,5 @@
 :root {
-  --bg-color: rgb(217, 221, 228);
+  --bg-color: #e9f2fa;
   --nav-color: #172a3b;
   --home-container-card: #fafafa;
   --footer-color: #fafafa;
@@ -16,10 +16,11 @@
 }
 
 [data-theme='dark'] {
-  --bg-color: #010a11ee;
-  --nav-color: #0f1318;
+  /* --bg-color: #031829; */
+  --bg-color: #020d1d;
+  --nav-color: #080b0e;
   --home-container-card: #0b1c2c;
-  --footer-color: #4b7297;
+  --footer-color: #518bc2;
   --footer-bg: #0f1318;
   --stripped-odd: #102a43;
   --stripped-even: #243b53;
