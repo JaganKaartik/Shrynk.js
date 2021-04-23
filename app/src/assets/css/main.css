@@ -44,3 +44,16 @@
 .def-dash-card {
   font-family: 'Open Sans', sans-serif;
 }
+
+.custom-card {
+  background-color: var(--home-card-bg);
+}
+
+.custom-card-text {
+  color: var(--home-card-text);
+}
+
+a.custom-card-text {
+  color: rgb(21, 123, 163);
+  font-weight: 700;
+}

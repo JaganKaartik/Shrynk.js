@@ -57,7 +57,6 @@ const userOnboarding = async (req, res) => {
   // If Onboarding status is true
   if (onboardingStatus) {
     // Update Oboarding Status (set value to false)
-    console.log(req.body.userId)
     await disableOnboarding(req.body.userId)
     // Add Quota Information
     await Account.create({

@@ -68,29 +68,29 @@ passport.use(
       passReqToCallback: true
     },
     async (request, accessToken, refreshToken, profile, done) => {
-      User.findOne({
+      const currentUser = await User.findOne({
         otherInfo: profile._json.email
       })
-        .then((currentUser) => {
-          if (!currentUser) {
-            const uid = uuidv4()
-            const newUser = new User({
-              userId: uid,
-              provider: profile.provider,
-              name: profile._json.name,
-              profileImageUrl: profile._json.picture,
-              otherInfo: profile._json.email,
-              onboarding: true
-            })
-            newUser.save()
-            done(null, newUser)
-          } else {
-            done(null, currentUser)
-          }
-        })
+        .then((resp) => resp)
         .catch((err) => {
           console.error(err)
         })
+
+      if (!currentUser) {
+        const uid = uuidv4()
+        const newUser = new User({
+          userId: uid,
+          provider: profile.provider,
+          name: profile._json.name,
+          profileImageUrl: profile._json.picture,
+          otherInfo: profile._json.email,
+          onboarding: true
+        })
+        newUser.save()
+        done(null, newUser)
+      } else {
+        done(null, currentUser)
+      }
     }
   )
 )

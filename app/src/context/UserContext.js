@@ -3,7 +3,6 @@ import React, { createContext, useState } from 'react';
 const UserContext = createContext([[], () => {}]);
 
 const UserProvider = (props) => {
-  // const [jwt, setJwt] = useState('');
   const [authState, setAuthState] = useState(false);
   const [user, setUser] = useState('');
 
