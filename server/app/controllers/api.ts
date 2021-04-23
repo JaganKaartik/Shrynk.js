@@ -115,9 +115,8 @@ const redirectToURL = async (req, res) => {
 const userProfile = async (req, res) => {
   if (req.params.userid) {
     await User.findOne({ userId: req.params.userid }).then((resp) => {
-      if (resp.length !== 0) {
-        res.send(resp)
-      } else {
+      if (resp.length !== 0) res.send(resp)
+      else {
         res.status(422).send({
           message: 'User not found'
         })
