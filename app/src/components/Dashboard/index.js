@@ -5,6 +5,7 @@ import CreateURL from '../CreateURL';
 import { ToastContainer } from 'react-toast';
 import { DataContext } from '../../context/DataContext';
 import { getAllURLS } from '../../helpers/api.helper';
+import { themeToggleHandler } from '../../helpers/theme.helper';
 import CustomLoader from './Loader';
 import DefaultDash from './DefaultDash';
 
@@ -16,6 +17,7 @@ export default function Dashboard() {
   const [dataPresent, setdataPresent] = useState(false);
 
   useEffect(() => {
+    themeToggleHandler();
     async function fetchURLS() {
       const result = await getAllURLS();
       if (result.success) {

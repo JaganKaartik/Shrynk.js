@@ -15,6 +15,7 @@
   --table-border: rgba(255, 255, 255, 0);
   --home-card-bg: #fafafa;
   --home-card-text: rgba(107, 114, 128);
+  --home-card-bg-onboarding: #e9f2fa;
 }
 
 [data-theme='dark'] {
@@ -33,6 +34,7 @@
   --table-text-color: #f7f9fc;
   --menu-svg-color: #fafafa;
   --table-border: rgba(19, 18, 18, 0.349);
-  --home-card-bg: #152535;
+  --home-card-bg: #0c2035;
   --home-card-text: rgba(147, 197, 253);
+  --home-card-bg-onboarding: #020d1d;
 }
