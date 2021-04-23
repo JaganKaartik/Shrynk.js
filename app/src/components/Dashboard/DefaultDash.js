@@ -1,8 +1,17 @@
 import React from 'react';
+import table from '../../assets/images/table1.svg';
 
 export default function DefaultDash() {
   return (
-    <div className="flex-grow flex-col rounded-t-xl overflow-hidden bg-gradient-to-r from-indigo-50 to-indigo-100 px-6 py-8">
+    <div className="bg-gradient-to-b from-blue-400 to-blue-200 flex flex-1 h-100 flex-grow flex-col overflow-hidden px-6 py-8">
+      <div>
+        <img
+          className="h-auto w-full object-cover md:flex-shrink-0 "
+          src={table}
+          alt="loading..."
+          style={{ maxWidth: '450px', margin: '5px auto 0' }}
+        />
+      </div>
       <div class="mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
         <div class="md:flex">
           <div class="p-8">
@@ -12,10 +21,6 @@ export default function DefaultDash() {
             <p class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">
               Start shrynking your long urls to view your dashboard.
             </p>
-            {/* <p class="mt-2 text-gray-500">
-                Getting a new business off the ground is a lot of hard work.
-                Here are five ideas you can use to find your first customers.
-              </p> */}
           </div>
         </div>
       </div>

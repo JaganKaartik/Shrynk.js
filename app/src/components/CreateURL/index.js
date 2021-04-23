@@ -11,10 +11,10 @@ export default function CreateURL() {
   const success = () => toast.success('Message sent successfully!');
   const failed = (message) => toast.error(message);
   const onSubmit = (data) => {
-    addURL(data.longURL).then((resp) =>
-      resp.message === 'success' ? success() : failed(resp.message)
-    );
-    didUpdate(!update);
+    addURL(data.longURL).then((resp) => {
+      didUpdate(!update);
+      return resp.message === 'success' ? success() : failed(resp.message);
+    });
   };
 
   return (
