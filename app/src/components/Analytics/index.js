@@ -1,5 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { basicInfo } from './analytics.utils';
 
 export default function AnalyticsDashboard() {
-  return <div></div>;
+  useEffect(() => {}, []);
+  basicInfo();
+  return (
+    <div>
+      <div></div>
+    </div>
+  );
 }
