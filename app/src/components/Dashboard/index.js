@@ -29,10 +29,12 @@ export default function Dashboard() {
 
   function showTable() {
     return dataPresent ? (
-      <table className="w-full">
-        <Header />
-        <Body />
-      </table>
+      <div className="flex flex-1 flex-grow flex-col overflow-hidden px-2 py-5">
+        <table className="w-full">
+          <Header />
+          <Body />
+        </table>
+      </div>
     ) : (
       <DefaultDash />
     );
