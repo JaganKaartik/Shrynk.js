@@ -40,7 +40,7 @@
   th,
   td {
     padding: 7px 13px;
-    border: 1px solid #e8e8e8;
+    border: 1px solid var(--table-border);
   }
   th:not(.align-start),
   td:not(.align-start) {

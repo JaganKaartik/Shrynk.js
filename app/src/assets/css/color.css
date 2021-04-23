@@ -13,6 +13,7 @@
   --login-form-color: #58a0e2;
   --table-text-color: #4b7297;
   --menu-svg-color: rgba(17, 24, 39, 1);
+  --table-border: rgba(255, 255, 255, 0);
 }
 
 [data-theme='dark'] {
@@ -31,4 +32,5 @@
   --login-form-color: #3e84ca;
   --table-text-color: #f7f9fc;
   --menu-svg-color: #fafafa;
+  --table-border: rgba(19, 18, 18, 0.349);
 }
