@@ -18,7 +18,7 @@ export default function Body() {
 
   function addTableRow(result, index) {
     return (
-      <tr className="table-content">
+      <tr key={index} className="table-content">
         <td data-label="Sl.No" className="lg:shadow-lg">
           <div className="flex justify-center content-center">{index}</div>
         </td>

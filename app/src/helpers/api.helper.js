@@ -41,7 +41,6 @@ export const getAllURLS = async () => {
 export const addURL = async (longURL) => {
   const authToken = localStorage.getItem('shrynk-jwt');
   const userId = localStorage.getItem('shrynk-usr-id');
-  console.log(longURL, userId);
   return await axios
     .request(API_URL + `addurl`, {
       method: 'POST',

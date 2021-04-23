@@ -12,13 +12,13 @@ export default function DefaultDash() {
           style={{ maxWidth: '450px', margin: '5px auto 0' }}
         />
       </div>
-      <div class="custom-card mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl">
-        <div class="md:flex">
-          <div class="p-8">
-            <div class="uppercase tracking-wide text-sm text-blue-500 font-semibold">
+      <div className="custom-card mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+        <div className="md:flex">
+          <div className="p-8">
+            <div className="uppercase tracking-wide text-sm text-blue-500 font-semibold">
               Welcome to Shrynk
             </div>
-            <p class="def-dash-card block mt-1 text-lg leading-tight font-medium custom-card-text hover:underline">
+            <p className="def-dash-card block mt-1 text-lg leading-tight font-medium custom-card-text hover:underline">
               Start shrynking your long urls to view your dashboard.
             </p>
           </div>
