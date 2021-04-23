@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import homeGif from '../../assets/images/www.svg';
 import { API_URL } from '../../config';
 import { login } from '../../helpers/token.helper';
@@ -7,7 +7,6 @@ import { useHistory } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 
 export default function Home() {
-  // const [authRedirect, setAuthRedirect] = useState(false);
   const { auth, profile } = useContext(UserContext);
   const { authState, setAuthState } = auth;
   const { setUser } = profile;
@@ -16,7 +15,6 @@ export default function Home() {
 
   function onClickHandler(provider) {
     window.open(`${API_URL}auth/${provider}`, '_self');
-    // setAuthRedirect(!authRedirect);
   }
 
   const userInfo = async () => {
@@ -39,6 +37,7 @@ export default function Home() {
         history.push('/dashboard');
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -53,21 +52,24 @@ export default function Home() {
         />
       </div>
       <br />
-      <div className="max-w-md mx-auto bg-white rounded-xl shadow-2xl overflow-hidden md:max-w-2xl">
+      <div className="custom-card max-w-md mx-auto rounded-xl shadow-2xl overflow-hidden md:max-w-2xl">
         <div className="sm:flex">
           <div className="p-8">
-            <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+            <div className="uppercase tracking-wide text-sm text-blue-500  font-semibold">
               Why use Shrynk ?
             </div>
-            <p className="mt-2 text-gray-500">
+            <p className="mt-2 custom-card-text">
               Can’t remember a URL easily ? Can’t use the links where there are
               restrictions on text length. The best solution to overcome this
               issue is by shortening these URLs
             </p>
-            <p className="mt-2 text-gray-500">
-              This is a simple URL Shortening SPA. Originally created as a hobby
+            <p className="mt-2 custom-card-text">
+              This is a URL Shortening SPA. Originally created as a hobby
               project, this is the second iteration of{' '}
-              <a className="text-black" href="https://shrynk.herokuapp.com">
+              <a
+                className="custom-card-text"
+                href="https://shrynk.herokuapp.com"
+              >
                 Shrynk
               </a>
               . The below are the features implemented in this application.
@@ -76,33 +78,38 @@ export default function Home() {
         </div>
       </div>
       <br />
-      <div className="max-w-md mx-auto bg-white rounded-xl shadow-2xl overflow-hidden md:max-w-2xl">
+      <div className="custom-card  max-w-md mx-auto  rounded-xl shadow-2xl overflow-hidden md:max-w-2xl">
         <div className="md:flex">
           <div className="p-8">
-            <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+            <div className="uppercase tracking-wide text-sm text-blue-500 font-semibold">
               Features
             </div>
 
             <div>
-              <ul className="p-1">
+              <ul className="p-1 custom-card-text">
                 <li>
-                  <p className="block mt-1 text-lg leading-tight font-mono text-black">
+                  <p className="block mt-1 text-lg leading-tight  ">
                     Tiers and Quotas on URLs
                   </p>
                 </li>
                 <li>
-                  <p className="block mt-1 text-lg leading-tight font-mono text-black">
-                    Onboarding
+                  <p className="block mt-1 text-lg leading-tight ">
+                    User Onboarding
                   </p>
                 </li>
                 <li>
-                  <p className="block mt-1 text-lg leading-tight font-mono text-black">
+                  <p className="block mt-1 text-lg leading-tight ">
                     OAuth Authentication
                   </p>
                 </li>
                 <li>
-                  <p className="block mt-1 text-lg leading-tight font-mono text-black">
+                  <p className="block mt-1 text-lg leading-tight ">
                     Dashboard to CRUD generated URLs
+                  </p>
+                </li>
+                <li>
+                  <p className="block mt-1 text-lg leading-tight ">
+                    Analytics Dashboard for URLs
                   </p>
                 </li>
               </ul>

@@ -13,7 +13,9 @@ export default function Router() {
       <Navbar />
       <Switch>
         <div className="container-body">
-          <Route path="/" exact component={Home} />
+          <Route exact path="/">
+            <Home />
+          </Route>
           <Route exact path="/dashboard">
             <AuthComponent>
               <DataProvider>

@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react';
-// import { UserContext } from '../../context/UserContext';
 import { useHistory } from 'react-router-dom';
 import { getAuthToken } from '../../helpers/token.helper';
 
 export default function AuthComponent(props) {
-  // const { auth } = useContext(UserContext);
-  // const { jwt } = auth;
   const history = useHistory();
 
   useEffect(() => {
@@ -13,6 +10,7 @@ export default function AuthComponent(props) {
     if (!token) {
       history.push('/');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <div>{props.children}</div>;
