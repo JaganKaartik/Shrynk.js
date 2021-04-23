@@ -21,6 +21,8 @@ export default function Dashboard() {
       if (result.success) {
         setData(result.data);
         setdataPresent(true);
+      } else {
+        setdataPresent(false);
       }
       setLoading(true);
     }
