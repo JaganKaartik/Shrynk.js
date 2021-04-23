@@ -7,7 +7,6 @@ const Joi = require('joi')
 const moment = require('moment')
 const URLS = require('../models/Url')
 const User = require('../models/user')
-const Analytics = require('../models/Analytics')
 const { generateID, validID, urlCheck } = require('../services/URLServices')
 const { QuotaCheck } = require('../services/quota')
 const { CLIENT_URL_DEV, CLIENT_URL_PROD } = require('../config/default.config')
@@ -27,6 +26,9 @@ const shortenURL = async (req, res) => {
     longURL: req.body.longURL,
     userId: req.body.userId
   }).then((resp) => resp.length === 0)
+
+  console.log(`DOES this URL EXIST with current user ${urlExists}`)
+
   if (urlCheckResp && QuotaLimit && urlExists) {
     const urlCreated = await URLS.create({
       userId: req.body.userId,

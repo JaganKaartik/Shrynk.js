@@ -68,6 +68,9 @@ const userOnboarding = async (req, res) => {
     })
       .then((resp) => {
         if (resp) {
+          console.log(
+            `Account Created for ${req.body.userId} as a ${req.body.accountType} account with quota ${req.body.fixedQuota}`
+          )
           res.send({ success: true })
         } else {
           res.send({ success: false })
