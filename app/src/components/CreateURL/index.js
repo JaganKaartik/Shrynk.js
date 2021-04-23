@@ -7,7 +7,7 @@ import { DataContext } from '../../context/DataContext';
 export default function CreateURL() {
   const { dataUpdated } = useContext(DataContext);
   const { update, didUpdate } = dataUpdated;
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const success = () => toast.success('Message sent successfully!');
   const failed = (message) => toast.error(message);
   const onSubmit = (data) => {
@@ -15,6 +15,7 @@ export default function CreateURL() {
       didUpdate(!update);
       return resp.message === 'success' ? success() : failed(resp.message);
     });
+    reset();
   };
 
   return (
