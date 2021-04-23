@@ -11,7 +11,10 @@ const Analytics = require('../models/Analytics')
 const { generateID, validID, urlCheck } = require('../services/URLServices')
 const { QuotaCheck } = require('../services/quota')
 const { CLIENT_URL_DEV, CLIENT_URL_PROD } = require('../config/default.config')
-
+const {
+  CreateAnalyticsForURL,
+  UpdateVisitCount
+} = require('../services/analytics')
 const CLIENT_ORIGIN =
   process.env.NODE_ENV === 'production' ? CLIENT_URL_PROD : CLIENT_URL_DEV
 
@@ -42,11 +45,9 @@ const shortenURL = async (req, res) => {
         res.send(err)
       })
     if (urlCreated) {
-      await Analytics.create({
-        userId: req.body.userId,
-        urlCode: checkedId,
-        date: moment().format('MM/DD/YYYY')
-      })
+      const currentDate = moment().format('MM/DD/YYYY')
+      /* Analytics - Creation */
+      CreateAnalyticsForURL(req.body.userId, checkedId, currentDate)
       res.send({ message: 'success' })
     } else {
       res.send({ message: 'failed' })
@@ -86,32 +87,22 @@ const redirectToURL = async (req, res) => {
           info: false
         }
       })
-      .catch((err) => {
-        res.status(404).send({
-          message: 'Record does not Exist'
-        })
-      })
+      .catch((err) => ({ info: false, reason: err }))
     if (RedirectStatus.info === true) {
       const Today = moment().format('MM/DD/YYYY')
-
       const userId = await URLS.findOne({
         urlCode: req.params.code
       }).then((resp) => resp.userId)
-
-      await Analytics.findOneAndUpdate(
-        {
-          userId,
-          urlCode: req.params.code,
-          date: Today
-        },
-        {
-          $inc: { visits: 1 }
-        }
-      )
+      /* Analytics - Update Visit Count */
+      UpdateVisitCount(userId, req.params.code, Today)
       res.redirect(RedirectStatus.data.longURL)
     } else {
+      await URLS.deleteOne({ urlCode: req.params.code })
+      const message = RedirectStatus.reason
+        ? 'Record does not Exist'
+        : 'URL has expired'
       res.status(422).send({
-        message: 'URL has expired'
+        message
       })
     }
   } else {
