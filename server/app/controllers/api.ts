@@ -14,6 +14,7 @@ const {
   CreateAnalyticsForURL,
   UpdateVisitCount
 } = require('../services/analytics')
+
 const CLIENT_ORIGIN =
   process.env.NODE_ENV === 'production' ? CLIENT_URL_PROD : CLIENT_URL_DEV
 
@@ -26,8 +27,6 @@ const shortenURL = async (req, res) => {
     longURL: req.body.longURL,
     userId: req.body.userId
   }).then((resp) => resp.length === 0)
-
-  console.log(`DOES this URL EXIST with current user ${urlExists}`)
 
   if (urlCheckResp && QuotaLimit && urlExists) {
     const urlCreated = await URLS.create({
