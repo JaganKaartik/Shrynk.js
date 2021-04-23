@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { addURL } from '../../services/api.helper';
+import { addURL } from '../../helpers/api.helper';
+import { toast } from 'react-toast';
+import { DataContext } from '../../context/DataContext';
 
 export default function CreateURL() {
+  const { dataUpdated } = useContext(DataContext);
+  const { update, didUpdate } = dataUpdated;
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => addURL(data.longURL);
+  const success = () => toast.success('Message sent successfully!');
+  const failed = (message) => toast.error(message);
+  const onSubmit = (data) => {
+    addURL(data.longURL).then((resp) => {
+      didUpdate(!update);
+      return resp.message === 'success' ? success() : failed(resp.message);
+    });
+  };
 
   return (
     <div className="rounded-t-xl overflow-hidden bg-gradient-to-r from-green-400 to-blue-800 px-6 py-8">
@@ -13,7 +24,7 @@ export default function CreateURL() {
           <div class="flex items-center border-b border-teal-500 py-2">
             <input
               {...register('longURL', { required: true })}
-              class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+              className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
               type="text"
               placeholder="Enter a url to shrynk!"
               aria-label="Full name"

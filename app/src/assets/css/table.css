@@ -1,68 +1,64 @@
-table,
-th,
-td {
-  border: none;
+/* Styles for card mode (presentational styles are marked as optional) */
+@media (max-width: 1250px) {
+  table {
+    display: block;
+  }
+  thead {
+    display: none;
+  }
+  tbody {
+    display: table;
+  }
+  tr {
+    display: table-row-group;
+  }
+  tr:nth-child(odd) {
+    background-color: var(--stripped-odd); /* optional */
+  }
+  td {
+    display: table-row;
+  }
+  td:before,
+  td > span {
+    display: table-cell;
+    padding: 7px 13px; /* optional */
+  }
+  td:before {
+    content: attr(data-label);
+    font-weight: 600; /* optional */
+  }
+  td:not(.align-start) > span {
+    vertical-align: middle; /* optional */
+  }
 }
-
-table {
-  width: 100%;
-  display: table;
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-tr {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-td,
-th {
-  padding: 15px 5px;
-  display: table-cell;
-  text-align: left;
-  vertical-align: middle;
-  border-radius: 2px;
-}
-
-.striped tr {
-  border-bottom: none;
-}
-
-.striped > tbody > tr:nth-child(odd) {
-  background-color: var(--stripped-odd);
-}
-
-.striped > tbody > tr:nth-child(odd) {
-  background-color: var(--stripped-odd);
-}
-
-.striped > tbody > tr:nth-child(even) {
-  background-color: var(--stripped-even);
-}
-
-.striped > tbody > tr > td {
-  border-radius: 0;
-}
-
-.highlight > tbody > tr {
-  transition: background-color 0.25s ease;
-}
-
-.highlight > tbody > tr:hover {
-  background-color: var(--highlight-color);
-}
-/* Blockquote */
-
-blockquote {
-  margin: 20px 0;
-  padding-left: 1.5rem;
-  border-left: 5px solid rgba(242, 242, 242, 0.5);
+/* Styles for normal mode (all are optional, presentational styles) */
+@media (min-width: 1251px) {
+  th {
+    white-space: nowrap;
+    font-weight: 600;
+  }
+  th,
+  td {
+    padding: 7px 13px;
+    border: 1px solid var(--table-border);
+  }
+  th:not(.align-start),
+  td:not(.align-start) {
+    text-align: center;
+  }
+  tr:nth-child(odd) {
+    background-color: var(--stripped-odd); /* optional */
+  }
+  tr:nth-child(even) {
+    background-color: var(--stripped-even); /* optional */
+  }
 }
 
 .table-content {
   color: var(--table-text-color);
+  font-family: 'Open Sans', sans-serif;
 }
 
-td > div {
-  white-space: nowrap;
+.table-header {
+  font-family: 'Veranda', sans-serif;
 }

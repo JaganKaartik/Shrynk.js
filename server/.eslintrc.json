@@ -38,6 +38,7 @@
     "noImplicitAny": 0,
     "operator-linebreak": ["error", "before"],
     "no-underscore-dangle": "off",
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "linebreak-style": "off"
   }
 }

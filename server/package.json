@@ -1,12 +1,12 @@
 {
-  "name": "typescript-express-docker-boilerplate",
+  "name": "shrynk-server",
   "version": "1.0.0",
-  "description": "A typescript boilerplate for dockerized express app",
+  "description": "server for shrynk app",
   "main": "index.js",
-  "repository": "https://github.com/MyCloudle/Typescript-Express-Docker-Boilerplate",
+  "repository": "https://github.com/JaganKaartik/Shrynk.js",
   "author": "JaganKaartik <kaartikjagan@gmail.com>",
   "license": "MIT",
-  "private": false,
+  "private": true,
   "scripts": {
     "start:prod": "NODE_ENV=production APP_ENV=prod node dist/index",
     "start:test": "NODE_ENV=staging APP_ENV=test nodemon dist/index",
@@ -49,7 +49,6 @@
   },
   "dependencies": {
     "body-parser": "^1.19.0",
-    "connect-redis": "^5.1.0",
     "cookie-parser": "^1.4.5",
     "cookie-session": "^1.4.0",
     "cors": "^2.8.5",
@@ -62,12 +61,12 @@
     "joi": "^17.4.0",
     "jsonwebtoken": "^8.5.1",
     "lint-staged": "^10.5.4",
-    "mongoose": "^5.11.15",
+    "moment": "^2.29.1",
+    "mongoose": "^5.12.5",
     "nanoid": "^3.1.22",
     "passport": "^0.4.1",
     "passport-google-oauth2": "^0.2.0",
     "passport-twitter": "^1.0.4",
-    "redis": "^3.0.2",
     "uuid": "^8.3.2"
   }
 }

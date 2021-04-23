@@ -24,6 +24,7 @@
   display: flex;
   background-color: var(--bg-color);
   flex-flow: column nowrap;
+  flex: 1;
 }
 
 .title {
@@ -32,5 +33,14 @@
 
 .container {
   margin: 0%;
-  width: 100%;
+  width: 98%;
+}
+
+.dash-container {
+  flex: 1;
+  display: flex;
+}
+
+.def-dash-card {
+  font-family: 'Open Sans', sans-serif;
 }

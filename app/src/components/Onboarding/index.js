@@ -1,5 +1,5 @@
 import React from 'react';
-import { onboardingUser } from '../../services/api.helper';
+import { onboardingUser } from '../../helpers/api.helper';
 import { useHistory } from 'react-router-dom';
 
 export default function Onboarding() {

@@ -1,5 +1,5 @@
 :root {
-  --bg-color: rgb(217, 221, 228);
+  --bg-color: #e9f2fa;
   --nav-color: #172a3b;
   --home-container-card: #fafafa;
   --footer-color: #fafafa;
@@ -13,13 +13,15 @@
   --login-form-color: #58a0e2;
   --table-text-color: #4b7297;
   --menu-svg-color: rgba(17, 24, 39, 1);
+  --table-border: rgba(255, 255, 255, 0);
 }
 
 [data-theme='dark'] {
-  --bg-color: #010a11ee;
-  --nav-color: #0f1318;
+  /* --bg-color: #031829; */
+  --bg-color: #020d1d;
+  --nav-color: #080b0e;
   --home-container-card: #0b1c2c;
-  --footer-color: #4b7297;
+  --footer-color: #518bc2;
   --footer-bg: #0f1318;
   --stripped-odd: #102a43;
   --stripped-even: #243b53;
@@ -30,4 +32,5 @@
   --login-form-color: #3e84ca;
   --table-text-color: #f7f9fc;
   --menu-svg-color: #fafafa;
+  --table-border: rgba(19, 18, 18, 0.349);
 }
