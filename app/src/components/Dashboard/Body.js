@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { DataContext } from '../../context/DataContext';
 import { deleteURL } from '../../helpers/api.helper';
 import { toast } from 'react-toast';
-import { Link } from 'react-router-dom';
 
 export default function Body() {
   const { dataFetched, dataUpdated } = useContext(DataContext);
@@ -23,7 +22,7 @@ export default function Body() {
         <td data-label="Sl.No" className="lg:shadow-lg">
           <div className="flex justify-center content-center">{index}</div>
         </td>
-        <td data-label="Long URL" className="lg:shadow-lg flex-1">
+        <td data-label="Long URL" className="lg:shadow-lg">
           <a href={result.longURL}>{result.longURL}</a>
         </td>
         <td data-label="Short URL" className="lg:shadow-lg">
@@ -50,7 +49,7 @@ export default function Body() {
   }
 
   return (
-    <tbody>
+    <tbody className="w-full">
       {data.map((result, index) => {
         return addTableRow(result, index + 1);
       })}
