@@ -9,6 +9,6 @@
 </div>
 
 <p>
-  <img src="media/home_ui_light.png" width=450/>
-  <img src="media/home_ui_dark.png" width=450/> 
+  <img src="media/home_ui_light.png" width=100%/>
+  <img src="media/home_ui_dark.png" width=100%/> 
 </p>
