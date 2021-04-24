@@ -6,6 +6,7 @@ import Onboarding from '../components/Onboarding';
 import Dashboard from '../components/Dashboard';
 import Navbar from '../components/Navbar';
 import AuthComponent from '../components/Auth/AuthComponent';
+import AnalyticsDashboard from '../components/Analytics';
 
 export default function Router() {
   return (
@@ -26,6 +27,13 @@ export default function Router() {
           <Route exact path="/onboarding">
             <AuthComponent>
               <Onboarding />
+            </AuthComponent>
+          </Route>
+          <Route exact path="/analytics">
+            <AuthComponent>
+              <DataProvider>
+                <AnalyticsDashboard />
+              </DataProvider>
             </AuthComponent>
           </Route>
         </div>
