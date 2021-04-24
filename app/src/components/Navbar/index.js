@@ -68,7 +68,7 @@ export default function Navbar() {
     <div className="navbar">
       <header className="nav-theme lg:px-16 px-6 flex flex-wrap items-center lg:py-0 py-2">
         <div className="flex-1 flex justify-between items-center">
-          <NavLink to="/">
+          <NavLink to="/app/home">
             <img src={Logo} width="32" heigsht="36" alt="Shrynk" />
           </NavLink>
         </div>

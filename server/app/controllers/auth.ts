@@ -24,7 +24,7 @@ const authRedirectGoogle = (req, res) => {
     { expiresIn: '24h' }
   )
   res.redirect(
-    `${clientUrl}?token=${token}&userid=${req.user.userId}&onboarding=${req.user.onboarding}`
+    `${clientUrl}/app/home?token=${token}&userid=${req.user.userId}&onboarding=${req.user.onboarding}`
   )
 }
 
@@ -39,7 +39,7 @@ const authRedirectTwitter = (req, res) => {
     { expiresIn: '24h' }
   )
   res.redirect(
-    `${clientUrl}?token=${token}&userid=${req.user.userId}&onboarding=${req.user.onboarding}`
+    `${clientUrl}/app/home?token=${token}&userid=${req.user.userId}&onboarding=${req.user.onboarding}`
   )
 }
 
