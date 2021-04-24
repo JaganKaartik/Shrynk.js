@@ -17,6 +17,9 @@ const UpdateVisitCount = async (userId, urlCode, date) => {
     },
     {
       $inc: { visits: 1 }
+    },
+    {
+      upsert: true
     }
   )
 }
