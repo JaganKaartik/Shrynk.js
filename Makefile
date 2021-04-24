@@ -1,6 +1,6 @@
 install:
-		cd app && yarn install --pure-lockfile
-		cd server && yarn install --pure-lockfile
+		cd app && yarn install 
+		cd server && yarn install 
 
 build: 
 		cd app && yarn build
