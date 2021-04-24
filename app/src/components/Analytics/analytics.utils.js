@@ -1,22 +1,39 @@
-// Analytics Utils
 import { getAllURLS } from '../../helpers/api.helper';
+import { getTotalVistsForURLInfo } from '../../helpers/analytics.helper';
 
-export const basicInfo = async () => {
+/*
+userURLData = [{
+  urlcode,activation,expiry,totalvisits
+}]
+*/
+export const userURLData = async () => {
   const fetchedData = await getAllURLS();
-  const tableBaseData = fetchedData.data.forEach((e) => {
-    let activation = new Date(Date.parse(e.activation));
-    let expiry = new Date(Date.parse(e.expiry));
-    let obj = {
-      urlcode: e.urlcode,
+  const tableBaseData = [];
+  fetchedData.data.forEach(async (fetchedDataItem) => {
+    const activation = new Date(Date.parse(fetchedDataItem.activation));
+    const expiry = new Date(Date.parse(fetchedDataItem.expiry));
+    const TotalVisits = await getTotalVistsForURLInfo(fetchedDataItem.urlCode);
+    const obj = {
+      urlCode: fetchedDataItem.urlCode,
       activation,
       expiry,
+      visits: TotalVisits.visits,
     };
-    console.log(obj);
-    return {
-      urlcode: e.urlcode,
-      activation: activation,
-      expiry: expiry,
-    };
+    tableBaseData.push(obj);
   });
-  console.log(tableBaseData);
+  return tableBaseData;
+};
+
+export const totalVisitsURLData = async () => {
+  const totalData = await userURLData();
+  let dataArray = [];
+  totalData.forEach((e) => {
+    console.log(e);
+    // const obj = {
+    //   urlCode: element.urlCode,
+    //   visits: element.visits,
+    // };
+    // dataArray.push(obj);
+  });
+  return dataArray;
 };
