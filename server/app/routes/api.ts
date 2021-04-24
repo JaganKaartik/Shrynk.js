@@ -12,6 +12,6 @@ const apiRouter = express.Router()
 apiRouter.get('/:code', redirectToURL)
 apiRouter.post('/addurl', SessionCheck, shortenURL)
 apiRouter.get('/user/:userid', SessionCheck, userProfile)
-apiRouter.get('/', SessionCheck, BaseController)
+apiRouter.get('/', BaseController)
 
 export = apiRouter
