@@ -5,3 +5,5 @@ README.md
 node_modules
 .prettierrc
 .eslintrc.json
+.eslintignore
+.github
