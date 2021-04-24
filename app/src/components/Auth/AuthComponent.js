@@ -8,7 +8,7 @@ export default function AuthComponent(props) {
   useEffect(() => {
     const token = getAuthToken();
     if (!token) {
-      history.push('/');
+      history.push('/app/home');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

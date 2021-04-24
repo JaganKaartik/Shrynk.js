@@ -14,22 +14,22 @@ export default function Router() {
       <Navbar />
       <Switch>
         <div className="container-body">
-          <Route exact path="/">
+          <Route exact path="/app/home">
             <Home />
           </Route>
-          <Route exact path="/dashboard">
+          <Route exact path="/app/dashboard">
             <AuthComponent>
               <DataProvider>
                 <Dashboard />
               </DataProvider>
             </AuthComponent>
           </Route>
-          <Route exact path="/onboarding">
+          <Route exact path="/app/onboarding">
             <AuthComponent>
               <Onboarding />
             </AuthComponent>
           </Route>
-          <Route exact path="/analytics">
+          <Route exact path="/app/analytics">
             <AuthComponent>
               <DataProvider>
                 <AnalyticsDashboard />

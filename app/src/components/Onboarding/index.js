@@ -7,7 +7,7 @@ export default function Onboarding() {
   const history = useHistory();
 
   const onClickHandler = (type, quota) => {
-    onboardingUser(type, quota).then(() => history.push('/dashboard'));
+    onboardingUser(type, quota).then(() => history.push('/app/dashboard'));
   };
 
   useEffect(() => {

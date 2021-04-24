@@ -32,9 +32,9 @@ export default function Home() {
       setAuthState(!authState);
       userInfo();
       if (onboardingStatus === 'true') {
-        history.push('/onboarding');
+        history.push('/app/onboarding');
       } else {
-        history.push('/dashboard');
+        history.push('/app/dashboard');
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
