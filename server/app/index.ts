@@ -13,11 +13,11 @@ const port = PORT || 8000
 connectDB()
 app.use(Middleware)
 
-// app.use(express.static(path.join(__dirname, '../../app/build')))
+app.use(express.static(path.join(__dirname, '../../app/build')))
 
-// app.get('/*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../../app/build', 'index.html'))
-// })
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../app/build', 'index.html'))
+})
 
 app.listen(port, () => {
   console.log(`App running at port: ${port}`)
