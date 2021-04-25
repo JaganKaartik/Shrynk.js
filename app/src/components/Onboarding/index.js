@@ -6,8 +6,8 @@ import { themeToggleHandler } from '../../helpers/theme.helper';
 export default function Onboarding() {
   const history = useHistory();
 
-  const onClickHandler = (type, quota) => {
-    onboardingUser(type, quota).then(() => history.push('/app/dashboard'));
+  const onClickHandler = (type) => {
+    onboardingUser(type).then(() => history.push('/app/dashboard'));
   };
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function Onboarding() {
               <div className="w-full">
                 <button
                   className="font-bold bg-green-500 hover:bg-blue-300 text-white rounded-md px-10 py-2 transition-colors w-full"
-                  onClick={() => onClickHandler('basic', 5)}
+                  onClick={() => onClickHandler('basic')}
                 >
                   Select Now
                 </button>
@@ -65,7 +65,7 @@ export default function Onboarding() {
               <div className="w-full">
                 <button
                   className="font-bold  bg-green-500 hover:bg-blue-300 text-white rounded-md px-10 py-2 transition-colors w-full"
-                  onClick={() => onClickHandler('premium', 10)}
+                  onClick={() => onClickHandler('premium')}
                 >
                   Select Now
                 </button>

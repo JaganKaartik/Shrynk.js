@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   LineChart,
   Line,
@@ -9,8 +9,12 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from 'recharts';
+// import { totalVisitsURLData } from './analytics.utils';
 
 export default function AnalyticsDashboard() {
+  useEffect(() => {
+    // totalVisitsURLData();
+  }, []);
   const data = [
     {
       name: 'Page A',
