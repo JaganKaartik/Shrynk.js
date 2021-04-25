@@ -6,6 +6,9 @@ const Account = require('../models/Account')
 const Analytics = require('../models/Analytics')
 const disableOnboarding = require('../services/onboarding')
 
+const basic = 5
+const premium = 10
+
 const getAllURLS = async (req, res) => {
   // Get all URLs
   await URLS.find({ userId: req.params.userid })
@@ -59,11 +62,12 @@ const userOnboarding = async (req, res) => {
     // Update Oboarding Status (set value to false)
     await disableOnboarding(req.body.userId)
     // Add Quota Information
+    const quota = req.body.accountType === 'premium' ? premium : basic
     await Account.create({
       userId: req.body.userId,
       accountType: req.body.accountType,
-      fixedQuota: req.body.fixedQuota,
-      currentQuota: req.body.fixedQuota
+      fixedQuota: quota,
+      currentQuota: quota
     })
       .then((resp) => {
         if (resp) {
