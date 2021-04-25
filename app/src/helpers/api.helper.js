@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { API_URL } from '../config';
 
-export const onboardingUser = async (accountType, fixedQuota) => {
+export const onboardingUser = async (accountType) => {
   const authToken = localStorage.getItem('shrynk-jwt');
   const userId = localStorage.getItem('shrynk-usr-id');
   return await axios
@@ -13,7 +13,6 @@ export const onboardingUser = async (accountType, fixedQuota) => {
       data: {
         userId,
         accountType,
-        fixedQuota,
       },
       mode: 'cors',
       credentials: 'include',
