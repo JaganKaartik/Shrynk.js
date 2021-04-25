@@ -131,7 +131,7 @@ const userProfile = async (req, res) => {
 }
 /* Test Route */
 const BaseController = (req, res) => {
-  res.send('Welcome to Root of Server Side of Shrynk.js')
+  res.redirect('/app/home')
 }
 
 export { shortenURL, redirectToURL, BaseController, userProfile }

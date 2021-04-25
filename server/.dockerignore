@@ -1,7 +1,0 @@
-.git
-.gitignore
-LICENSE
-README.md
-node_modules
-.prettierrc
-.eslintrc.json
