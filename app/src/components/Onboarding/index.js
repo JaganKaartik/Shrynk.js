@@ -2,11 +2,18 @@ import React, { useEffect } from 'react';
 import { onboardingUser } from '../../helpers/api.helper';
 import { useHistory } from 'react-router-dom';
 import { themeToggleHandler } from '../../helpers/theme.helper';
+import ReactGA from 'react-ga';
 
 export default function Onboarding() {
   const history = useHistory();
 
   const onClickHandler = (type) => {
+    ReactGA.event({
+      category: 'User Onboarding',
+      action: 'User selected account type',
+      label: 'Plan Button',
+      value: type,
+    });
     onboardingUser(type).then(() => history.push('/app/dashboard'));
   };
 

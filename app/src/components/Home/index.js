@@ -5,6 +5,7 @@ import { login } from '../../helpers/token.helper';
 import { getUserInfo } from '../../helpers/api.helper';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
+import ReactGA from 'react-ga';
 
 export default function Home() {
   const { auth, profile } = useContext(UserContext);
@@ -30,6 +31,10 @@ export default function Home() {
     if (authToken && userId) {
       login(authToken, userId);
       setAuthState(!authState);
+      ReactGA.event({
+        category: 'User Auth',
+        action: 'User Logged In Successfully',
+      });
       userInfo();
       if (onboardingStatus === 'true') {
         history.push('/app/onboarding');

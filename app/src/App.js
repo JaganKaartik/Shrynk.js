@@ -5,12 +5,16 @@ import { getAuthToken } from './helpers/token.helper';
 import { UserContext } from './context/UserContext';
 import { themeToggleHandler } from './helpers/theme.helper';
 import '../node_modules/react-vis/dist/style.css';
+import { REACT_APP_GA_ID } from './config';
+import ReactGA from 'react-ga';
 
 export default function App() {
   const { auth } = useContext(UserContext);
   const { authState, setAuthState } = auth;
 
   useEffect(() => {
+    ReactGA.initialize(REACT_APP_GA_ID);
+    ReactGA.pageview(window.location.pathname + window.location.search);
     themeToggleHandler();
     const token = getAuthToken();
     if (token) {

@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { addURL } from '../../helpers/api.helper';
 import { toast } from 'react-toast';
 import { DataContext } from '../../context/DataContext';
+import ReactGA from 'react-ga';
 
 export default function CreateURL() {
   const { dataUpdated } = useContext(DataContext);
@@ -16,6 +17,12 @@ export default function CreateURL() {
       return resp.message === 'success' ? success() : failed(resp.message);
     });
     reset();
+    ReactGA.event({
+      category: 'URL_Creation',
+      action: 'Created Short URL',
+      label: 'Shrynk-Button',
+      value: data.longURL,
+    });
   };
 
   return (
