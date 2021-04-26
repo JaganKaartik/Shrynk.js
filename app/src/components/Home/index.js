@@ -42,8 +42,8 @@ export default function Home() {
 
   return (
     <div className="flex-grow">
-      <div className={'flex flex-col justify-center items-center'}>
-        <h1 className={'title text-blue-500 text-6xl mt-10'}>Shrynk.js</h1>
+      <div className="flex flex-col justify-center items-center">
+        <h1 className="title text-blue-500 text-6xl mt-10">Shrynk.js</h1>
         <img
           className="h-auto w-full object-cover md:flex-shrink-0"
           src={homeGif}

@@ -24,6 +24,8 @@ Middleware.use(cookieParser())
 Middleware.use(passport.initialize())
 Middleware.use(passport.session())
 
+Middleware.disable('x-powered-by')
+
 Middleware.use(bodyParser.urlencoded({ extended: false }))
 Middleware.use(bodyParser.json())
 Middleware.use('/', apiRouter)

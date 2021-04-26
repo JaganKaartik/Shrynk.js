@@ -1,29 +1,16 @@
 import { getAllURLS } from '../../helpers/api.helper';
 import { getTotalVistsForURLInfo } from '../../helpers/analytics.helper';
 
-/*
-userURLData = [{
-  urlcode,activation,expiry,totalvisits
-}]
-*/
-export const userURLData = async () => {
+export const totalVisitsURLData = async () => {
   const fetchedData = await getAllURLS();
-  const totalVisitsURLData = [];
+  const dataArray = [];
   fetchedData.data.forEach(async (fetchedDataItem) => {
-    const activation = new Date(Date.parse(fetchedDataItem.activation));
-    const expiry = new Date(Date.parse(fetchedDataItem.expiry));
     const TotalVisits = await getTotalVistsForURLInfo(fetchedDataItem.urlCode);
-    const totalVisitsObj = {
+    let totalVisitsObj = {
       urlCode: fetchedDataItem.urlCode,
-      activation,
-      expiry,
       visits: TotalVisits.visits,
     };
-    totalVisitsURLData.push(totalVisitsObj);
+    dataArray.push(totalVisitsObj);
   });
-  return totalVisitsURLData;
+  return dataArray;
 };
-
-// export const totalVisitsURLData = async () => {
-//   return dataArray;
-// };

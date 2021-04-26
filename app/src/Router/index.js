@@ -1,12 +1,14 @@
 import React from 'react';
 import { DataProvider } from '../context/DataContext';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Home from '../components/Home';
-import Onboarding from '../components/Onboarding';
-import Dashboard from '../components/Dashboard';
-import Navbar from '../components/Navbar';
-import AuthComponent from '../components/Auth/AuthComponent';
-import AnalyticsDashboard from '../components/Analytics';
+import {
+  Home,
+  Onboarding,
+  Dashboard,
+  Navbar,
+  AuthComponent,
+  AnalyticsDashboard,
+} from '../components';
 
 export default function Router() {
   return (
@@ -17,25 +19,23 @@ export default function Router() {
           <Route exact path="/app/home">
             <Home />
           </Route>
-          <Route exact path="/app/dashboard">
-            <AuthComponent>
-              <DataProvider>
-                <Dashboard />
-              </DataProvider>
-            </AuthComponent>
-          </Route>
           <Route exact path="/app/onboarding">
             <AuthComponent>
               <Onboarding />
             </AuthComponent>
           </Route>
-          <Route exact path="/app/analytics">
-            <AuthComponent>
-              <DataProvider>
+          <DataProvider>
+            <Route exact path="/app/dashboard">
+              <AuthComponent>
+                <Dashboard />
+              </AuthComponent>
+            </Route>
+            <Route exact path="/app/analytics">
+              <AuthComponent>
                 <AnalyticsDashboard />
-              </DataProvider>
-            </AuthComponent>
-          </Route>
+              </AuthComponent>
+            </Route>
+          </DataProvider>
         </div>
       </Switch>
     </BrowserRouter>

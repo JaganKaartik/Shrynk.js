@@ -1,63 +1,27 @@
-import React, { useEffect } from 'react';
-import {
-  LineChart,
-  Line,
-  Tooltip,
-  Legend,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  ResponsiveContainer,
-} from 'recharts';
-// import { totalVisitsURLData } from './analytics.utils';
+import React, { useEffect, useState } from 'react';
+import { totalVisitsURLData } from './analytics.utils';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from 'victory';
 
 export default function AnalyticsDashboard() {
+  const [AnalyticsData, setAnalyticsData] = useState('');
+
   useEffect(() => {
-    // totalVisitsURLData();
+    //  themeToggleHandler();
+    async function fetchAnalyticsData() {
+      const result = await totalVisitsURLData();
+      const urls = [];
+      const urlCodeArray = result.map((element) => element.urlCode);
+      console.log(urlCodeArray);
+      await setAnalyticsData(urls);
+    }
+    fetchAnalyticsData();
   }, []);
+
   const data = [
-    {
-      name: 'Page A',
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: 'Page B',
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: 'Page C',
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: 'Page D',
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: 'Page E',
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: 'Page F',
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: 'Page G',
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
+    { quarter: 1, earnings: 13000 },
+    { quarter: 2, earnings: 16500 },
+    { quarter: 3, earnings: 14250 },
+    { quarter: 4, earnings: 19000 },
   ];
 
   return (
@@ -75,24 +39,30 @@ export default function AnalyticsDashboard() {
         </div>
       </div>
       <br />
-      <ResponsiveContainer width={99} aspect={3}>
+      <div className="flex justify-center items-center h-96 w-full object-cover md:flex-shrink-0">
         <div>
-          <LineChart
-            width={730}
-            height={250}
-            data={data}
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          <VictoryChart
+            // adding the material theme provided with Victory
+            theme={VictoryTheme.material}
+            domainPadding={20}
           >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-            <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-          </LineChart>
+            <VictoryAxis tickValues={[1, 2, 3, 4]} tickFormat={AnalyticsData} />
+            <VictoryAxis dependentAxis tickFormat={(x) => `$${x / 1000}k`} />
+            <VictoryBar data={data} x="quarter" y="earnings" />
+          </VictoryChart>
         </div>
-      </ResponsiveContainer>
+        <div>
+          <VictoryChart
+            // adding the material theme provided with Victory
+            theme={VictoryTheme.material}
+            domainPadding={20}
+          >
+            <VictoryAxis tickValues={[1, 2, 3, 4]} tickFormat={AnalyticsData} />
+            <VictoryAxis dependentAxis tickFormat={(x) => `$${x / 1000}k`} />
+            <VictoryBar data={data} x="quarter" y="earnings" />
+          </VictoryChart>
+        </div>
+      </div>
     </div>
   );
 }
