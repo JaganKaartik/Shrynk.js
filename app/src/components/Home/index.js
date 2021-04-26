@@ -71,8 +71,11 @@ export default function Home() {
               Well then, the best solution is to either use short links or
               shrynk links.
               <p className="mt-2 custom-card-text">
-                Presenting <a className="custom-card-text">Shrynk.js</a> not
-                your average url shortener.
+                Presenting{' '}
+                <a href="#" className="custom-card-text">
+                  Shrynk.js
+                </a>{' '}
+                not your average url shortener.
               </p>
             </p>
 
