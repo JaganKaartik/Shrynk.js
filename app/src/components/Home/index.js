@@ -47,7 +47,7 @@ export default function Home() {
         <img
           className="h-auto w-full object-cover md:flex-shrink-0"
           src={homeGif}
-          alt="loading..."
+          alt="Illustration by Freepik Storyset"
           style={{ maxWidth: '500px', margin: '50px auto 0' }}
         />
       </div>
@@ -59,10 +59,18 @@ export default function Home() {
               Why use Shrynk ?
             </div>
             <p className="mt-2 custom-card-text">
-              Can’t remember a URL easily ? Can’t use the links where there are
-              restrictions on text length. The best solution to overcome this
-              issue is by shortening these URLs
+              Have a big URL ? Can't share links easily ? Restrictions on length
+              while sharing ?
             </p>
+            <p className="mt-2 custom-card-text">
+              Well then, the best solution is to either use short links or
+              shrynk links.
+              <p className="mt-2 custom-card-text">
+                Presenting <a className="custom-card-text">Shrynk.js</a> not
+                your average url shortener.
+              </p>
+            </p>
+
             <p className="mt-2 custom-card-text">
               This is a URL Shortening SPA. Originally created as a hobby
               project, this is the second iteration of{' '}
@@ -78,7 +86,7 @@ export default function Home() {
         </div>
       </div>
       <br />
-      <div className="custom-card  max-w-md mx-auto  rounded-xl shadow-2xl overflow-hidden md:max-w-2xl">
+      <div className="custom-card  max-w-md mx-auto  rounded-xl shadow-2xl overflow-hidden">
         <div className="md:flex">
           <div className="p-8">
             <div className="uppercase tracking-wide text-sm text-blue-500 font-semibold">

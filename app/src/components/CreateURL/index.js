@@ -19,26 +19,22 @@ export default function CreateURL() {
   };
 
   return (
-    <div className="rounded-t-xl overflow-hidden bg-gradient-to-r from-blue-300 via-green-500 to-blue-800 px-6 py-8">
-      <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
-        <form class="w-full">
-          <div class="flex items-center border-b border-teal-500 py-2">
-            <input
-              {...register('longURL', { required: true })}
-              className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-              type="text"
-              placeholder="Enter a url to shrynk!"
-              aria-label="Full name"
-            />
-            <button
-              onClick={handleSubmit(onSubmit)}
-              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
-            >
-              Submit
-            </button>
-          </div>
-        </form>
-      </div>
+    <div class="rounded-t-xl overflow-hidden bg-gradient-to-r from-blue-400 to-blue-200 p-10">
+      <form className="flex w-full max-w-lg mx-auto space-x-3">
+        <input
+          {...register('longURL', { required: true })}
+          className="flex-1 appearance-none border border-transparent w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-blue-800 focus:border-transparent"
+          type="text"
+          placeholder="Enter a url to shrynk!"
+          aria-label="Full name"
+        />
+        <button
+          onClick={handleSubmit(onSubmit)}
+          className="flex-shrink-0 bg-blue-400 text-white text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200"
+        >
+          Submit
+        </button>
+      </form>
     </div>
   );
 }
