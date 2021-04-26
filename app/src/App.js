@@ -4,6 +4,7 @@ import Footer from './components/Commons/Footer';
 import { getAuthToken } from './helpers/token.helper';
 import { UserContext } from './context/UserContext';
 import { themeToggleHandler } from './helpers/theme.helper';
+import '../node_modules/react-vis/dist/style.css';
 
 export default function App() {
   const { auth } = useContext(UserContext);

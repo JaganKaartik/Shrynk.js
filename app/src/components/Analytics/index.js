@@ -1,28 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { totalVisitsURLData } from './analytics.utils';
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from 'victory';
+import React from 'react';
+// import { totalVisitsURLData } from './analytics.utils';
+// import { XYPlot, VerticalBarSeries, XAxis, YAxis } from 'react-vis';
 
 export default function AnalyticsDashboard() {
-  const [AnalyticsData, setAnalyticsData] = useState('');
+  // const [AnalyticsData, setAnalyticsData] = useState('');
 
-  useEffect(() => {
-    //  themeToggleHandler();
-    async function fetchAnalyticsData() {
-      const result = await totalVisitsURLData();
-      const urls = [];
-      const urlCodeArray = result.map((element) => element.urlCode);
-      console.log(urlCodeArray);
-      await setAnalyticsData(urls);
-    }
-    fetchAnalyticsData();
-  }, []);
-
-  const data = [
-    { quarter: 1, earnings: 13000 },
-    { quarter: 2, earnings: 16500 },
-    { quarter: 3, earnings: 14250 },
-    { quarter: 4, earnings: 19000 },
-  ];
+  // useEffect(() => {
+  //   //  themeToggleHandler();
+  //   async function fetchAnalyticsData() {
+  //     const result = await totalVisitsURLData();
+  //     result.forEach(function (element, index) {
+  //       console.log(element.urlCode + ' ' + element.visits);
+  //     });
+  //     setAnalyticsData(result);
+  //   }
+  //   fetchAnalyticsData();
+  // }, []);
 
   return (
     <div className="bg-gradient-to-b from-blue-400 to-blue-200 flex flex-1 h-100 flex-grow flex-col overflow-hidden px-6 py-8">
@@ -41,26 +34,11 @@ export default function AnalyticsDashboard() {
       <br />
       <div className="flex justify-center items-center h-96 w-full object-cover md:flex-shrink-0">
         <div>
-          <VictoryChart
-            // adding the material theme provided with Victory
-            theme={VictoryTheme.material}
-            domainPadding={20}
-          >
-            <VictoryAxis tickValues={[1, 2, 3, 4]} tickFormat={AnalyticsData} />
-            <VictoryAxis dependentAxis tickFormat={(x) => `$${x / 1000}k`} />
-            <VictoryBar data={data} x="quarter" y="earnings" />
-          </VictoryChart>
-        </div>
-        <div>
-          <VictoryChart
-            // adding the material theme provided with Victory
-            theme={VictoryTheme.material}
-            domainPadding={20}
-          >
-            <VictoryAxis tickValues={[1, 2, 3, 4]} tickFormat={AnalyticsData} />
-            <VictoryAxis dependentAxis tickFormat={(x) => `$${x / 1000}k`} />
-            <VictoryBar data={data} x="quarter" y="earnings" />
-          </VictoryChart>
+          {/* <XYPlot xType="ordinal" height={300} width={500}>
+            <XAxis />
+            <YAxis />
+            <VerticalBarSeries data={myData} />
+          </XYPlot> */}
         </div>
       </div>
     </div>

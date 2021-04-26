@@ -3,7 +3,7 @@ import { getTotalVistsForURLInfo } from '../../helpers/analytics.helper';
 
 export const totalVisitsURLData = async () => {
   const fetchedData = await getAllURLS();
-  const dataArray = [];
+  var dataArray = [];
   fetchedData.data.forEach(async (fetchedDataItem) => {
     const TotalVisits = await getTotalVistsForURLInfo(fetchedDataItem.urlCode);
     let totalVisitsObj = {
@@ -12,5 +12,6 @@ export const totalVisitsURLData = async () => {
     };
     dataArray.push(totalVisitsObj);
   });
+  console.log(dataArray);
   return dataArray;
 };
