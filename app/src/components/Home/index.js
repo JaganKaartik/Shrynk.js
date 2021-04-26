@@ -69,7 +69,7 @@ export default function Home() {
             </p>
             <p className="mt-2 custom-card-text">
               Well then, the best solution is to either use short links or
-              shrynk links.
+              shrynked links.
               <p className="mt-2 custom-card-text">
                 Presenting{' '}
                 <a href="#" className="custom-card-text">
@@ -88,7 +88,7 @@ export default function Home() {
               >
                 Shrynk
               </a>
-              . The below are the features implemented in this application.
+              . The below list contains the main features implemented in this application.
             </p>
           </div>
         </div>
