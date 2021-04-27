@@ -2,7 +2,7 @@
   Shrynk.js
 </h1>
 
-<h4 align="center">Not your average URL Shortening Single Page Application.</h4>
+<h3 align="center">Not your average URL Shortening Single Page Application.</h3>
 
 <div align="center">
   <sub>Built with ❤︎ </sub>
@@ -45,16 +45,21 @@ Tech Stack,
 - Deployment: Ubuntu SSD Droplet (Digital Ocean), NGINX (Reverse Proxy), PM2 for Node.js
 - A/B Tests (Removed Instance): AWS EC2, Route53
 
+<h2 align="center">
+ Preview
+</h2>
 
-### Preview 
 <p align="center">
   <img src="media/Shrynk.gif" width=50%/>
 </p>
 
-### UI Screenshots
+<h2 align="center">
+ UI Screens
+</h2>
+
 <p>
-  <img src="media/home_ui_light.png" width=70%/>
-  <img src="media/home_ui_dark.png" width=70%/> 
+  <img src="media/home_ui_light.png" width=100%/>
+  <img src="media/home_ui_dark.png" width=100%/> 
 </p>
 
 <p align="center">
