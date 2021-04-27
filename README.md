@@ -2,7 +2,7 @@
   Shrynk.js
 </h1>
 
-<h3 align="center">Not your average URL Shortening Single Page Application.</h3>
+<h3 align="center">A product rather than a project.</h3>
 
 <div align="center">
   <sub>Built with ❤︎ </sub>
