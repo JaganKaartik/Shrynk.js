@@ -51,6 +51,7 @@ Tech Stack,
   </a>
 </p>
 
+
 <h2 align="center">
  Preview
 </h2>
@@ -67,4 +68,6 @@ Tech Stack,
   <img src="media/home_ui_light.png" width=100%/>
   <img src="media/home_ui_dark.png" width=100%/> 
 </p>
+
+<a href="https://storyset.com/web">Illustration by Freepik Storyset</a>
 
