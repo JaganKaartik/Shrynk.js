@@ -1,11 +1,11 @@
 import React, { useEffect, useContext } from 'react';
 import homeGif from '../../assets/images/www.svg';
-import { API_URL } from '../../config';
 import { login } from '../../helpers/token.helper';
 import { getUserInfo } from '../../helpers/api.helper';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import ReactGA from 'react-ga';
+import { authHandler } from '../../helpers/auth.helper';
 
 export default function Home() {
   const { auth, profile } = useContext(UserContext);
@@ -15,7 +15,7 @@ export default function Home() {
   const history = useHistory();
 
   function onClickHandler(provider) {
-    window.open(`${API_URL}auth/${provider}`, '_self');
+    authHandler(provider);
   }
 
   const userInfo = async () => {
