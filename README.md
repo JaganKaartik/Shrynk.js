@@ -45,6 +45,12 @@ Tech Stack,
 - Deployment: Ubuntu SSD Droplet (Digital Ocean), NGINX (Reverse Proxy), PM2 for Node.js
 - A/B Tests (Removed Instance): AWS EC2, Route53
 
+<p align="center">
+  <a href="https://www.digitalocean.com/?refcode=4b84b7294b31&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge">
+  <img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg"/>
+  </a>
+</p>
+
 <h2 align="center">
  Preview
 </h2>
@@ -62,8 +68,3 @@ Tech Stack,
   <img src="media/home_ui_dark.png" width=100%/> 
 </p>
 
-<p align="center">
-  <a href="https://www.digitalocean.com/?refcode=4b84b7294b31&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge">
-  <img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg"/>
-  </a>
-</p>
