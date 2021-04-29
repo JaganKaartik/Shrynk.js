@@ -40,15 +40,20 @@ Added,
 Tech Stack,
 
 - Client: React (Router, Context-API, Hooks), TailwindCSS, Custom CSS
-- Server: Typescript, Express.js/Node.js
+- Server: Express.js/Node.js written in Typescript.
 - Database: MongoDB Atlas (Cloud DB)
-- Deployment: Ubuntu SSD Droplet (Digital Ocean), NGINX (Reverse Proxy), PM2 for Node.js
-- A/B Tests (Removed Instance): AWS EC2, Route53
+- Deployment: AWS EC2 (Ubuntu Instance), Route53, NGINX (Reverse Proxy), PM2 for Node.js
 
 <p align="center">
-  <a href="https://www.digitalocean.com/?refcode=4b84b7294b31&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge">
-  <img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg"/>
-  </a>
+  <img alt="React" src="https://img.shields.io/badge/react-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
+  <img alt="TailwindCSS" src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?&style=for-the-badge&logo=tailwind-css&logoColor=white"/>
+  <img alt="MongoDB" src ="https://img.shields.io/badge/MongoDB-%234ea94b.svg?&style=for-the-badge&logo=mongodb&logoColor=white"/>
+  <img alt="TypeScript" src="https://img.shields.io/badge/typescript-%23007ACC.svg?&style=for-the-badge&logo=typescript&logoColor=white"/>
+  <img alt="AWS" src="https://img.shields.io/badge/AWS-%232C5263.svg?&style=for-the-badge&logo=amazon-aws&logoColor=white"/>
+  <img alt="Ubuntu" src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" />
+  <img alt="Nginx" src="https://img.shields.io/badge/nginx-%23009639.svg?&style=for-the-badge&logo=nginx&logoColor=white"/>
+  <img alt="NodeJS" src="https://img.shields.io/badge/node.js-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/>
+  <img alt="Express.js" src="https://img.shields.io/badge/express.js-%23404d59.svg?&style=for-the-badge"/>
 </p>
 
 
