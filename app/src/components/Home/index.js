@@ -162,7 +162,7 @@ export default function Home() {
       <div className="custom-card max-w-md mx-auto rounded-xl shadow-2xl overflow-hidden md:max-w-2xl">
         <div className="sm:flex">
           <div className="p-8">
-            <p className="mt-2 justify-between font-serif custom-card-text text-blue-500">
+            <p className="mt-2 justify-between  custom-card-text text-blue-500">
               Disclaimer: This is not a paid product or a pro application, just
               a hobby "product" I built for my personal short links etc. You can
               use this product to shorten and share your links however I do not

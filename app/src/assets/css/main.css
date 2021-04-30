@@ -7,18 +7,6 @@
   flex: 0;
 }
 
-.content-wrapper {
-  height: 100vh;
-  display: flex;
-  flex-flow: column nowrap;
-  flex: 1;
-}
-
-.main-content {
-  flex: auto;
-  align-items: stretch;
-}
-
 .container-body {
   padding: 10px 20px;
   overflow-x: hidden;
@@ -36,11 +24,6 @@
 .container {
   margin: 0%;
   width: 98%;
-}
-
-.dash-container {
-  flex: 1;
-  display: flex;
 }
 
 .def-dash-card {
