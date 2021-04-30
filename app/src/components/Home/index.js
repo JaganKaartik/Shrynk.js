@@ -95,7 +95,7 @@ export default function Home() {
         </div>
       </div>
       <br />
-      <div className="custom-card  flex justify-center max-w-md mx-auto  rounded-xl shadow-2xl overflow-hidden">
+      <div className="custom-card flex justify-center max-w-md mx-auto  rounded-xl shadow-2xl overflow-hidden">
         <div className="md:flex">
           <div className="p-8">
             <div className="uppercase tracking-wide text-sm text-blue-500 font-semibold">
