@@ -38,7 +38,7 @@ export default function CreateURL() {
           />
         </div>
         <div class=" py-2 px-4 w-full lg:w-1/6 flex justify-center bg-gradient-to-r from-green-500 to-blue-800 hover:from-pink-500 hover:to-yellow-500 text-white text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200">
-          <button onClick={handleSubmit(onSubmit)} className="">
+          <button onClick={handleSubmit(onSubmit)} className="w-full">
             Submit
           </button>
         </div>
