@@ -62,7 +62,8 @@ Tech Stack,
 </h2>
 
 <p align="center">
-  <img src="media/Shrynk.gif" width=90%/>
+  <img src="media/home1.gif" width=75%/>
+   <img src="media/home2.gif" width=75%/>
 </p>
 
 <h2 align="center">
