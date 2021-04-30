@@ -38,12 +38,16 @@ export default function Dashboard() {
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-              <div className="lg:hidden custom-card mx-auto py-4 px-5 shadow-md overflow-hidden ">
+              <div className="border lg:hidden custom-card mx-auto py-1 px-5 shadow-md overflow-hidden ">
                 <div className="md:flex space-x-4">
-                  <p className="inline-flex def-dash-card block mt-1 text-lg leading-tight font-mono custom-card-text">
-                    Swipe left to view table.
-                    <img src={ArrowSVG} width="20" height="10" alt="arrow" />
+                  <p className="inline-flex animate-pulse px-10 def-dash-card block mt-1 text-lg leading-tight font-mono custom-card-text">
+                    Swipe left to view table
                   </p>
+                  <div className="inline-flex animate-bounce">
+                    <img src={ArrowSVG} width="20" height="10" alt="arrow" />
+                    <img src={ArrowSVG} width="20" height="10" alt="arrow" />
+                    <img src={ArrowSVG} width="20" height="10" alt="arrow" />
+                  </div>
                 </div>
               </div>
               <table className="min-w-full divide-y">

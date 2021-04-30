@@ -30,12 +30,12 @@ export default function Body() {
           <a href={result.shortURL}>{result.shortURL}</a>
         </td>
         <td className="px-6 py-4 whitespace-nowrap">
-          <span className="px-2 inline-flex text-base leading-5 text-indigo-900 bg-gradient-to-r from-green-400 to-blue-500  rounded-lg ">
+          <span className="p-1 px-2 inline-flex text-base leading-5 text-gray-100 bg-gradient-to-r from-green-500 to-blue-600  rounded-lg ">
             {moment(result.activation).format('LLLL')}
           </span>
         </td>
         <td className="px-6 py-4 whitespace-nowrap">
-          <span className="px-2 inline-flex text-base leading-5 text-indigo-900  bg-gradient-to-r from-yellow-400 to-red-500 rounded-lg">
+          <span className="p-1 px-2 inline-flex text-base leading-5 text-gray-100 bg-gradient-to-r from-yellow-500 to-red-600 rounded-lg">
             {moment(result.expiry).format('LLLL')}
           </span>
         </td>

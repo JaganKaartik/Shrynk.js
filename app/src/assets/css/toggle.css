@@ -29,13 +29,13 @@
 .slider:before {
   background-color: #fff;
   bottom: 4px;
-  content: "";
+  content: '';
   height: 26px;
   left: 4px;
   position: absolute;
   transition: 0.4s;
   width: 26px;
-  background: url("../images/sun.svg");
+  background: url('../images/sun.svg');
 }
 
 input:checked + .slider {
@@ -44,7 +44,7 @@ input:checked + .slider {
 
 input:checked + .slider:before {
   transform: translateX(26px);
-  background: rgb(91, 95, 99) url("../images/moon.svg");
+  background: rgb(91, 95, 99) url('../images/moon.svg');
 }
 
 .slider.round {

@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+
 .navbar {
   background-color: var(--nav-color);
 }
 
 .nav-text {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 .menu-svg {
