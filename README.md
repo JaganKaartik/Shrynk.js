@@ -63,7 +63,7 @@ Tech Stack,
 
 <p align="center">
   <img src="media/home1.gif" width=75%/>
-   <img src="media/home2.gif" width=75%/>
+  <img src="media/home2.gif" width=75%/>
 </p>
 
 <h2 align="center">
