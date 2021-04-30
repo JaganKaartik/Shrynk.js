@@ -1,4 +1,5 @@
 import React from 'react';
+import AnalyticsSVG from '../../assets/images/analytics.svg';
 // import { totalVisitsURLData } from './analytics.utils';
 // import { XYPlot, VerticalBarSeries, XAxis, YAxis } from 'react-vis';
 
@@ -18,7 +19,13 @@ export default function AnalyticsDashboard() {
   // }, []);
 
   return (
-    <div className="bg-gradient-to-b from-blue-400 to-blue-200 flex flex-1 h-100 flex-grow flex-col overflow-hidden px-6 py-8">
+    <div className="bg-gradient-to-b from-blue-300 to-blue-200 flex flex-1 h-100 flex-grow flex-col overflow-hidden px-6 py-8">
+      <img
+        className="h-auto w-full object-cover md:flex-shrink-0 "
+        src={AnalyticsSVG}
+        alt="loading..."
+        style={{ maxWidth: '450px', margin: '5px auto 0' }}
+      />
       <div className="custom-card mx-auto rounded-xl shadow-md overflow-hidden md:max-w-2xl">
         <div className="md:flex">
           <div className="p-8">

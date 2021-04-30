@@ -3,8 +3,8 @@
   --nav-color: #172a3b;
   --footer-color: #fafafa;
   --footer-bg: #172a3b;
-  --stripped-odd: rgba(242, 242, 242, 0.5);
-  --stripped-even: rgba(238, 235, 235, 0.842);
+  --stripped-odd: #fafafa;
+  --stripped-even: #fafafa;
   --highlight-color: rgba(242, 242, 242, 0.5);
   --list-text-color: #0f1318;
   --nav-text-color: #fafafa;
@@ -16,6 +16,7 @@
   --home-card-bg: #fafafa;
   --home-card-text: rgba(107, 114, 128);
   --home-card-bg-onboarding: #e9f2fa;
+  --create-url-bg: #e9f2fa;
 }
 
 [data-theme='dark'] {
@@ -24,8 +25,8 @@
   --nav-color: #080b0e;
   --footer-color: #518bc2;
   --footer-bg: #0f1318;
-  --stripped-odd: #102a43;
-  --stripped-even: #243b53;
+  --stripped-odd: #0e1424;
+  --stripped-even: #0e1527;
   --highlight-color: #102a43;
   --list-text-color: #e0e9f3;
   --nav-text-color: #4b7297;
@@ -37,4 +38,5 @@
   --home-card-bg: #0c2035;
   --home-card-text: rgba(147, 197, 253);
   --home-card-bg-onboarding: #020d1d;
+  --create-url-bg: #020d1d;
 }

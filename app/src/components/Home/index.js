@@ -48,7 +48,12 @@ export default function Home() {
   return (
     <div className="flex-grow">
       <div className="flex flex-col justify-center items-center">
-        <h1 className="title text-blue-500 text-6xl mt-10">Shrynk.js</h1>
+        {/* <h1 className="items-center text-4xl sm:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight text-blue-500 mt-10 mb-8 sm:mt-14 sm:mb-10">
+          Presenting Shrynk.js a custom url shortener
+        </h1> */}
+        <h1 className="title text-blue-600 font-extrabold text-6xl mt-10">
+          Shrynk.js
+        </h1>
         <img
           className="h-auto w-full object-cover md:flex-shrink-0"
           src={homeGif}
@@ -57,6 +62,7 @@ export default function Home() {
         />
       </div>
       <br />
+
       <div className="custom-card max-w-md mx-auto rounded-xl shadow-2xl overflow-hidden md:max-w-2xl">
         <div className="sm:flex">
           <div className="p-8">
@@ -64,37 +70,32 @@ export default function Home() {
               Why use Shrynk ?
             </div>
             <p className="mt-2 custom-card-text">
-              Have a big URL ? Can't share links easily ? Restrictions on length
-              while sharing ?
+              Have a big URL? <p> Can't share links easily ?</p> Restrictions on
+              length while sharing ?
             </p>
             <p className="mt-2 custom-card-text">
               Well then, the best solution is to either use short links or
               shrynked links.
               <p className="mt-2 custom-card-text">
-                Presenting{' '}
-                <a href="#" className="custom-card-text">
-                  Shrynk.js
-                </a>{' '}
-                not your average url shortener.
+                Presenting <span className="custom-card-text">Shrynk.js </span>
+                not your average custom url shortener.
               </p>
             </p>
-
             <p className="mt-2 custom-card-text">
-              This is a URL Shortening SPA. Originally created as a hobby
-              project, this is the second iteration of{' '}
+              This is a URL Shortening SPA. Created as a hobby project, this is
+              the second iteration of{' '}
               <a
                 className="custom-card-text"
                 href="https://shrynk.herokuapp.com"
               >
                 Shrynk
               </a>
-              . The below list contains the main features implemented in this application.
             </p>
           </div>
         </div>
       </div>
       <br />
-      <div className="custom-card  max-w-md mx-auto  rounded-xl shadow-2xl overflow-hidden">
+      <div className="custom-card  flex justify-center max-w-md mx-auto  rounded-xl shadow-2xl overflow-hidden">
         <div className="md:flex">
           <div className="p-8">
             <div className="uppercase tracking-wide text-sm text-blue-500 font-semibold">
@@ -105,12 +106,12 @@ export default function Home() {
               <ul className="p-1 custom-card-text">
                 <li>
                   <p className="block mt-1 text-lg leading-tight  ">
-                    Tiers and Quotas on URLs
+                    User Onboarding
                   </p>
                 </li>
                 <li>
                   <p className="block mt-1 text-lg leading-tight ">
-                    User Onboarding
+                    Tiers and Quotas for Accounts
                   </p>
                 </li>
                 <li>
@@ -129,11 +130,16 @@ export default function Home() {
                   </p>
                 </li>
               </ul>
+              <br />
+              <div className="uppercase tracking-wide text-sm text-blue-500 font-semibold">
+                <a href="https://storyset.com/business">
+                  Illustrations by Freepik Storyset
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
       <br />
 
       <div className="flex justify-center">
@@ -153,6 +159,20 @@ export default function Home() {
           <br />
         </div>
       </div>
+      <div className="custom-card max-w-md mx-auto rounded-xl shadow-2xl overflow-hidden md:max-w-2xl">
+        <div className="sm:flex">
+          <div className="p-8">
+            <p className="mt-2 justify-between font-serif custom-card-text text-blue-500">
+              Disclaimer: This is not a paid product or a pro application, just
+              a hobby "product" I built for my personal short links etc. You can
+              use this product to shorten and share your links however I do not
+              guarantee you a 99.99% uptime.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <br />
     </div>
   );
 }

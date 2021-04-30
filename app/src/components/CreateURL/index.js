@@ -26,21 +26,22 @@ export default function CreateURL() {
   };
 
   return (
-    <div class="rounded-t-xl overflow-hidden bg-gradient-to-r from-blue-400 to-blue-200 p-10">
-      <form className="flex w-full max-w-lg mx-auto space-x-3">
-        <input
-          {...register('longURL', { required: true })}
-          className="flex-1 appearance-none border border-transparent w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-blue-800 focus:border-transparent"
-          type="text"
-          placeholder="Enter a url to shrynk!"
-          aria-label="Full name"
-        />
-        <button
-          onClick={handleSubmit(onSubmit)}
-          className="flex-shrink-0 bg-blue-400 text-white text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200"
-        >
-          Submit
-        </button>
+    <div class="bg-gradient-to-r from-green-300 to-blue-500  rounded-t-xl overflow-hidden p-10">
+      <form className="w-full flex flex-wrap bg-grey-light">
+        <div class="w-full lg:w-5/6">
+          <input
+            {...register('longURL', { required: true })}
+            className="flex justify-center appearance-none border border-transparent w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-md rounded-lg text-base focus:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:border-transparent"
+            type="text"
+            placeholder="Enter a url to shrynk!"
+            aria-label="Full name"
+          />
+        </div>
+        <div class=" py-2 px-4 w-full lg:w-1/6 flex justify-center bg-gradient-to-r from-green-500 to-blue-800 hover:from-pink-500 hover:to-yellow-500 text-white text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200">
+          <button onClick={handleSubmit(onSubmit)} className="">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap');
+
 .footer {
   height: 70px;
   color: var(--footer-color);
@@ -59,5 +61,22 @@ a.custom-card-text {
 }
 
 .custom-card-container {
+  background-color: var(--home-card-bg-onboarding);
+}
+
+.table-ui {
+  color: var(--table-text-color);
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+tr:nth-child(odd) {
+  background-color: var(--stripped-odd); /* optional */
+}
+
+tr:nth-child(even) {
+  background-color: var(--stripped-even); /* optional */
+}
+
+.create-url {
   background-color: var(--home-card-bg-onboarding);
 }

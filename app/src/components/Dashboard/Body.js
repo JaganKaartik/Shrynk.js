@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { DataContext } from '../../context/DataContext';
 import { deleteURL } from '../../helpers/api.helper';
 import { toast } from 'react-toast';
+import moment from 'moment';
 
 export default function Body() {
   const { dataFetched, dataUpdated } = useContext(DataContext);
@@ -18,27 +19,31 @@ export default function Body() {
 
   function addTableRow(result, index) {
     return (
-      <tr key={index} className="table-content">
-        <td data-label="Sl.No" className="lg:shadow-lg">
+      <tr key={index} className="table-ui">
+        <td className="px-6 py-4 whitespace-normal">
           <div className="flex justify-center content-center">{index}</div>
         </td>
-        <td data-label="Long URL" className="lg:shadow-lg">
+        <td className="px-6 py-4 whitespace-normal hover:underline">
           <a href={result.longURL}>{result.longURL}</a>
         </td>
-        <td data-label="Short URL" className="lg:shadow-lg">
+        <td className="px-6 py-4 whitespace-nowrap hover:underline">
           <a href={result.shortURL}>{result.shortURL}</a>
         </td>
-        <td data-label="Activation" className="lg:shadow-lg">
-          {result.activation}
+        <td className="px-6 py-4 whitespace-nowrap">
+          <span className="px-2 inline-flex text-base leading-5 text-indigo-900 bg-gradient-to-r from-green-400 to-blue-500  rounded-lg ">
+            {moment(result.activation).format('LLLL')}
+          </span>
         </td>
-        <td data-label="Expiry" className="lg:shadow-lg">
-          {result.expiry}
+        <td className="px-6 py-4 whitespace-nowrap">
+          <span className="px-2 inline-flex text-base leading-5 text-indigo-900  bg-gradient-to-r from-yellow-400 to-red-500 rounded-lg">
+            {moment(result.expiry).format('LLLL')}
+          </span>
         </td>
-        <td data-label="Operation" className="shadow-2xl">
+        <td className="px-6 py-4 whitespace-nowrap">
           <div className="flex-1 justify-center content-center">
             <button
               onClick={() => handleDelete(result.urlCode)}
-              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+              className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 text-gray-100 font-bold py-2 px-4 rounded-l"
             >
               Delete
             </button>
@@ -49,7 +54,7 @@ export default function Body() {
   }
 
   return (
-    <tbody className="w-full">
+    <tbody className="bg-white divide-y divide-gray-200">
       {data.map((result, index) => {
         return addTableRow(result, index + 1);
       })}
