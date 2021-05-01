@@ -21,11 +21,11 @@ export const onboardingUser = async (accountType) => {
     .catch((err) => err);
 };
 
-export const getAllURLS = async () => {
+export const getAllURLS = async (ucode = 'no') => {
   const authToken = localStorage.getItem('shrynk-jwt');
   const userId = localStorage.getItem('shrynk-usr-id');
   return await axios
-    .request(API_URL + `dash/all/${userId}`, {
+    .request(API_URL + `dash/all/${userId}?ucode=${ucode}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${authToken}`,
