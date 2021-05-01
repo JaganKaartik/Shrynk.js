@@ -15,9 +15,12 @@ const getAllURLS = async (req, res) => {
     .then((data) => {
       if (data.length !== 0) {
         // URLs (data) exists
-        res.send({ data, success: true })
+        if (req.query.ucode === 'yes') {
+          const urlCodes = data.map((e) => e.urlCode)
+          res.send({ urlCodes, success: true })
+        } else res.send({ data, success: true })
       } else {
-        res.send({ success: false })
+        res.send({ message: 'Insufficent URL Data', success: false })
       }
     })
     .catch((err) => {
