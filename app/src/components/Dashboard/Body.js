@@ -3,6 +3,7 @@ import { DataContext } from '../../context/DataContext';
 import { deleteURL } from '../../helpers/api.helper';
 import { toast } from 'react-toast';
 import moment from 'moment';
+import DisplayQR from './DisplayQR';
 
 export default function Body() {
   const { dataFetched, dataUpdated } = useContext(DataContext);
@@ -28,6 +29,9 @@ export default function Body() {
         </td>
         <td className="px-6 py-4 whitespace-nowrap hover:underline">
           <a href={result.shortURL}>{result.shortURL}</a>
+        </td>
+        <td className="px-6 py-4 whitespace-nowrap hover:underline">
+          <DisplayQR url={[result.shortURL, result.urlCode]} />
         </td>
         <td className="px-6 py-4 whitespace-nowrap">
           <span className="p-1 px-2 inline-flex text-base leading-5 text-gray-100 bg-gradient-to-r from-green-500 to-blue-600  rounded-lg ">
