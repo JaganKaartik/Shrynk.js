@@ -3,13 +3,7 @@ import { JWT_SECRET, SESSION_SECRET } from '../config/default.config'
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
-const {
-  NODE_ENV,
-  CLIENT_URL_PROD,
-  CLIENT_URL_DEV
-} = require('../config/default.config')
-
-const clientUrl = NODE_ENV === 'production' ? CLIENT_URL_PROD : CLIENT_URL_DEV
+const { NODE_ENV, CLIENT_URL } = require('../config/default.config')
 
 const authGoogle = passport.authenticate('google', {
   scope: ['email', 'profile']
@@ -24,7 +18,7 @@ const authRedirectGoogle = (req, res) => {
     { expiresIn: '24h' }
   )
   res.redirect(
-    `${clientUrl}/app/home?token=${token}&userid=${req.user.userId}&onboarding=${req.user.onboarding}`
+    `${CLIENT_URL}/app/home?token=${token}&userid=${req.user.userId}&onboarding=${req.user.onboarding}`
   )
 }
 

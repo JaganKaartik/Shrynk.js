@@ -8,23 +8,17 @@ const passport = require('passport')
 const cors = require('cors')
 const apiLimiter = require('./rateLimit')
 const passportSetup = require('../config/passport-setup')
-const {
-  NODE_ENV,
-  CLIENT_URL_PROD,
-  CLIENT_URL_DEV
-} = require('../config/default.config')
+const { NODE_ENV, CLIENT_URL } = require('../config/default.config')
 
-const clientUrl = NODE_ENV === 'production' ? CLIENT_URL_PROD : CLIENT_URL_DEV
-
-Middleware.use(cors({ credentials: true, origin: clientUrl }))
+if (NODE_ENV !== 'production') {
+  Middleware.use(cors({ credentials: true, origin: CLIENT_URL }))
+}
 
 Middleware.use('/', apiLimiter)
 
 Middleware.use(cookieParser())
 Middleware.use(passport.initialize())
 Middleware.use(passport.session())
-
-Middleware.disable('x-powered-by')
 
 Middleware.use(bodyParser.urlencoded({ extended: false }))
 Middleware.use(bodyParser.json())
