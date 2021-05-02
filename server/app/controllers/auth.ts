@@ -22,21 +22,20 @@ const authRedirectGoogle = (req, res) => {
   )
 }
 
-// const authTwitter = passport.authenticate('twitter')
+const authGithub = passport.authenticate('github')
 
-// const authRedirectTwitter = (req, res) => {
-//   const token = jwt.sign(
-//     {
-//       data: req.user.userId
-//     },
-//     JWT_SECRET,
-//     { expiresIn: '24h' }
-//   )
-//   res.redirect(
-//     `${clientUrl}/app/home?token=${token}&userid=${req.user.use
-//   srId}&onboarding=${req.user.onboarding}`
-//   )
-// }
+const authRedirectGithub = (req, res) => {
+  const token = jwt.sign(
+    {
+      data: req.user.userId
+    },
+    JWT_SECRET,
+    { expiresIn: '24h' }
+  )
+  res.redirect(
+    `${CLIENT_URL}/app/home?token=${token}&userid=${req.user.userId}&onboarding=${req.user.onboarding}`
+  )
+}
 
 const logout = (req, res) => {
   req.logout()
@@ -51,7 +50,7 @@ const logout = (req, res) => {
 export {
   authGoogle,
   authRedirectGoogle,
-  // authTwitter,
-  // authRedirectTwitter,
+  authGithub,
+  authRedirectGithub,
   logout
 }

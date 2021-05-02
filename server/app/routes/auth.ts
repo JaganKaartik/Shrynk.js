@@ -2,8 +2,8 @@ import express from 'express'
 import {
   authGoogle,
   authRedirectGoogle,
-  // authTwitter,
-  // authRedirectTwitter,
+  authGithub,
+  authRedirectGithub,
   logout
 } from '../controllers/auth'
 
@@ -20,15 +20,15 @@ authRouter.get(
   }),
   authRedirectGoogle
 )
-// authRouter.get('/twitter', authTwitter)
-// authRouter.get(
-//   '/twitter/redirect',
-//   passport.authenticate('twitter', {
-//     failureRedirect: '/',
-//     session: false
-//   }),
-//   authRedirectTwitter
-// )
+authRouter.get('/github', authGithub)
+authRouter.get(
+  '/github/redirect',
+  passport.authenticate('github', {
+    failureRedirect: '/',
+    session: false
+  }),
+  authRedirectGithub
+)
 authRouter.get('/logout', logout)
 
 export = authRouter
