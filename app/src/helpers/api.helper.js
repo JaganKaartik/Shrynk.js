@@ -16,7 +16,6 @@ export const onboardingUser = async (accountType) => {
 
 export const getAllURLS = async (ucode = 'no') => {
   const userId = localStorage.getItem('shrynk-usr-id');
-  console.log(ucode);
   return await axios
     .get(`dash/all/${userId}?ucode=${ucode}`)
     .then((resp) => resp.data)

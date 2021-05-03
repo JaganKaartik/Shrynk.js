@@ -5,7 +5,7 @@ import CreateURL from '../CreateURL';
 import { DataContext } from '../../context/DataContext';
 import { getAllURLS } from '../../helpers/api.helper';
 import { themeToggleHandler } from '../../helpers/theme.helper';
-import CustomLoader from './Loader';
+import CustomLoader from '../Commons/Loader';
 import DefaultDash from './DefaultDash';
 import ArrowSVG from '../../assets/images/right-arrow.svg';
 

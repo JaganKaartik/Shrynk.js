@@ -9,8 +9,8 @@ export const totalVisitsURLData = async () => {
   const fetchedData = await getAllURLS('yes');
   if (fetchedData.success) {
     const chartData = [];
-    for (let e of fetchedData.urlCodes) {
-      const TotalVisits = await getTotalVistsForURLInfo(e, 'yes');
+    for (let url of fetchedData.urlCodes) {
+      const TotalVisits = await getTotalVistsForURLInfo(url, 'yes');
       chartData.push({
         visits: TotalVisits.visits,
         urls: `https://shrynk.jagankaartik.live/${TotalVisits.urlCode}`,
@@ -21,6 +21,6 @@ export const totalVisitsURLData = async () => {
     return { chartData, allVisitsZero, dataPresent: true };
   } else {
     if (fetchedData.message === 'Insufficent URL Data')
-      return { dataPresent: false };
+      return { dataPresent: false, allVisitsZero: 0 };
   }
 };
