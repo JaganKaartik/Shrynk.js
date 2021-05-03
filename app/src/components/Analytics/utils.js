@@ -12,8 +12,8 @@ export const totalVisitsURLData = async () => {
     for (let url of fetchedData.urlCodes) {
       const TotalVisits = await getTotalVistsForURLInfo(url, 'yes');
       chartData.push({
-        visits: TotalVisits.visits,
-        urls: `https://shrynk.jagankaartik.live/${TotalVisits.urlCode}`,
+        x: `https://shrynk.jagankaartik.live/${TotalVisits.urlCode}`,
+        y: TotalVisits.visits,
       });
     }
     // Check if all visits are 0

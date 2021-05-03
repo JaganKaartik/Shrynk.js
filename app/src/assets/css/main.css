@@ -38,8 +38,12 @@
   color: var(--home-card-text);
 }
 
-.custom-title-text {
+.analytics-title-text {
   color: var(--custom-title-text);
+}
+
+.analytics-card {
+  background-color: var(--analytics-card-bg);
 }
 
 a.custom-card-text {
@@ -66,4 +70,13 @@ tr:nth-child(even) {
 
 .create-url {
   background-color: var(--home-card-bg-onboarding);
+}
+
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+}
+.has-tooltip:hover .tooltip {
+  visibility: visible;
+  z-index: 100;
 }

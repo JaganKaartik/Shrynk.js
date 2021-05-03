@@ -12,6 +12,7 @@
   --home-card-bg-onboarding: #e9f2fa;
   --create-url-bg: #e9f2fa;
   --custom-title-text: rgb(231, 237, 243);
+  --analytics-card-bg: #fafafa;
 }
 
 [data-theme='dark'] {
@@ -28,4 +29,5 @@
   --home-card-bg-onboarding: #020d1d;
   --create-url-bg: #020d1d;
   --custom-title-text: rgba(147, 197, 253);
+  --analytics-card-bg: #020b1d;
 }

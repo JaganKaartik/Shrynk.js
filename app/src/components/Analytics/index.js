@@ -22,7 +22,7 @@ export default function AnalyticsDashboard() {
   function AnalyticsHeader() {
     return (
       <div className="flex justify-center bg-gradient-to-r from-gray-900 to-blue-900 overflow-hidden p-5 sm:p-10">
-        <h1 className="flex justify-center text-xl md:text-6xl font-extrabold custom-title-text">
+        <h1 className="flex justify-center text-xl md:text-6xl font-extrabold analytics-title-text">
           Welcome to Shrynk Analytics
         </h1>
       </div>
