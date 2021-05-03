@@ -5,7 +5,7 @@ import { useScreenshot, createFileName } from 'use-react-screenshot';
 
 const DisplayQR = (props) => {
   const ref = createRef(null);
-  const [image, takeScreenShot] = useScreenshot({
+  const [takeScreenShot] = useScreenshot({
     type: 'image/jpeg',
     quality: 1.0,
   });
