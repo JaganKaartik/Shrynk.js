@@ -5,20 +5,20 @@ import DefaultSVG from '../../assets/images/default_img.svg';
 const AnalyticsSideBar = (props) => {
   const cardElement = (result, index) => {
     return (
-      <div class="space-y-4 max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+      <div class="max-w-md mx-auto custom-card rounded-xl shadow-md overflow-hidden md:max-w-2xl">
         <div class="md:flex">
           <div class="md:flex-shrink-0">
             <img
-              class="h-48 w-full object-cover md:w-48"
+              class="h-48 w-full object-cover md:w-48 bg-blue-100"
               src={DefaultSVG}
               alt="img"
             />
           </div>
           <div class="p-8">
-            <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+            <div class="uppercase  tracking-wide text-sm text-indigo-500 font-semibold">
               Total Visits: {result.visits}
             </div>
-            <p class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">
+            <p class="block mt-1 text-lg leading-tight font-medium custom-card-text hover:underline">
               {result.urls}
             </p>
           </div>
@@ -41,8 +41,8 @@ const AnalyticsSideBar = (props) => {
   };
 
   return (
-    <div className="space-y-4 bg-gradient-to-b from-blue-400 to-blue-200 flex flex-1 h-100 flex-grow flex-col overflow-hidden px-6 py-8">
-      <ul>
+    <div className="bg-gradient-to-b from-blue-600 to-blue-200 flex flex-1 h-100 flex-grow flex-col overflow-hidden px-6 py-8">
+      <ul className="space-y-6">
         {console.log(props.myData.dataPresent)}
         {props.myData.dataPresent
           ? props.myData.chartData.map((result, index) =>
