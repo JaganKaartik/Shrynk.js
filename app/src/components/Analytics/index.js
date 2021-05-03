@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { totalVisitsURLData } from './utils';
 import { themeToggleHandler } from '../../helpers/theme.helper';
-import AnalyticsSideBar from './AnalyticsSideBar';
+import AnalyticsSideBar from './SideBar';
 import CustomLoader from '../Commons/Loader';
+import ChartDashboard from './Charts';
 
 export default function AnalyticsDashboard() {
   const [AnalyticsData, setAnalyticsData] = useState('');
@@ -18,9 +19,27 @@ export default function AnalyticsDashboard() {
     fetchAnalyticsData();
   }, []);
 
+  function AnalyticsHeader() {
+    return (
+      <div className="flex justify-center bg-gradient-to-r from-gray-900 to-blue-900 overflow-hidden p-5 sm:p-10">
+        <h1 className="flex justify-center text-xl md:text-6xl font-extrabold custom-title-text">
+          Welcome to Shrynk Analytics
+        </h1>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      {loaded ? <AnalyticsSideBar myData={AnalyticsData} /> : <CustomLoader />}
+    <div className="flex flex-col justify-center">
+      <AnalyticsHeader />
+      {loaded ? (
+        <div className="grid sm:grid-cols-2 ">
+          <AnalyticsSideBar myData={AnalyticsData} />
+          <ChartDashboard myData={AnalyticsData} />
+        </div>
+      ) : (
+        <CustomLoader />
+      )}
     </div>
   );
 }

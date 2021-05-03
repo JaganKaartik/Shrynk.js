@@ -8,9 +8,9 @@
 }
 
 .container-body {
-  padding: 10px 20px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  /* padding: 5px 10px; */
+  /* overflow-x: hidden;
+  overflow-y: auto; */
   display: flex;
   background-color: var(--bg-color);
   flex-flow: column nowrap;
@@ -36,6 +36,10 @@
 
 .custom-card-text {
   color: var(--home-card-text);
+}
+
+.custom-title-text {
+  color: var(--custom-title-text);
 }
 
 a.custom-card-text {

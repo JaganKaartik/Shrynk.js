@@ -26,7 +26,7 @@ export default function CreateURL() {
   };
 
   return (
-    <div class="bg-gradient-to-r from-green-300 to-blue-500  rounded-t-xl overflow-hidden p-5 sm:p-10">
+    <div class="bg-gradient-to-r from-gray-900 to-blue-900 overflow-hidden p-5 sm:p-10">
       <form>
         <div className="space-y-4 md:space-y-0 md:space-x-4 flex flex-wrap md:flex-nowrap">
           <input
