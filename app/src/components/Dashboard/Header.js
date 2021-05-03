@@ -26,6 +26,12 @@ export default function Header() {
           scope="col"
           className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider"
         >
+          Copy to Clipboard
+        </th>
+        <th
+          scope="col"
+          className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider"
+        >
           QR Code
         </th>
         <th

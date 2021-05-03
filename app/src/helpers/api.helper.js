@@ -21,7 +21,7 @@ export const onboardingUser = async (accountType) => {
     .catch((err) => err);
 };
 
-export const getAllURLS = async (ucode = 'no') => {
+export const getAllURLS = async (ucode = 0) => {
   const authToken = localStorage.getItem('shrynk-jwt');
   const userId = localStorage.getItem('shrynk-usr-id');
   return await axios

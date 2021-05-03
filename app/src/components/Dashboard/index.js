@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from 'react';
 import Body from './Body';
 import Header from './Header';
 import CreateURL from '../CreateURL';
-import { ToastContainer } from 'react-toast';
 import { DataContext } from '../../context/DataContext';
 import { getAllURLS } from '../../helpers/api.helper';
 import { themeToggleHandler } from '../../helpers/theme.helper';
@@ -65,7 +64,6 @@ export default function Dashboard() {
 
   return (
     <div className="w-full">
-      <ToastContainer position="top-center" delay={2000} />
       <CreateURL />
       {loaded ? (
         showTable()
