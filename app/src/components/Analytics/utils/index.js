@@ -22,6 +22,6 @@ export const totalVisitsURLData = async () => {
     return { chartData, allVisitsZero, dataPresent: true };
   } else {
     if (fetchedData.message === 'Insufficent URL Data')
-      return { dataPresent: false, allVisitsZero: 0 };
+      return { dataPresent: false, allVisitsZero: true };
   }
 };
