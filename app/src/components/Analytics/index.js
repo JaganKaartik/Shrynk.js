@@ -5,6 +5,7 @@ import AnalyticsSideBar from './SideBar';
 import CustomLoader from '../Commons/Loader';
 import ChartDashboard from './ChartDashboard';
 import { displayImage } from './utils/displayImage';
+import TableSVG from '../../assets/images/analytics.svg';
 
 export default function AnalyticsDashboard() {
   const [AnalyticsData, setAnalyticsData] = useState('');
@@ -35,12 +36,21 @@ export default function AnalyticsDashboard() {
       <AnalyticsHeader />
       {loaded ? (
         AnalyticsData.dataPresent ? (
-          <div className="grid sm:grid-cols-2 ">
+          <div className="grid sm:grid-cols-2">
             <AnalyticsSideBar myData={AnalyticsData} />
             <ChartDashboard myData={AnalyticsData} />
           </div>
         ) : (
-          <div className="overflow-hidden">{displayImage('ANALYSE')}</div>
+          <div className="bg-gradient-to-b from-blue-400 to-blue-200 flex flex-col h-auto overflow-hidden px-6 py-8">
+            <div>
+              <img
+                className="h-auto w-full object-cover md:flex-shrink-0 "
+                src={TableSVG}
+                alt="loading..."
+                style={{ maxWidth: '450px', margin: '5px auto 0' }}
+              />
+            </div>
+          </div>
         )
       ) : (
         <CustomLoader />

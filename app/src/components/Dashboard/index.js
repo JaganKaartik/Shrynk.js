@@ -63,7 +63,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="w-full">
+    <div className="flex-grow flex flex-col">
       <CreateURL />
       {loaded ? (
         showTable()
