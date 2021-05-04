@@ -3,9 +3,9 @@ import { DataProvider } from '../context/DataContext';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Home, Navbar, AuthComponent } from '../components';
 
-const { Dashboard, Onboarding, AnalyticsDashboard } = React.lazy(() =>
-  import('../components')
-);
+const AnalyticsDashboard = React.lazy(() => import('../components/Analytics'));
+const Onboarding = React.lazy(() => import('../components/Onboarding'));
+const Dashboard = React.lazy(() => import('../components/Dashboard'));
 
 export default function Router() {
   return (
