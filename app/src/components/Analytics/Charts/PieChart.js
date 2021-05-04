@@ -7,7 +7,7 @@ export default function PieChart(props) {
     <div>
       <VictoryPie
         colorScale={['tomato', 'orange', 'gold', 'cyan', 'navy']}
-        data={props.myData.chartData}
+        data={props.myData}
         labels={({ datum }) => datum.y}
         style={{ labels: { fill: 'navy' } }}
         labelComponent={

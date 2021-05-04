@@ -10,7 +10,7 @@ export const displayImage = (data) => {
         }
       : { image: ShareSVG, message: 'Share your URLs!' };
   return (
-    <div class=" transition duration-200 ease-in-out transform hover:scale-105 motion-reduce:transform-none mx-auto bg-white rounded-xl shadow-2xl overflow-hidden">
+    <div class="transition duration-200 ease-in-out transform hover:scale-105 motion-reduce:transform-none mx-auto bg-white rounded-xl shadow-2xl overflow-hidden">
       <div class="md:flex">
         <img
           className="h-auto w-full object-cover md:flex-shrink-0 "
