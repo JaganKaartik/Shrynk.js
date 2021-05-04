@@ -46,7 +46,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex-grow">
+    <div className="p-3 flex-grow">
       <div className="flex flex-col justify-center items-center">
         {/* <h1 className="items-center text-4xl sm:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight text-blue-500 mt-10 mb-8 sm:mt-14 sm:mb-10">
           Presenting Shrynk.js a custom url shortener

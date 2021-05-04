@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { DataProvider } from '../context/DataContext';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Home, Navbar, AuthComponent } from '../components';
+import { Home, Navbar, AuthComponent, PageLoader } from '../components';
 
 const AnalyticsDashboard = React.lazy(() => import('../components/Analytics'));
 const Onboarding = React.lazy(() => import('../components/Onboarding'));
@@ -17,7 +17,7 @@ export default function Router() {
             <Home />
           </Route>
 
-          <Suspense fallback={<p>Loading</p>}>
+          <Suspense fallback={<PageLoader />}>
             <Route exact path="/app/onboarding">
               <AuthComponent>
                 <Onboarding />
