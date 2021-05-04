@@ -17,6 +17,7 @@ export const totalVisitsURLData = async () => {
       });
     }
     // Check if all visits are 0
+    chartData.sort((a, b) => (a.y < b.y ? 1 : -1));
     const allVisitsZero = chartData.every((e) => e.x === 0);
     return { chartData, allVisitsZero, dataPresent: true };
   } else {

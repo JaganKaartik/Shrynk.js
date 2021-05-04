@@ -1,17 +1,8 @@
 import React from 'react';
-import { VictoryPie } from 'victory';
+import { VictoryTooltip, VictoryPie } from 'victory';
+import InfoModal from './InfoModal';
 
 export default function ChartDashboard(props) {
-  const toolTip = (message) => {
-    return (
-      <div class="has-tooltip">
-        <span class="tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500 -mt-8">
-          {message}
-        </span>
-        Custom Position (above)
-      </div>
-    );
-  };
   return (
     <div className="bg-gradient-to-b from-gray-900 to-blue-900  flex flex-1 h-100 flex-grow flex-col overflow-hidden px-6 py-8">
       <div>
@@ -26,36 +17,43 @@ export default function ChartDashboard(props) {
           </div>
         </div>
       </div>
-      <div className="w-full analytics-card mx-auto rounded-xl shadow-md overflow-hidden">
-        {console.log(props.chartData)}
-        {/* {props.dataPresent && ( */}
-        <VictoryPie
-          colorScale={['tomato', 'orange', 'gold', 'cyan', 'navy']}
-          data={props.myData.chartData}
-          labels={({ datum }) => datum.y}
-          events={[
-            {
-              target: 'data',
-              eventHandlers: {
-                onClick: () => {
-                  return [
-                    {
-                      target: 'labels',
-                      mutation: (props) => {
-                        console.log(props);
-                        return <toolTip props={props.daytum} />;
-                        // return props.text === props.datum.x
-                        //   ? null
-                        //   : { text: props.datum.x };
-                      },
+      <div className="py-5 w-full analytics-card mx-auto rounded-xl shadow-md overflow-hidden">
+        {props.myData.dataPresent && (
+          <div>
+            <h1 className="flex justify-center text-2xl font-extrabold custom-card-text tracking-tight font-mono">
+              Total URL Visits
+            </h1>
+            <VictoryPie
+              colorScale={['tomato', 'orange', 'gold', 'cyan', 'navy']}
+              data={props.myData.chartData}
+              labels={({ datum }) => datum.y}
+              style={{ labels: { fill: 'navy' } }}
+              labelComponent={
+                <VictoryTooltip
+                  text={({ datum }) => datum.x}
+                  constrainToVisibleArea
+                />
+              }
+              events={[
+                {
+                  target: 'data',
+                  eventHandlers: {
+                    onClick: () => {
+                      return [
+                        {
+                          target: 'labels',
+                          mutation: (props) => {
+                            return <InfoModal data={props.datum} />;
+                          },
+                        },
+                      ];
                     },
-                  ];
+                  },
                 },
-              },
-            },
-          ]}
-        />
-        {/* )} */}
+              ]}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

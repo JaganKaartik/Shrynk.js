@@ -2,6 +2,10 @@ import React from 'react';
 import AnalyticsSVG from '../../assets/images/analytics.svg';
 
 const AnalyticsSideBar = (props) => {
+  /*
+  y = Total Visits (Number)
+  x = Url (String)
+  */
   const cardElement = (result, index) => {
     return (
       <div class=" transition duration-200 ease-in-out transform hover:scale-105 motion-reduce:transform-none max-w-md mx-auto analytics-card rounded-xl shadow-2xl overflow-hidden">
