@@ -1,5 +1,4 @@
 import React from 'react';
-import { displayImage } from './utils/displayImage';
 
 const AnalyticsSideBar = (props) => {
   /*
@@ -28,11 +27,10 @@ const AnalyticsSideBar = (props) => {
   return (
     <div className="bg-gradient-to-b from-gray-900 to-blue-900 flex flex-col overflow-hidden px-6 py-8">
       <ul className="space-y-6">
-        {props.myData.dataPresent
-          ? props.myData.chartData.map((result, index) =>
-              cardElement(result, index + 1)
-            )
-          : displayImage('ANALYSE')}
+        {props.myData.dataPresent &&
+          props.myData.chartData.map((result, index) =>
+            cardElement(result, index + 1)
+          )}
       </ul>
     </div>
   );
