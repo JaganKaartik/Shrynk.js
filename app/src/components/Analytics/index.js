@@ -4,8 +4,8 @@ import { themeToggleHandler } from '../../helpers/theme.helper';
 import AnalyticsSideBar from './SideBar';
 import CustomLoader from '../Commons/Loader';
 import ChartDashboard from './ChartDashboard';
-import { displayImage } from './utils/displayImage';
-import TableSVG from '../../assets/images/analytics.svg';
+import DefaultInfoComponent from '../Commons/DefaultInfo';
+import AnalyticsSVG from '../../assets/images/analytics.svg';
 
 export default function AnalyticsDashboard() {
   const [AnalyticsData, setAnalyticsData] = useState('');
@@ -31,6 +31,11 @@ export default function AnalyticsDashboard() {
     );
   }
 
+  const analyticsDefault = {
+    image: AnalyticsSVG,
+    text: 'Create and share your URLs to use Analytics.',
+  };
+
   return (
     <div className="flex flex-col justify-center">
       <AnalyticsHeader />
@@ -41,16 +46,7 @@ export default function AnalyticsDashboard() {
             <ChartDashboard myData={AnalyticsData} />
           </div>
         ) : (
-          <div className="bg-gradient-to-b from-blue-400 to-blue-200 flex flex-col h-auto overflow-hidden px-6 py-8">
-            <div>
-              <img
-                className="h-auto w-full object-cover md:flex-shrink-0 "
-                src={TableSVG}
-                alt="loading..."
-                style={{ maxWidth: '450px', margin: '5px auto 0' }}
-              />
-            </div>
-          </div>
+          <DefaultInfoComponent data={analyticsDefault} />
         )
       ) : (
         <CustomLoader />
