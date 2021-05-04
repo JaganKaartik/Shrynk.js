@@ -8,9 +8,6 @@
 }
 
 .container-body {
-  padding: 10px 20px;
-  overflow-x: hidden;
-  overflow-y: auto;
   display: flex;
   background-color: var(--bg-color);
   flex-flow: column nowrap;
@@ -38,6 +35,14 @@
   color: var(--home-card-text);
 }
 
+.analytics-title-text {
+  color: var(--custom-title-text);
+}
+
+.analytics-card {
+  background-color: var(--analytics-card-bg);
+}
+
 a.custom-card-text {
   color: rgb(21, 123, 163);
   font-weight: 700;
@@ -62,4 +67,13 @@ tr:nth-child(even) {
 
 .create-url {
   background-color: var(--home-card-bg-onboarding);
+}
+
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+}
+.has-tooltip:hover .tooltip {
+  visibility: visible;
+  z-index: 100;
 }

@@ -3,13 +3,7 @@ import { JWT_SECRET, SESSION_SECRET } from '../config/default.config'
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
-const {
-  NODE_ENV,
-  CLIENT_URL_PROD,
-  CLIENT_URL_DEV
-} = require('../config/default.config')
-
-const clientUrl = NODE_ENV === 'production' ? CLIENT_URL_PROD : CLIENT_URL_DEV
+const { NODE_ENV, CLIENT_URL } = require('../config/default.config')
 
 const authGoogle = passport.authenticate('google', {
   scope: ['email', 'profile']
@@ -24,25 +18,24 @@ const authRedirectGoogle = (req, res) => {
     { expiresIn: '24h' }
   )
   res.redirect(
-    `${clientUrl}/app/home?token=${token}&userid=${req.user.userId}&onboarding=${req.user.onboarding}`
+    `${CLIENT_URL}/app/home?token=${token}&userid=${req.user.userId}&onboarding=${req.user.onboarding}`
   )
 }
 
-// const authTwitter = passport.authenticate('twitter')
+const authGithub = passport.authenticate('github')
 
-// const authRedirectTwitter = (req, res) => {
-//   const token = jwt.sign(
-//     {
-//       data: req.user.userId
-//     },
-//     JWT_SECRET,
-//     { expiresIn: '24h' }
-//   )
-//   res.redirect(
-//     `${clientUrl}/app/home?token=${token}&userid=${req.user.use
-//   srId}&onboarding=${req.user.onboarding}`
-//   )
-// }
+const authRedirectGithub = (req, res) => {
+  const token = jwt.sign(
+    {
+      data: req.user.userId
+    },
+    JWT_SECRET,
+    { expiresIn: '24h' }
+  )
+  res.redirect(
+    `${CLIENT_URL}/app/home?token=${token}&userid=${req.user.userId}&onboarding=${req.user.onboarding}`
+  )
+}
 
 const logout = (req, res) => {
   req.logout()
@@ -57,7 +50,7 @@ const logout = (req, res) => {
 export {
   authGoogle,
   authRedirectGoogle,
-  // authTwitter,
-  // authRedirectTwitter,
+  authGithub,
+  authRedirectGithub,
   logout
 }

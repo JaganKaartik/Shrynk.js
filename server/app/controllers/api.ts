@@ -9,14 +9,11 @@ const URLS = require('../models/Url')
 const User = require('../models/user')
 const { generateID, validID, urlCheck } = require('../services/URLServices')
 const { QuotaCheck } = require('../services/quota')
-const { CLIENT_URL_DEV, CLIENT_URL_PROD } = require('../config/default.config')
+const { CLIENT_URL } = require('../config/default.config')
 const {
   CreateAnalyticsForURL,
   UpdateVisitCount
 } = require('../services/analytics')
-
-const CLIENT_ORIGIN =
-  process.env.NODE_ENV === 'production' ? CLIENT_URL_PROD : CLIENT_URL_DEV
 
 const shortenURL = async (req, res) => {
   const id = generateID()
@@ -33,7 +30,7 @@ const shortenURL = async (req, res) => {
       userId: req.body.userId,
       urlCode: checkedId,
       longURL: req.body.longURL,
-      shortURL: `${CLIENT_ORIGIN}/${id}`
+      shortURL: `${CLIENT_URL}/${id}`
     })
       .then((resp: JSON) => {
         if (resp) {

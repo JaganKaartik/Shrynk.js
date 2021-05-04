@@ -1,78 +1,55 @@
 import React, { useEffect, useState } from 'react';
-import AnalyticsSVG from '../../assets/images/analytics.svg';
-import ShareSVG from '../../assets/images/share.svg';
-import TableSVG from '../../assets/images/table1.svg';
-import { totalVisitsURLData } from './analytics.utils';
+import { totalVisitsURLData } from './utils';
 import { themeToggleHandler } from '../../helpers/theme.helper';
-import {
-  FlexibleXYPlot,
-  VerticalGridLines,
-  HorizontalGridLines,
-  HorizontalBarSeries,
-  XAxis,
-  YAxis,
-} from 'react-vis';
+import AnalyticsSideBar from './SideBar';
+import CustomLoader from '../Commons/Loader';
+import ChartDashboard from './ChartDashboard';
+import DefaultInfoComponent from '../Commons/DefaultInfo';
+import AnalyticsSVG from '../../assets/images/analytics.svg';
 
 export default function AnalyticsDashboard() {
   const [AnalyticsData, setAnalyticsData] = useState('');
+  const [loaded, setLoading] = useState(false);
 
   useEffect(() => {
     themeToggleHandler();
     async function fetchAnalyticsData() {
       const result = await totalVisitsURLData();
       setAnalyticsData(result);
+      setLoading(true);
     }
     fetchAnalyticsData();
   }, []);
 
-  const myData = AnalyticsData.chartData;
+  function AnalyticsHeader() {
+    return (
+      <div className="flex justify-center bg-gradient-to-r from-gray-900 to-blue-900 overflow-hidden p-5 sm:p-10">
+        <h1 className="flex justify-center text-xl md:text-6xl font-extrabold analytics-title-text">
+          Welcome to Shrynk Analytics
+        </h1>
+      </div>
+    );
+  }
 
-  const CardInfo = AnalyticsData.dataPresent
-    ? AnalyticsData.allVisitsZero
-      ? { image: ShareSVG, message: 'Share your urls to the world!' }
-      : {
-          image: AnalyticsSVG,
-          message: 'Find your charts below!',
-          displayTable: true,
-        }
-    : { image: TableSVG, message: 'Create and Share your URLs' };
+  const analyticsDefault = {
+    image: AnalyticsSVG,
+    text: 'Create and share your URLs to use Analytics.',
+  };
 
   return (
-    <div className="flex flex-1 h-100 w-full flex-grow flex-col overflow-hidden px-6 py-8">
-      <div>
-        <img
-          className="h-auto w-full object-cover md:flex-shrink-0 "
-          src={CardInfo.image}
-          alt="loading..."
-          style={{ maxWidth: '450px', margin: '5px auto 0' }}
-        />
-      </div>
-      <div className="custom-card mx-auto rounded-xl shadow-md overflow-hidden md:max-w-xl">
-        <div className="md:flex">
-          <div className="p-8">
-            <div className="uppercase tracking-wide text-sm text-blue-500 font-semibold">
-              {CardInfo.message}
-            </div>
-            <p className="def-dash-card block mt-1 text-lg leading-tight font-medium custom-card-text hover:underline"></p>
+    <div className="flex flex-col justify-center">
+      <AnalyticsHeader />
+      {loaded ? (
+        AnalyticsData.dataPresent ? (
+          <div className="grid sm:grid-cols-2">
+            <AnalyticsSideBar myData={AnalyticsData} />
+            <ChartDashboard myData={AnalyticsData} />
           </div>
-        </div>
-      </div>
-      <br />
-      {CardInfo.displayTable && (
-        // <div className="bg-white">
-        <FlexibleXYPlot
-          stackBy="x"
-          xType="ordinal"
-          yType="ordinal"
-          margin={{ left: 250 }}
-        >
-          <VerticalGridLines />
-          <HorizontalGridLines />
-          <XAxis title="Visits" />
-          <YAxis title="Shrynked URLs" />
-          <HorizontalBarSeries cluster="2015" color="#76939A" data={myData} />
-        </FlexibleXYPlot>
-        // </div>
+        ) : (
+          <DefaultInfoComponent data={analyticsDefault} />
+        )
+      ) : (
+        <CustomLoader />
       )}
     </div>
   );

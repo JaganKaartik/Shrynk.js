@@ -3,6 +3,7 @@ import Routes from './Router';
 import Footer from './components/Commons/Footer';
 import { getAuthToken } from './helpers/token.helper';
 import { UserContext } from './context/UserContext';
+import { ToastContainer } from 'react-toast';
 import { themeToggleHandler } from './helpers/theme.helper';
 import '../node_modules/react-vis/dist/style.css';
 import { REACT_APP_GA_ID } from './config';
@@ -25,6 +26,7 @@ export default function App() {
 
   return (
     <div className="flex flex-col h-screen">
+      <ToastContainer position="top-center" delay={2500} />
       <Routes />
       <Footer />
     </div>

@@ -2,11 +2,10 @@ import React, { useEffect, useState, useContext } from 'react';
 import Body from './Body';
 import Header from './Header';
 import CreateURL from '../CreateURL';
-import { ToastContainer } from 'react-toast';
 import { DataContext } from '../../context/DataContext';
 import { getAllURLS } from '../../helpers/api.helper';
 import { themeToggleHandler } from '../../helpers/theme.helper';
-import CustomLoader from './Loader';
+import CustomLoader from '../Commons/Loader';
 import DefaultDash from './DefaultDash';
 import ArrowSVG from '../../assets/images/right-arrow.svg';
 
@@ -34,7 +33,7 @@ export default function Dashboard() {
 
   function showTable() {
     return dataPresent ? (
-      <div className="flex flex-col">
+      <div className="flex">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -64,8 +63,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="w-full">
-      <ToastContainer position="top-center" delay={2000} />
+    <div className="flex-grow flex flex-col">
       <CreateURL />
       {loaded ? (
         showTable()

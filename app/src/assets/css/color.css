@@ -1,6 +1,7 @@
 :root {
   --bg-color: #e9f2fa;
-  --nav-color: #172a3b;
+  /* --nav-color: #172a3b; */
+  --nav-color: #0b1824;
   --footer-color: #fafafa;
   --footer-bg: #172a3b;
   --stripped-odd: #fafafa;
@@ -10,6 +11,8 @@
   --home-card-text: rgba(107, 114, 128);
   --home-card-bg-onboarding: #e9f2fa;
   --create-url-bg: #e9f2fa;
+  --custom-title-text: rgb(231, 237, 243);
+  --analytics-card-bg: #fafafa;
 }
 
 [data-theme='dark'] {
@@ -25,4 +28,6 @@
   --home-card-text: rgba(147, 197, 253);
   --home-card-bg-onboarding: #020d1d;
   --create-url-bg: #020d1d;
+  --custom-title-text: rgba(147, 197, 253);
+  --analytics-card-bg: #020b1d;
 }
