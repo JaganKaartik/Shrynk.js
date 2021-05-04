@@ -11,7 +11,9 @@ export default function ChartDashboard(props) {
         `props.myData.allVisitsZero : ${props.myData.allVisitsZero}`
       )}
       {props.myData.dataPresent ? (
-        !props.myData.allVisitsZero ? (
+        props.myData.allVisitsZero ? (
+          displayImage('SHARE')
+        ) : (
           <div className="py-5 w-full analytics-card mx-auto rounded-xl shadow-md overflow-hidden">
             <h1 className="flex justify-center text-2xl font-extrabold custom-card-text tracking-tight font-mono">
               Total URL Visits
@@ -46,8 +48,6 @@ export default function ChartDashboard(props) {
               ]}
             />
           </div>
-        ) : (
-          displayImage('SHARE')
         )
       ) : (
         displayImage('TABLE')

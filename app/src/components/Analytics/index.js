@@ -3,7 +3,7 @@ import { totalVisitsURLData } from './utils';
 import { themeToggleHandler } from '../../helpers/theme.helper';
 import AnalyticsSideBar from './SideBar';
 import CustomLoader from '../Commons/Loader';
-import ChartDashboard from './Charts';
+import ChartDashboard from './ChartDashboard';
 
 export default function AnalyticsDashboard() {
   const [AnalyticsData, setAnalyticsData] = useState('');
