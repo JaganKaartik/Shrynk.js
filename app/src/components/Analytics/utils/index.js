@@ -1,5 +1,5 @@
-import { getAllURLS } from '../../helpers/api.helper';
-import { getTotalVistsForURLInfo } from '../../helpers/analytics.helper';
+import { getAllURLS } from '../../../helpers/api.helper';
+import { getTotalVistsForURLInfo } from '../../../helpers/analytics.helper';
 
 export const totalVisitsURLData = async () => {
   /*

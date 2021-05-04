@@ -1,5 +1,5 @@
 import React from 'react';
-import AnalyticsSVG from '../../assets/images/analytics.svg';
+import { displayImage } from './utils/displayImage';
 
 const AnalyticsSideBar = (props) => {
   /*
@@ -15,29 +15,11 @@ const AnalyticsSideBar = (props) => {
               Total Visits: {result.y}
             </div>
             <p class="block mt-1 text-lg leading-tight font-medium custom-card-text text-wrap">
-              {result.x}
+              <a href={result.x} target="_blank" rel="noreferrer">
+                {result.x}
+              </a>
             </p>
           </div>
-        </div>
-      </div>
-    );
-  };
-
-  const displayImage = () => {
-    return (
-      <div class=" transition duration-200 ease-in-out transform hover:scale-105 motion-reduce:transform-none max-w-md mx-auto bg-white rounded-xl shadow-2xl overflow-hidden">
-        <div class="md:flex">
-          <img
-            className="h-auto w-full object-cover md:flex-shrink-0 "
-            src={AnalyticsSVG}
-            alt="loading..."
-            style={{ maxWidth: '450px', margin: '5px auto 0' }}
-          />
-        </div>
-        <div class="p-8">
-          <p class="flex justify-center block mt-1 text-lg leading-tight font-medium  text-wrap">
-            Create and share URLs to use Analytics.
-          </p>
         </div>
       </div>
     );
@@ -51,7 +33,7 @@ const AnalyticsSideBar = (props) => {
           ? props.myData.chartData.map((result, index) =>
               cardElement(result, index + 1)
             )
-          : displayImage()}
+          : displayImage('ANALYSE')}
       </ul>
     </div>
   );

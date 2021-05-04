@@ -33,10 +33,14 @@ export default function Body() {
           <div className="flex justify-center content-center">{index}</div>
         </td>
         <td className="px-6 py-4 whitespace-normal hover:underline">
-          <a href={result.longURL}>{result.longURL}</a>
+          <a href={result.longURL} target="_blank" rel="noreferrer">
+            {result.longURL}
+          </a>
         </td>
         <td className="px-6 py-4 whitespace-nowrap hover:underline">
-          <a href={result.shortURL}>{result.shortURL}</a>
+          <a href={result.shortURL} target="_blank" rel="noreferrer">
+            {result.shortURL}
+          </a>
         </td>
         <td className="px-6 py-4 whitespace-nowrap hover:underline">
           <CopyToClipboard text={result.shortURL}>
