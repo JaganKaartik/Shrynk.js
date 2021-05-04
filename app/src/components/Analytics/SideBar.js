@@ -26,7 +26,7 @@ const AnalyticsSideBar = (props) => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-gray-900 to-blue-900 flex flex-1 h-100 flex-grow flex-col overflow-hidden px-6 py-8">
+    <div className="bg-gradient-to-b from-gray-900 to-blue-900 flex flex-col overflow-hidden px-6 py-8">
       <ul className="space-y-6">
         {props.myData.dataPresent
           ? props.myData.chartData.map((result, index) =>

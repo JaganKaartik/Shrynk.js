@@ -4,6 +4,7 @@ import { themeToggleHandler } from '../../helpers/theme.helper';
 import AnalyticsSideBar from './SideBar';
 import CustomLoader from '../Commons/Loader';
 import ChartDashboard from './ChartDashboard';
+import { displayImage } from './utils/displayImage';
 
 export default function AnalyticsDashboard() {
   const [AnalyticsData, setAnalyticsData] = useState('');
@@ -33,10 +34,14 @@ export default function AnalyticsDashboard() {
     <div className="flex flex-col justify-center">
       <AnalyticsHeader />
       {loaded ? (
-        <div className="grid sm:grid-cols-2 ">
-          <AnalyticsSideBar myData={AnalyticsData} />
-          <ChartDashboard myData={AnalyticsData} />
-        </div>
+        AnalyticsData.dataPresent ? (
+          <div className="grid sm:grid-cols-2 ">
+            <AnalyticsSideBar myData={AnalyticsData} />
+            <ChartDashboard myData={AnalyticsData} />
+          </div>
+        ) : (
+          <div className="overflow-hidden">{displayImage('ANALYSE')}</div>
+        )
       ) : (
         <CustomLoader />
       )}
