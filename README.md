@@ -23,13 +23,13 @@ Added,
 - User Onboarding
 - Tiers and Quotas on Users
 - Dashboard to Create, Read & Delete generated URLs
-- Analytics Dashboard (On roadmap. Will be added in a short while). 
+- Link Analytics Dashboard
 
 <h2 align="center">
  What else ?
 </h2>
 
-- Implemented API security measures, Rate-Limiting, Handled edge cases. 
+- Implemented API security measures, rate-Limiting, validation.   
 - URLs have an expiry date, if accessed after, appropriate error message is shown and URL is removed from system. 
 - App features Dark Mode, Mobile UI, Toast messages.
 
