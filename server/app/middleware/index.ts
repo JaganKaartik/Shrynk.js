@@ -2,7 +2,6 @@ import express from 'express'
 import { authRouter, apiRouter, dashRouter, analyticsRouter } from '../routes'
 
 const Middleware = express()
-const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const passport = require('passport')
 const cors = require('cors')
@@ -20,8 +19,8 @@ Middleware.use(cookieParser())
 Middleware.use(passport.initialize())
 Middleware.use(passport.session())
 
-Middleware.use(bodyParser.urlencoded({ extended: false }))
-Middleware.use(bodyParser.json())
+Middleware.use(express.urlencoded({ extended: false }))
+Middleware.use(express.json())
 Middleware.use('/', apiRouter)
 Middleware.use('/auth', authRouter)
 Middleware.use('/dash', dashRouter)
