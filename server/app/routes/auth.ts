@@ -1,10 +1,8 @@
 import express from 'express'
 import {
   authGoogle,
-  authRedirectGoogle,
   authGithub,
-  authRedirectGithub,
-  logout
+  authRedirectHandler
 } from '../controllers/auth'
 
 const passport = require('passport')
@@ -18,7 +16,7 @@ authRouter.get(
     failureRedirect: '/',
     session: false
   }),
-  authRedirectGoogle
+  authRedirectHandler
 )
 authRouter.get('/github', authGithub)
 authRouter.get(
@@ -27,8 +25,7 @@ authRouter.get(
     failureRedirect: '/',
     session: false
   }),
-  authRedirectGithub
+  authRedirectHandler
 )
-authRouter.get('/logout', logout)
 
 export = authRouter
