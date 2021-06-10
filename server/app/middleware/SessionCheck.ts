@@ -1,5 +1,3 @@
-/* For Use in case of JWT */
-
 const jwt = require('jsonwebtoken')
 const { JWT_SECRET } = require('../config/default.config')
 // eslint-disable-next-line consistent-return
