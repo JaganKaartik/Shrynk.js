@@ -26,6 +26,32 @@ passport.deserializeUser((id, done) => {
     })
 })
 
+const userHandler = async (profile, done) => {
+  const currentUser = await User.findOne({
+    otherInfo: profile._json.email
+  })
+    .then((resp) => resp)
+    .catch((err) => {
+      console.error(err)
+    })
+
+  if (!currentUser) {
+    const uid = uuidv4()
+    const newUser = new User({
+      userId: uid,
+      provider: profile.provider,
+      name: profile._json.name,
+      profileImageUrl: profile._json.picture,
+      otherInfo: profile._json.email,
+      onboarding: true
+    })
+    newUser.save()
+    done(null, newUser)
+  } else {
+    done(null, currentUser)
+  }
+}
+
 passport.use(
   new GitHubStrategy(
     {
@@ -35,29 +61,7 @@ passport.use(
       passReqToCallback: true
     },
     async (request, accessToken, refreshToken, profile, done) => {
-      const currentUser = await User.findOne({
-        otherInfo: profile._json.email
-      })
-        .then((resp) => resp)
-        .catch((err) => {
-          console.error(err)
-        })
-
-      if (!currentUser) {
-        const uid = uuidv4()
-        const newUser = new User({
-          userId: uid,
-          provider: profile.provider,
-          name: profile._json.name,
-          profileImageUrl: profile._json.picture,
-          otherInfo: profile._json.email,
-          onboarding: true
-        })
-        newUser.save()
-        done(null, newUser)
-      } else {
-        done(null, currentUser)
-      }
+      userHandler(profile, done)
     }
   )
 )
@@ -71,29 +75,7 @@ passport.use(
       passReqToCallback: true
     },
     async (request, accessToken, refreshToken, profile, done) => {
-      const currentUser = await User.findOne({
-        otherInfo: profile._json.email
-      })
-        .then((resp) => resp)
-        .catch((err) => {
-          console.error(err)
-        })
-
-      if (!currentUser) {
-        const uid = uuidv4()
-        const newUser = new User({
-          userId: uid,
-          provider: profile.provider,
-          name: profile._json.name,
-          profileImageUrl: profile._json.picture,
-          otherInfo: profile._json.email,
-          onboarding: true
-        })
-        newUser.save()
-        done(null, newUser)
-      } else {
-        done(null, currentUser)
-      }
+      userHandler(profile, done)
     }
   )
 )

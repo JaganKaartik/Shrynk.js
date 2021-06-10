@@ -16,10 +16,8 @@ export const QuotaCheck = async (id) => {
   return QuotaStatus
 }
 
-/* Function that add 1 to URL quota balance */
-export const QuotaUpdateAdd = async (id) => {
-  const newQuota = (await QuotaBalance(id)) + 1
-  const result = await STATS.findOneAndUpdate(
+const QuotaUpdater = async (id, newQuota) => {
+  await STATS.findOneAndUpdate(
     {
       userId: id
     },
@@ -32,24 +30,18 @@ export const QuotaUpdateAdd = async (id) => {
   )
     .then((resp) => !!resp)
     .catch((err) => err)
+}
+
+/* Function that add 1 to URL quota balance */
+export const QuotaUpdateAdd = async (id) => {
+  const newQuota = (await QuotaBalance(id)) + 1
+  const result = QuotaUpdater(id, newQuota)
   return result
 }
 
 /* Function that subtracts 1 from URL quota balance */
 export const QuotaUpdateSub = async (id) => {
   const newQuota = (await QuotaBalance(id)) - 1
-  const result = await STATS.findOneAndUpdate(
-    {
-      userId: id
-    },
-    {
-      currentQuota: newQuota
-    },
-    {
-      new: true
-    }
-  )
-    .then((resp) => !!resp)
-    .catch((err) => err)
+  const result = QuotaUpdater(id, newQuota)
   return result
 }

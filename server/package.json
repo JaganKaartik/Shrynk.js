@@ -9,7 +9,6 @@
   "private": true,
   "scripts": {
     "start": "NODE_ENV=production node dist/index",
-    "start:test": "NODE_ENV=staging APP_ENV=test nodemon dist/index",
     "start:dev": " NODE_ENV=development APP_ENV=dev nodemon dist/index",
     "build": "tsc",
     "lint": "eslint '*/**/*.ts'",
