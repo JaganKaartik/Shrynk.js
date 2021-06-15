@@ -12,7 +12,6 @@ const {
   CLIENT_URL_PROD,
   CLIENT_URL_DEV,
   JWT_SECRET,
-  SESSION_SECRET
 } = process.env
 
 const CLIENT_URL = NODE_ENV === 'production' ? CLIENT_URL_PROD : CLIENT_URL_DEV
@@ -28,5 +27,4 @@ export {
   NODE_ENV,
   CLIENT_URL,
   JWT_SECRET,
-  SESSION_SECRET
 }
