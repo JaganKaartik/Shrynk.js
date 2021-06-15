@@ -56,6 +56,72 @@ Tech Stack,
   <img alt="Express.js" src="https://img.shields.io/badge/express.js-%23404d59.svg?&style=for-the-badge"/>
 </p>
 
+<h2 align="center">
+ Writeups 
+</h2>
+
+- [Personal Blog Post](https://blog.jagankaartik.com/posts/nodejs-aws-indepth-guide/)
+- [Medium Article](https://medium.com/@kaartikjagan/an-in-depth-guide-to-deploying-your-node-js-application-to-production-using-aws-with-custom-domain-1fe3b0638a75)
+
+<h2 align="center">
+ Self-Hosting Steps
+</h2>
+
+### Installation 
+
+#### Prerequisites
+
+- Node.js/NPM
+```
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+```
+```
+sudo apt-get install -y nodejs
+```
+
+- Enviornment Variables
+
+You'll need to create two env var files `(.env)`, one in server's root `(server/)` and the other in client's root `(app/)` and populate them appropriately.
+
+In Server,
+```
+PORT=""
+MONGO_URL=""
+COOKIE_KEY=""
+GOOGLE_CLIENT_ID=""
+GOOGLE_CLIENT_SECRET=""
+GITHUB_CLIENT_ID=""
+GITHUB_CLIENT_SECRET=""
+NODE_ENV=""
+CLIENT_URL_PROD=""
+CLIENT_URL_DEV=""
+JWT_SECRET=""
+```
+In client(app),
+```
+REACT_APP_API_URL_PROD=""
+REACT_APP_API_URL_DEV=""
+REACT_APP_GA_ID=""
+```
+### Installation 
+
+- `cd` into root of the repository. Run `make install`, this will install all the dependencies in client's and server's package.json
+
+```
+make install
+```
+- Running 'make build' will build the react-client & typescript-express server.
+```
+make build
+```
+#### Running Dev
+```
+make run-dev
+```
+#### Running Production locally
+```
+make run-prod
+```
 
 <h2 align="center">
  Preview
