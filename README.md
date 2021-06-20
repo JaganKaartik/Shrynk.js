@@ -63,7 +63,7 @@ Tech Stack,
 - [Personal Blog Post](https://blog.jagankaartik.com/posts/nodejs-aws-indepth-guide/)
 - [Medium Article](https://medium.com/@kaartikjagan/an-in-depth-guide-to-deploying-your-node-js-application-to-production-using-aws-with-custom-domain-1fe3b0638a75)
 
-<h2 align="center">
+<!-- <h2 align="center">
  Self-Hosting Steps
 </h2>
 
@@ -122,7 +122,7 @@ make run-dev
 ```
 make run-prod
 ```
-
+ -->
 <h2 align="center">
  Preview
 </h2>
