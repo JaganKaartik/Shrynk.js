@@ -39,7 +39,7 @@ Added,
 
 Tech Stack,
 
-- Client: React (Router, Context-API, Hooks), TailwindCSS, Custom CSS
+- Client: React (Router, Context-API, Hooks, Lazy & Suspense), TailwindCSS, Custom CSS
 - Server: Express.js/Node.js written in Typescript.
 - Database: MongoDB Atlas (Cloud DB)
 - Deployment: AWS EC2 (Ubuntu Instance), Route53, NGINX (Reverse Proxy), PM2 for Node.js
