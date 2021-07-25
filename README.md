@@ -14,6 +14,8 @@
 
 Shrynk.js is a url shortening single page application, a product rather than a project similar to bit.ly, tiny.url, etc where users can create and manage multiple URLs. 
 
+[Demo-Video](https://youtu.be/vYQKlfq_2h0)
+
 <h2 align="center">
   How did I make it unique ? Features ?
 </h2>
@@ -57,12 +59,11 @@ Tech Stack,
 </p>
 
 <h2 align="center">
- Writeups & Demos
+ Writeups
 </h2>
 
 - [Personal Blog Post](https://blog.jagankaartik.com/posts/nodejs-aws-indepth-guide/)
 - [Medium Article](https://medium.com/@kaartikjagan/an-in-depth-guide-to-deploying-your-node-js-application-to-production-using-aws-with-custom-domain-1fe3b0638a75)
-- [Demo](https://youtu.be/vYQKlfq_2h0)
 
 <!-- <h2 align="center">
  Self-Hosting Steps
