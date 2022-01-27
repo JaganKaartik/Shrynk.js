@@ -1,3 +1,5 @@
+**I originally created this application, a long while ago. A lot of code-refactoring is required.**
+
 <h1 align="center">
   Shrynk.js
 </h1>
